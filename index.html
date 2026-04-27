@@ -113,10 +113,9 @@ footer{background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.06);p
 <p class="hero-sub">Analizamos tu ecommerce con inteligencia artificial y te mostramos exactamente qué corregir para mejorar tu tráfico orgánico, tu visibilidad en buscadores y tus ventas.</p>
 <div class="audit-form-wrap">
 <h3>Solicita tu auditoría gratuita</h3>
-<form id="audit-form" action="https://formspree.io/f/TU_ID_FORMSPREE" method="POST">
+<form id="audit-form" action="https://hook.eu1.make.com/1hucdp74dybk23siu1tvqfvaknrjsu1a" method="POST">
 <div class="form-row"><input type="url" name="url" class="fi" placeholder="URL de tu tienda (ej: mitienda.com)" required></div>
 <input type="email" name="email" class="fi fi-email" placeholder="Tu email para recibir el informe" required>
-<input type="hidden" name="_subject" value="🔍 Nueva solicitud de auditoría EcomBriefs">
 <button type="submit" class="form-submit">Analizar mi tienda gratis →</button>
 </form>
 <p class="form-note">Sin compromiso · Recibes el informe en 48h · 100% confidencial</p>
@@ -192,12 +191,13 @@ footer{background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.06);p
 document.getElementById("audit-form").addEventListener("submit",function(e){
 e.preventDefault();
 var btn=this.querySelector(".form-submit");
-var data=new FormData(this);
+var url=this.querySelector('[name="url"]').value;
+var email=this.querySelector('[name="email"]').value;
 btn.textContent="¡Solicitud enviada! ✓";
 btn.classList.add("sent");
-fetch(this.action,{method:"POST",body:data,headers:{"Accept":"application/json"}})
+fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email}),headers:{"Content-Type":"application/json"}})
 .then(function(r){if(r.ok){setTimeout(function(){btn.textContent="Analizar mi tienda gratis →";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)}else{btn.textContent="Error, inténtalo de nuevo";btn.classList.remove("sent")}})
-.catch(function(){window.location.href="mailto:hola@ecombriefs.io?subject=Solicitud auditoría&body=URL: "+data.get("url")+"%0AEmail: "+data.get("email");setTimeout(function(){btn.textContent="Analizar mi tienda gratis →";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)});
+.catch(function(){btn.textContent="Error de conexión";btn.classList.remove("sent");setTimeout(function(){btn.textContent="Analizar mi tienda gratis →"},3000)});
 });
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();document.querySelector(a.getAttribute("href")).scrollIntoView({behavior:"smooth"})})});
 </script>
