@@ -1,588 +1,847 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Implementación Express | EcomBriefs.io</title>
-    <meta name="description" content="Corregimos los problemas detectados en tu auditoría EcomBriefs en 72 horas. Sin reuniones, sin llamadas. 299€.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementación SEO & Schema para eCommerce | EcomBriefs.io</title>
+<meta name="description" content="Implementamos las correcciones de tu auditoría EcomBriefs en tu tienda online. Sin reuniones, sin llamadas. Todo por email.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0B0E1A;
+    --bg-card:#12162B;
+    --bg-card-hover:#181D38;
+    --bg-elevated:#1B2040;
+    --accent:#E85D26;
+    --accent-glow:rgba(232,93,38,.15);
+    --green:#2ECC71;
+    --green-dim:rgba(46,204,113,.12);
+    --yellow:#F1C40F;
+    --yellow-dim:rgba(241,196,15,.12);
+    --text:#E8E6E1;
+    --text-dim:#8B8D97;
+    --text-muted:#5A5C66;
+    --border:#252940;
+    --border-accent:rgba(232,93,38,.35);
+    --radius:12px;
+    --radius-sm:8px;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1rem 2rem;
+    background:rgba(11,14,26,.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{
+    font-family:'Space Mono',monospace;font-weight:700;font-size:1rem;
+    color:var(--accent);letter-spacing:-.5px;
+    text-decoration:none;
+  }
+  .logo span{color:var(--text-dim);font-weight:400}
+  .nav-back{
+    font-size:.85rem;color:var(--text-dim);text-decoration:none;
+    transition:color .2s;
+  }
+  .nav-back:hover{color:var(--accent)}
 
-        /* Header */
-        .header {
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
+  /* ── HERO ── */
+  .hero{
+    padding:8rem 2rem 4rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+    width:800px;height:800px;
+    background:radial-gradient(circle,rgba(232,93,38,.08) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-block;
+    font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:2px;
+    color:var(--accent);
+    border:1px solid var(--border-accent);
+    padding:.4rem 1rem;border-radius:100px;
+    margin-bottom:1.5rem;
+    background:var(--accent-glow);
+  }
+  .hero h1{
+    font-size:clamp(2rem,5vw,3.2rem);
+    font-weight:700;line-height:1.15;
+    margin-bottom:1rem;
+    max-width:700px;margin-left:auto;margin-right:auto;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(135deg,var(--accent),#FF8A5C);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero p{
+    font-size:1.1rem;color:var(--text-dim);
+    max-width:520px;margin:0 auto 2rem;
+  }
+  .hero-pills{
+    display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+    margin-bottom:1rem;
+  }
+  .hero-pill{
+    font-size:1rem;font-weight:600;color:var(--text);
+    border:1.5px solid var(--green);
+    background:var(--green-dim);
+    padding:.6rem 1.4rem;border-radius:100px;
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .hero-pill .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 8px var(--green);
+  }
 
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-        }
+  /* ── SECTION ── */
+  section{padding:4rem 2rem;max-width:1100px;margin:0 auto}
+  .section-label{
+    font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:2px;
+    color:var(--accent);margin-bottom:.6rem;
+  }
+  .section-title{
+    font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:700;
+    margin-bottom:.6rem;line-height:1.2;
+  }
+  .section-sub{
+    color:var(--text-dim);font-size:1rem;
+    max-width:550px;margin-bottom:2.5rem;
+  }
 
-        .logo span {
-            color: #22c55e;
-        }
+  /* ── PRICING GRID ── */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:1.5rem;
+    align-items:start;
+  }
 
-        .back-link {
-            color: #888;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
+  .price-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:2rem;
+    position:relative;
+    transition:border-color .3s,transform .3s,box-shadow .3s;
+  }
+  .price-card:hover{
+    border-color:var(--border-accent);
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(0,0,0,.4);
+  }
+  .price-card.featured{
+    border-color:var(--accent);
+    background:linear-gradient(180deg,rgba(232,93,38,.06) 0%,var(--bg-card) 40%);
+  }
+  .price-card.featured::before{
+    content:'';position:absolute;top:0;left:20%;right:20%;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  }
 
-        .back-link:hover {
-            color: #22c55e;
-        }
+  .card-badge{
+    position:absolute;top:-11px;right:1.5rem;
+    font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;
+    background:var(--accent);color:white;
+    padding:.3rem .8rem;border-radius:100px;
+  }
 
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+  .card-name{
+    font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--text-muted);margin-bottom:.8rem;
+  }
+  .card-title{
+    font-size:1.3rem;font-weight:700;margin-bottom:.4rem;
+  }
+  .card-desc{
+    font-size:.9rem;color:var(--text-dim);margin-bottom:1.5rem;
+    line-height:1.5;
+  }
 
-        .badge {
-            display: inline-block;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
+  .card-price{
+    display:flex;align-items:baseline;gap:.3rem;
+    margin-bottom:.3rem;
+  }
+  .card-price .amount{
+    font-size:2.4rem;font-weight:700;
+    letter-spacing:-1px;
+  }
+  .card-price .iva{
+    font-size:.8rem;color:var(--text-muted);
+  }
+  .card-delivery{
+    font-size:.8rem;color:var(--text-dim);
+    margin-bottom:1.5rem;
+    padding-bottom:1.5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .card-delivery strong{color:var(--green)}
 
-        .hero h1 {
-            font-size: 40px;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 16px;
-        }
+  .card-features{list-style:none;margin-bottom:2rem}
+  .card-features li{
+    font-size:.88rem;color:var(--text-dim);
+    padding:.4rem 0;
+    display:flex;align-items:flex-start;gap:.6rem;
+  }
+  .card-features li::before{
+    content:'✓';color:var(--green);font-weight:700;
+    flex-shrink:0;margin-top:1px;
+  }
+  .card-features li.highlight{color:var(--text)}
+  .card-features li.extra::before{content:'★';color:var(--accent)}
 
-        .hero h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  .card-scope{
+    background:rgba(232,93,38,.06);
+    border:1px solid rgba(232,93,38,.15);
+    border-radius:var(--radius-sm);
+    padding:.8rem 1rem;
+    margin-bottom:1.5rem;
+  }
+  .card-scope-label{
+    font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;
+    color:var(--accent);margin-bottom:.3rem;
+  }
+  .card-scope p{font-size:.82rem;color:var(--text-dim);line-height:1.5}
 
-        .hero p {
-            font-size: 17px;
-            color: #999;
-            line-height: 1.6;
-            max-width: 550px;
-            margin: 0 auto;
-        }
+  .card-btn{
+    display:block;width:100%;
+    padding:.9rem;border:none;border-radius:var(--radius-sm);
+    font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;
+    cursor:pointer;text-align:center;text-decoration:none;
+    transition:all .2s;
+  }
+  .btn-primary{
+    background:var(--accent);color:white;
+    box-shadow:0 4px 20px rgba(232,93,38,.3);
+  }
+  .btn-primary:hover{
+    background:#d4511e;
+    box-shadow:0 6px 28px rgba(232,93,38,.45);
+    transform:translateY(-1px);
+  }
+  .btn-secondary{
+    background:transparent;color:var(--text);
+    border:1px solid var(--border);
+  }
+  .btn-secondary:hover{
+    border-color:var(--accent);
+    background:var(--accent-glow);
+  }
 
-        /* Cómo funciona */
-        .steps {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
+  /* ── COMPARISON ── */
+  .compare{
+    margin-top:3rem;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .compare-header{
+    background:var(--bg-elevated);
+    padding:1.2rem 1.5rem;
+    font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--text-muted);
+    border-bottom:1px solid var(--border);
+  }
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 100px 100px 100px;
+    align-items:center;
+    padding:.8rem 1.5rem;
+    border-bottom:1px solid var(--border);
+    font-size:.85rem;
+  }
+  .compare-row:last-child{border:none}
+  .compare-row:nth-child(even){background:rgba(255,255,255,.015)}
+  .compare-feature{color:var(--text-dim)}
+  .compare-check{
+    text-align:center;font-size:.9rem;
+  }
+  .check-yes{color:var(--green)}
+  .check-no{color:var(--text-muted)}
 
-        .step {
-            text-align: center;
-            flex: 1;
-            min-width: 180px;
-        }
+  /* ── GUARANTEE ── */
+  .guarantee{
+    text-align:center;
+    padding:3rem 2rem;
+    margin:3rem auto;max-width:600px;
+  }
+  .guarantee-icon{
+    font-size:2.5rem;margin-bottom:1rem;
+    filter:grayscale(1) brightness(1.5);
+  }
+  .guarantee h3{
+    font-size:1.2rem;margin-bottom:.5rem;
+  }
+  .guarantee p{
+    font-size:.9rem;color:var(--text-dim);line-height:1.6;
+  }
 
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            font-weight: 700;
-            color: #22c55e;
-            font-size: 16px;
-        }
+  /* ── FORM SECTION ── */
+  .form-section{
+    max-width:640px;margin:0 auto;
+    padding:4rem 2rem;
+  }
+  .form-section .section-title{text-align:center}
+  .form-section .section-sub{text-align:center;margin:0 auto 2.5rem}
 
-        .step h3 {
-            font-size: 15px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 6px;
-        }
+  .form-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:2rem;
+  }
 
-        .step p {
-            font-size: 13px;
-            color: #777;
-            line-height: 1.5;
-        }
+  .field{margin-bottom:1.2rem}
+  .field label{
+    display:block;
+    font-size:.82rem;font-weight:500;
+    color:var(--text-dim);margin-bottom:.4rem;
+  }
+  .field label .req{color:var(--accent)}
+  .field input,.field select,.field textarea{
+    width:100%;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:.7rem .9rem;
+    font-family:'DM Sans',sans-serif;font-size:.9rem;
+    color:var(--text);
+    transition:border-color .2s;
+    outline:none;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-glow);
+  }
+  .field textarea{resize:vertical;min-height:80px}
+  .field select{cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%238B8D97' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;
+    padding-right:2rem;
+  }
+  .field-hint{
+    font-size:.75rem;color:var(--text-muted);margin-top:.3rem;
+  }
 
-        /* Formulario */
-        .form-container {
-            max-width: 580px;
-            margin: 20px auto 60px;
-            padding: 0 20px;
-        }
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 
-        .form-card {
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 40px;
-        }
+  .plan-selector{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;
+    margin-bottom:1.5rem;
+  }
+  .plan-option{
+    padding:.7rem .5rem;
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    text-align:center;cursor:pointer;
+    transition:all .2s;
+    background:var(--bg);
+  }
+  .plan-option:hover{border-color:var(--text-muted)}
+  .plan-option.selected{
+    border-color:var(--accent);
+    background:var(--accent-glow);
+  }
+  .plan-option input{display:none}
+  .plan-option .plan-name{
+    font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1px;
+    color:var(--text-muted);
+  }
+  .plan-option.selected .plan-name{color:var(--accent)}
+  .plan-option .plan-price{
+    font-size:1.1rem;font-weight:700;margin-top:.2rem;
+  }
 
-        .form-card h2 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
+  .consent{
+    display:flex;align-items:flex-start;gap:.6rem;
+    margin:1.2rem 0;
+    font-size:.8rem;color:var(--text-muted);
+    line-height:1.5;
+  }
+  .consent input[type=checkbox]{
+    margin-top:3px;accent-color:var(--accent);
+    flex-shrink:0;
+  }
 
-        .form-card .subtitle {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 32px;
-        }
+  .submit-btn{
+    width:100%;padding:1rem;
+    background:var(--accent);color:white;
+    border:none;border-radius:var(--radius-sm);
+    font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;
+    cursor:pointer;
+    transition:all .2s;
+    box-shadow:0 4px 20px rgba(232,93,38,.3);
+  }
+  .submit-btn:hover{
+    background:#d4511e;
+    box-shadow:0 6px 28px rgba(232,93,38,.45);
+    transform:translateY(-1px);
+  }
+  .submit-btn:disabled{
+    opacity:.5;cursor:not-allowed;transform:none;
+  }
 
-        .form-group {
-            margin-bottom: 22px;
-        }
+  /* ── SUCCESS ── */
+  .success-msg{
+    display:none;text-align:center;
+    padding:3rem 1.5rem;
+  }
+  .success-msg.show{display:block}
+  .success-icon{font-size:3rem;margin-bottom:1rem}
+  .success-msg h3{font-size:1.3rem;margin-bottom:.5rem}
+  .success-msg p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
 
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #ccc;
-            margin-bottom: 8px;
-        }
+  /* ── FAQ ── */
+  .faq-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.2rem;
+  }
+  .faq-item{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.5rem;
+  }
+  .faq-item h4{
+    font-size:.95rem;margin-bottom:.4rem;
+    color:var(--text);
+  }
+  .faq-item p{
+    font-size:.85rem;color:var(--text-dim);line-height:1.6;
+  }
 
-        .form-group label .required {
-            color: #22c55e;
-        }
+  /* ── FOOTER ── */
+  footer{
+    text-align:center;
+    padding:2rem;
+    border-top:1px solid var(--border);
+    font-size:.8rem;color:var(--text-muted);
+    margin-top:2rem;
+  }
+  footer a{color:var(--accent);text-decoration:none}
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            background: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .animate{opacity:0;animation:fadeUp .6s ease forwards}
+  .d1{animation-delay:.1s}
+  .d2{animation-delay:.2s}
+  .d3{animation-delay:.3s}
+  .d4{animation-delay:.4s}
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #22c55e;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #555;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-        }
-
-        .form-group select option {
-            background: #111;
-            color: #fff;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-group .hint {
-            font-size: 12px;
-            color: #666;
-            margin-top: 6px;
-        }
-
-        /* Checkbox */
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 28px;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: #22c55e;
-            cursor: pointer;
-        }
-
-        .checkbox-group label {
-            font-size: 13px;
-            color: #999;
-            line-height: 1.5;
-            cursor: pointer;
-        }
-
-        .checkbox-group label a {
-            color: #22c55e;
-            text-decoration: none;
-        }
-
-        /* Precio */
-        .price-box {
-            background: rgba(34, 197, 94, 0.05);
-            border: 1px solid rgba(34, 197, 94, 0.15);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 28px;
-            text-align: center;
-        }
-
-        .price-box .price {
-            font-size: 42px;
-            font-weight: 800;
-            color: #22c55e;
-        }
-
-        .price-box .price-note {
-            font-size: 13px;
-            color: #888;
-            margin-top: 4px;
-        }
-
-        .price-box .includes {
-            font-size: 13px;
-            color: #aaa;
-            margin-top: 12px;
-            text-align: left;
-            line-height: 1.8;
-        }
-
-        .price-box .includes span {
-            color: #22c55e;
-            margin-right: 6px;
-        }
-
-        /* Botón */
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .guarantee {
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-            margin-top: 16px;
-        }
-
-        .guarantee svg {
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-
-        /* Éxito */
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .success-message .check-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(34, 197, 94, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .success-message h2 {
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .success-message p {
-            font-size: 15px;
-            color: #999;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .footer p {
-            font-size: 13px;
-            color: #555;
-        }
-
-        .footer a {
-            color: #22c55e;
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .form-card {
-                padding: 24px;
-            }
-
-            .steps {
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .header {
-                padding: 16px 20px;
-            }
-        }
-    </style>
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    nav{padding:.8rem 1rem}
+    .hero{padding:6rem 1.2rem 3rem}
+    section{padding:3rem 1.2rem}
+    .pricing-grid{grid-template-columns:1fr}
+    .compare-row{grid-template-columns:1fr 60px 60px 60px;font-size:.75rem;padding:.6rem 1rem}
+    .field-row{grid-template-columns:1fr}
+    .plan-selector{grid-template-columns:1fr}
+    .form-section{padding:3rem 1.2rem}
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <a href="https://ecombriefs.io" class="logo">Ecom<span>Briefs</span>.io</a>
-        <a href="https://ecombriefs.io" class="back-link">&larr; Volver a la auditoría gratuita</a>
-    </header>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="https://ecombriefs.io">EcomBriefs<span>.io</span></a>
+  <a class="nav-back" href="https://ecombriefs.io">← Auditoría gratuita</a>
+</nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="badge">SERVICIO PREMIUM</div>
-        <h1>Corregimos todo lo que detectó <em>tu auditoría</em></h1>
-        <p>Nuestro equipo implementa las correcciones técnicas de tu informe EcomBriefs en 72 horas. Sin reuniones, sin llamadas. Todo por email.</p>
-    </section>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge animate d1">Servicio de implementación</div>
+  <h1 class="animate d2">Corregimos lo que tu auditoría detectó.<br><em>Tú no tocas nada.</em></h1>
+  <p class="animate d3">Elige el nivel de implementación que necesitas. Sin reuniones, sin llamadas. Todo por email.</p>
+  <div class="hero-pills animate d4">
+    <span class="hero-pill"><span class="dot"></span> Sin llamadas</span>
+    <span class="hero-pill"><span class="dot"></span> Todo por email</span>
+    <span class="hero-pill"><span class="dot"></span> Garantía 100%</span>
+  </div>
+</header>
 
-    <!-- Pasos -->
-    <section class="steps">
-        <div class="step">
-            <div class="step-number">1</div>
-            <h3>Rellena el formulario</h3>
-            <p>Adjunta tu informe PDF y cuéntanos sobre tu tienda</p>
+<!-- PRICING -->
+<section>
+  <div class="section-label">Planes</div>
+  <h2 class="section-title">Elige tu nivel de implementación</h2>
+  <p class="section-sub">Cada plan tiene un alcance claro y definido. Sabes exactamente lo que incluye antes de pagar.</p>
+
+  <div class="pricing-grid">
+    <!-- QUICK WINS -->
+    <div class="price-card animate d1">
+      <div class="card-name">Quick Wins</div>
+      <div class="card-title">Lo urgente primero</div>
+      <div class="card-desc">Las correcciones rápidas que más impacto tienen en tu posicionamiento. Lo que un SEO haría el primer día.</div>
+      <div class="card-price">
+        <span class="amount">299€</span>
+        <span class="iva">IVA incluido</span>
+      </div>
+      <div class="card-delivery">Entrega en <strong>48 horas</strong></div>
+      <ul class="card-features">
+        <li class="highlight">Reescritura de title tags y meta descriptions</li>
+        <li class="highlight">Schema Organization + WebSite</li>
+        <li class="highlight">Corrección de errores 404 con redirecciones 301</li>
+        <li>Open Graph optimizado para redes sociales</li>
+        <li>Informe antes/después con capturas</li>
+      </ul>
+      <div class="card-scope">
+        <div class="card-scope-label">Alcance máximo</div>
+        <p>Hasta 10 páginas corregidas (home + colecciones + productos principales)</p>
+      </div>
+      <a href="#formulario" class="card-btn btn-secondary">Solicitar Quick Wins</a>
+    </div>
+
+    <!-- IMPLEMENTACIÓN COMPLETA -->
+    <div class="price-card featured animate d2">
+      <div class="card-badge">Más elegido</div>
+      <div class="card-name">Implementación completa</div>
+      <div class="card-title">Todo lo de tu auditoría, resuelto</div>
+      <div class="card-desc">Implementamos todas las correcciones técnicas que aparecen en tu informe EcomBriefs. De principio a fin.</div>
+      <div class="card-price">
+        <span class="amount">599€</span>
+        <span class="iva">IVA incluido</span>
+      </div>
+      <div class="card-delivery">Entrega en <strong>5 días laborables</strong></div>
+      <ul class="card-features">
+        <li class="highlight">Todo lo del plan Quick Wins</li>
+        <li class="highlight">Schema Product completo en todas las fichas</li>
+        <li class="highlight">Schema LocalBusiness (si tienes tienda física)</li>
+        <li class="highlight">Schema Event (si vendes talleres o eventos)</li>
+        <li class="highlight">Arquitectura de URLs y navegación corregida</li>
+        <li>Alt text optimizado en imágenes principales</li>
+        <li>Revisión de hreflang (si tienes multi-idioma)</li>
+        <li>Informe final con antes/después detallado</li>
+      </ul>
+      <div class="card-scope">
+        <div class="card-scope-label">Alcance máximo</div>
+        <p>Todas las páginas de tu tienda. Sin límite de fichas de producto.</p>
+      </div>
+      <a href="#formulario" class="card-btn btn-primary">Solicitar Implementación</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="price-card animate d3">
+      <div class="card-name">Premium + Contenido</div>
+      <div class="card-title">SEO técnico + contenido que posiciona</div>
+      <div class="card-desc">Implementación completa más la creación del contenido que tu tienda necesita para posicionar a largo plazo.</div>
+      <div class="card-price">
+        <span class="amount">1.199€</span>
+        <span class="iva">IVA incluido</span>
+      </div>
+      <div class="card-delivery">Entrega en <strong>10 días laborables</strong></div>
+      <ul class="card-features">
+        <li class="highlight">Todo lo del plan Implementación Completa</li>
+        <li class="extra">Creación de blog con 4 artículos SEO (1.500+ palabras)</li>
+        <li class="extra">Schema Article / BlogPosting en cada post</li>
+        <li class="extra">Reescritura de descripciones de producto (hasta 20)</li>
+        <li class="extra">Optimización para visibilidad en IA (ChatGPT, Perplexity)</li>
+        <li>Estrategia de keywords long tail personalizada</li>
+        <li>Calendario editorial de 3 meses</li>
+      </ul>
+      <div class="card-scope">
+        <div class="card-scope-label">Alcance máximo</div>
+        <p>Toda la tienda + 4 artículos de blog + 20 fichas reescritas + estrategia de contenido.</p>
+      </div>
+      <a href="#formulario" class="card-btn btn-secondary">Solicitar Premium</a>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="compare">
+    <div class="compare-header">Comparativa de planes</div>
+    <div class="compare-row" style="font-weight:700;color:var(--text-muted);font-size:.75rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:1px">
+      <span></span>
+      <span class="compare-check">299€</span>
+      <span class="compare-check" style="color:var(--accent)">599€</span>
+      <span class="compare-check">1.199€</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Title tags & meta descriptions</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Redirecciones 301 (errores 404)</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Schema Organization + WebSite</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Open Graph optimizado</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Schema Product en fichas</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Schema LocalBusiness / Event</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Arquitectura & navegación</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Alt text en imágenes</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Blog + artículos SEO (×4)</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Reescritura fichas de producto</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Visibilidad en IA (ChatGPT, Perplexity)</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+    <div class="compare-row">
+      <span class="compare-feature">Calendario editorial 3 meses</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-no">—</span>
+      <span class="compare-check check-yes">✓</span>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee animate">
+  <div class="guarantee-icon">🛡️</div>
+  <h3>Garantía de mejora o te devolvemos el 100%</h3>
+  <p>Si después de la implementación tu puntuación EcomBriefs no mejora, te devolvemos el dinero íntegro. Sin preguntas, sin letra pequeña.</p>
+</div>
+
+<!-- FORM -->
+<div class="form-section" id="formulario">
+  <div class="section-label" style="text-align:center">Solicitud</div>
+  <h2 class="section-title">Empieza aquí</h2>
+  <p class="section-sub">Rellena el formulario y te enviamos tu plan de correcciones por email en 24h. Sin compromiso hasta que aceptes.</p>
+
+  <div class="form-card" id="formCard">
+    <form id="mainForm" action="https://hooks.eu1.make.com/TU_WEBHOOK_AQUI" method="POST">
+
+      <!-- Plan selector -->
+      <label style="font-size:.82rem;font-weight:500;color:var(--text-dim);margin-bottom:.5rem;display:block">
+        Plan que te interesa <span class="req">*</span>
+      </label>
+      <div class="plan-selector">
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="quick_wins_299">
+          <div class="plan-name">Quick Wins</div>
+          <div class="plan-price">299€</div>
+        </label>
+        <label class="plan-option selected" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="implementacion_599" checked>
+          <div class="plan-name">Completa</div>
+          <div class="plan-price">599€</div>
+        </label>
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="premium_1199">
+          <div class="plan-name">Premium</div>
+          <div class="plan-price">1.199€</div>
+        </label>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input type="text" name="nombre" required placeholder="Tu nombre">
         </div>
-        <div class="step">
-            <div class="step-number">2</div>
-            <h3>Recibe tu plan</h3>
-            <p>En 24h te enviamos el plan de correcciones por email</p>
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="tu@email.com">
         </div>
-        <div class="step">
-            <div class="step-number">3</div>
-            <h3>Implementamos</h3>
-            <p>Corregimos todo en 72h y te enviamos el informe final</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>URL de tu tienda <span class="req">*</span></label>
+          <input type="url" name="url" required placeholder="https://tutienda.com">
         </div>
-    </section>
-
-    <!-- Formulario -->
-    <section class="form-container">
-        <div class="form-card">
-            <h2>Solicitar Implementación Express</h2>
-            <p class="subtitle">Todos los campos marcados con * son obligatorios</p>
-
-            <form id="implementForm" action="https://hooks.eu1.make.com/TU_WEBHOOK_AQUI" method="POST">
-
-                <div class="form-group">
-                    <label>Nombre completo <span class="required">*</span></label>
-                    <input type="text" name="nombre" placeholder="Tu nombre y apellidos" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email <span class="required">*</span></label>
-                    <input type="email" name="email" placeholder="tu@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label>URL de tu tienda <span class="required">*</span></label>
-                    <input type="url" name="url_tienda" placeholder="https://tu-tienda.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Plataforma <span class="required">*</span></label>
-                    <select name="plataforma" required>
-                        <option value="" disabled selected>Selecciona tu plataforma</option>
-                        <option value="shopify">Shopify</option>
-                        <option value="woocommerce">WooCommerce</option>
-                        <option value="prestashop">PrestaShop</option>
-                        <option value="magento">Magento</option>
-                        <option value="wix">Wix</option>
-                        <option value="squarespace">Squarespace</option>
-                        <option value="otra">Otra</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Puntuación de tu auditoría EcomBriefs</label>
-                    <input type="number" name="score" placeholder="Ej: 45" min="0" max="100">
-                    <p class="hint">La puntuación que aparece en tu informe PDF (0-100)</p>
-                </div>
-
-                <div class="form-group">
-                    <label>¿Qué problemas te preocupan más?</label>
-                    <textarea name="problemas" placeholder="Cuéntanos qué problemas detectó tu auditoría y cuáles te preocupan más. Si tienes el PDF, puedes adjuntarlo por email después."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>¿Tienes acceso de administrador a tu tienda? <span class="required">*</span></label>
-                    <select name="acceso_admin" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="si_total">Sí, acceso total</option>
-                        <option value="si_limitado">Sí, pero limitado</option>
-                        <option value="no_pero_puedo">No, pero puedo conseguirlo</option>
-                        <option value="no">No tengo acceso</option>
-                    </select>
-                </div>
-
-                <!-- Precio -->
-                <div class="price-box">
-                    <div class="price">299€</div>
-                    <div class="price-note">Pago único · IVA incluido</div>
-                    <div class="includes">
-                        <span>&#10003;</span> Análisis profundo de todos los problemas detectados<br>
-                        <span>&#10003;</span> Implementación de correcciones SEO y Schema<br>
-                        <span>&#10003;</span> Optimización para visibilidad en IA (ChatGPT, Perplexity)<br>
-                        <span>&#10003;</span> Informe final con antes/después<br>
-                        <span>&#10003;</span> Entrega en 72 horas<br>
-                        <span>&#10003;</span> Todo por email, sin reuniones
-                    </div>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">Acepto que EcomBriefs.io me contacte por email para gestionar la implementación. Puedo cancelar en cualquier momento.</label>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    Solicitar Implementación · 299€
-                </button>
-
-                <p class="guarantee">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    Si no podemos mejorar tu puntuación, te devolvemos el 100%
-                </p>
-            </form>
-
-            <!-- Mensaje de éxito -->
-            <div class="success-message" id="successMessage">
-                <div class="check-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <h2>Solicitud recibida</h2>
-                <p>Te enviaremos un email en las próximas 24 horas con tu plan de correcciones personalizado y el enlace de pago seguro.<br><br>Revisa tu bandeja de entrada (y spam).</p>
-            </div>
+        <div class="field">
+          <label>Plataforma <span class="req">*</span></label>
+          <select name="plataforma" required>
+            <option value="">Selecciona...</option>
+            <option>Shopify</option>
+            <option>WooCommerce</option>
+            <option>PrestaShop</option>
+            <option>Magento</option>
+            <option>Wix</option>
+            <option>Squarespace</option>
+            <option>Otra</option>
+          </select>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 <a href="https://ecombriefs.io">EcomBriefs.io</a> · Auditoría IA para eCommerce</p>
-    </footer>
+      <div class="field">
+        <label>Puntuación de tu auditoría EcomBriefs</label>
+        <input type="number" name="puntuacion" min="0" max="100" placeholder="Ej: 34">
+        <div class="field-hint">La puntuación que aparece en tu informe PDF (0-100)</div>
+      </div>
 
-    <script>
-        document.getElementById('implementForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+      <div class="field">
+        <label>¿Qué problemas te preocupan más?</label>
+        <textarea name="problemas" placeholder="Ej: Los productos no aparecen en Google, tengo muchos errores 404, no sé si mi schema está bien..."></textarea>
+      </div>
 
-            const btn = document.getElementById('submitBtn');
-            const form = this;
-            const successMsg = document.getElementById('successMessage');
+      <div class="field">
+        <label>¿Tienes acceso de administrador a tu tienda? <span class="req">*</span></label>
+        <select name="acceso" required>
+          <option value="">Selecciona...</option>
+          <option>Sí, acceso total</option>
+          <option>Sí, pero limitado</option>
+          <option>No, pero puedo conseguirlo</option>
+        </select>
+      </div>
 
-            // Deshabilitar botón
-            btn.disabled = true;
-            btn.textContent = 'Enviando...';
+      <div class="consent">
+        <input type="checkbox" required id="consent">
+        <label for="consent">Acepto que EcomBriefs.io me contacte por email para gestionar la implementación. Sin spam, sin llamadas. Puedo cancelar cuando quiera.</label>
+      </div>
 
-            // Recoger datos del formulario
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+      <button type="submit" class="submit-btn" id="submitBtn">Solicitar plan de correcciones →</button>
+    </form>
+  </div>
 
-            // Enviar a Make.com webhook
-            fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                // Mostrar mensaje de éxito
-                form.style.display = 'none';
-                document.querySelector('.form-card h2').style.display = 'none';
-                document.querySelector('.form-card .subtitle').style.display = 'none';
-                successMsg.style.display = 'block';
-            })
-            .catch(error => {
-                // Incluso si falla el webhook, mostramos éxito
-                // (los datos se pueden recuperar de los logs)
-                form.style.display = 'none';
-                document.querySelector('.form-card h2').style.display = 'none';
-                document.querySelector('.form-card .subtitle').style.display = 'none';
-                successMsg.style.display = 'block';
-            });
-        });
-    </script>
+  <div class="success-msg" id="successMsg">
+    <div class="success-icon">✅</div>
+    <h3>Solicitud recibida</h3>
+    <p>Te enviaremos un email en las próximas 24 horas con tu plan de correcciones personalizado y el enlace de pago seguro.<br><br>Revisa tu bandeja de entrada (y spam).</p>
+  </div>
+</div>
 
+<!-- FAQ -->
+<section>
+  <div class="section-label">Preguntas frecuentes</div>
+  <h2 class="section-title" style="margin-bottom:1.5rem">Antes de que preguntes</h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <h4>¿Necesito hacer algo yo?</h4>
+      <p>Solo darnos acceso de administrador a tu tienda (Shopify, WooCommerce, etc.). Nosotros hacemos todo el trabajo. Te avisamos por email cuando esté listo.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Y si no tengo auditoría?</h4>
+      <p>Puedes pedir tu auditoría gratuita en <a href="https://ecombriefs.io" style="color:var(--accent)">ecombriefs.io</a> y volver aquí con el informe. Necesitamos la auditoría para saber qué corregir.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Cuándo pago?</h4>
+      <p>Después de revisar tu solicitud te enviamos el plan de correcciones + enlace de pago seguro (Stripe). No pagas hasta que veas exactamente qué vamos a hacer.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Y si mi tienda tiene muchos problemas?</h4>
+      <p>El plan Quick Wins tiene un alcance limitado (10 páginas). El plan Completo cubre toda la tienda. Si tu caso es muy complejo, te lo diremos antes de cobrar.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Habrá reuniones o llamadas?</h4>
+      <p>No. Todo se gestiona por email. Nos adaptamos a tu horario, no al revés.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Y la garantía?</h4>
+      <p>Si tu puntuación EcomBriefs no mejora después de la implementación, te devolvemos el 100%. Medimos con la misma herramienta que usamos para la auditoría.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 <a href="https://ecombriefs.io">EcomBriefs.io</a> · Auditoría IA para eCommerce · Todo por email, sin llamadas
+</footer>
+
+<script>
+function selectPlan(el){
+  document.querySelectorAll('.plan-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked=true;
+}
+
+document.getElementById('mainForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+
+  const fd=new FormData(this);
+  const data=Object.fromEntries(fd.entries());
+
+  fetch(this.action,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  }).then(()=>{
+    document.getElementById('formCard').style.display='none';
+    document.getElementById('successMsg').classList.add('show');
+  }).catch(()=>{
+    document.getElementById('formCard').style.display='none';
+    document.getElementById('successMsg').classList.add('show');
+  });
+});
+
+// Intersection Observer for animations
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.animationPlayState='running';obs.unobserve(e.target)}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.animate').forEach(el=>{
+  el.style.animationPlayState='paused';obs.observe(el);
+});
+</script>
 </body>
 </html>
