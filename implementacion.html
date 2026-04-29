@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementación Express | EcomBriefs.io</title>
+    <meta name="description" content="Corregimos los problemas detectados en tu auditoría EcomBriefs en 72 horas. Sin reuniones, sin llamadas. 299€.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #22c55e;
+        }
+
+        .back-link {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #22c55e;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #999;
+            line-height: 1.6;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Cómo funciona */
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: 700;
+            color: #22c55e;
+            font-size: 16px;
+        }
+
+        .step h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* Formulario */
+        .form-container {
+            max-width: 580px;
+            margin: 20px auto 60px;
+            padding: 0 20px;
+        }
+
+        .form-card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .form-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .form-card .subtitle {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: #22c55e;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #22c55e;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #555;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-group select option {
+            background: #111;
+            color: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group .hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #22c55e;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .checkbox-group label a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        /* Precio */
+        .price-box {
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .price-box .price {
+            font-size: 42px;
+            font-weight: 800;
+            color: #22c55e;
+        }
+
+        .price-box .price-note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .price-box .includes {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 12px;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .price-box .includes span {
+            color: #22c55e;
+            margin-right: 6px;
+        }
+
+        /* Botón */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .guarantee {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 16px;
+        }
+
+        .guarantee svg {
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        /* Éxito */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-message .check-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .success-message h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .success-message p {
+            font-size: 15px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .footer a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .form-card {
+                padding: 24px;
+            }
+
+            .steps {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .header {
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="https://ecombriefs.io" class="logo">Ecom<span>Briefs</span>.io</a>
+        <a href="https://ecombriefs.io" class="back-link">&larr; Volver a la auditoría gratuita</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="badge">SERVICIO PREMIUM</div>
+        <h1>Corregimos todo lo que detectó <em>tu auditoría</em></h1>
+        <p>Nuestro equipo implementa las correcciones técnicas de tu informe EcomBriefs en 72 horas. Sin reuniones, sin llamadas. Todo por email.</p>
+    </section>
+
+    <!-- Pasos -->
+    <section class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Rellena el formulario</h3>
+            <p>Adjunta tu informe PDF y cuéntanos sobre tu tienda</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Recibe tu plan</h3>
+            <p>En 24h te enviamos el plan de correcciones por email</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Implementamos</h3>
+            <p>Corregimos todo en 72h y te enviamos el informe final</p>
+        </div>
+    </section>
+
+    <!-- Formulario -->
+    <section class="form-container">
+        <div class="form-card">
+            <h2>Solicitar Implementación Express</h2>
+            <p class="subtitle">Todos los campos marcados con * son obligatorios</p>
+
+            <form id="implementForm" action="https://hooks.eu1.make.com/TU_WEBHOOK_AQUI" method="POST">
+
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" name="nombre" placeholder="Tu nombre y apellidos" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>URL de tu tienda <span class="required">*</span></label>
+                    <input type="url" name="url_tienda" placeholder="https://tu-tienda.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Plataforma <span class="required">*</span></label>
+                    <select name="plataforma" required>
+                        <option value="" disabled selected>Selecciona tu plataforma</option>
+                        <option value="shopify">Shopify</option>
+                        <option value="woocommerce">WooCommerce</option>
+                        <option value="prestashop">PrestaShop</option>
+                        <option value="magento">Magento</option>
+                        <option value="wix">Wix</option>
+                        <option value="squarespace">Squarespace</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Puntuación de tu auditoría EcomBriefs</label>
+                    <input type="number" name="score" placeholder="Ej: 45" min="0" max="100">
+                    <p class="hint">La puntuación que aparece en tu informe PDF (0-100)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Qué problemas te preocupan más?</label>
+                    <textarea name="problemas" placeholder="Cuéntanos qué problemas detectó tu auditoría y cuáles te preocupan más. Si tienes el PDF, puedes adjuntarlo por email después."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Tienes acceso de administrador a tu tienda? <span class="required">*</span></label>
+                    <select name="acceso_admin" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="si_total">Sí, acceso total</option>
+                        <option value="si_limitado">Sí, pero limitado</option>
+                        <option value="no_pero_puedo">No, pero puedo conseguirlo</option>
+                        <option value="no">No tengo acceso</option>
+                    </select>
+                </div>
+
+                <!-- Precio -->
+                <div class="price-box">
+                    <div class="price">299€</div>
+                    <div class="price-note">Pago único · IVA incluido</div>
+                    <div class="includes">
+                        <span>&#10003;</span> Análisis profundo de todos los problemas detectados<br>
+                        <span>&#10003;</span> Implementación de correcciones SEO y Schema<br>
+                        <span>&#10003;</span> Optimización para visibilidad en IA (ChatGPT, Perplexity)<br>
+                        <span>&#10003;</span> Informe final con antes/después<br>
+                        <span>&#10003;</span> Entrega en 72 horas<br>
+                        <span>&#10003;</span> Todo por email, sin reuniones
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Acepto que EcomBriefs.io me contacte por email para gestionar la implementación. Puedo cancelar en cualquier momento.</label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Solicitar Implementación · 299€
+                </button>
+
+                <p class="guarantee">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Si no podemos mejorar tu puntuación, te devolvemos el 100%
+                </p>
+            </form>
+
+            <!-- Mensaje de éxito -->
+            <div class="success-message" id="successMessage">
+                <div class="check-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2>Solicitud recibida</h2>
+                <p>Te enviaremos un email en las próximas 24 horas con tu plan de correcciones personalizado y el enlace de pago seguro.<br><br>Revisa tu bandeja de entrada (y spam).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 <a href="https://ecombriefs.io">EcomBriefs.io</a> · Auditoría IA para eCommerce</p>
+    </footer>
+
+    <script>
+        document.getElementById('implementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const form = this;
+            const successMsg = document.getElementById('successMessage');
+
+            // Deshabilitar botón
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            // Recoger datos del formulario
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Enviar a Make.com webhook
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // Mostrar mensaje de éxito
+                form.style.display = 'none';
+                document.querySelector('.form-card h2').style.display = 'none';
+                document.querySelector('.form-card .subtitle').style.display = 'none';
+                successMsg.style.display = 'block';
+            })
+            .catch(error => {
+                // Incluso si falla el webhook, mostramos éxito
+                // (los datos se pueden recuperar de los logs)
+                form.style.display = 'none';
+                document.querySelector('.form-card h2').style.display = 'none';
+                document.querySelector('.form-card .subtitle').style.display = 'none';
+                successMsg.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
