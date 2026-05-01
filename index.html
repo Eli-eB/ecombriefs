@@ -136,6 +136,7 @@ footer a:hover{color:rgba(255,255,255,0.6)}
 <div class="audit-form-wrap">
 <h3>Request your free audit</h3>
 <form id="audit-form" action="https://hook.eu1.make.com/1hucdp74dybk23siu1tvqfvaknrjsu1a" method="POST">
+<input type="hidden" name="lang" value="en">
 <div class="form-row"><input type="url" name="url" class="fi" placeholder="Your store URL (e.g. mystore.com)" required></div>
 <input type="email" name="email" class="fi fi-email" placeholder="Your email to receive the report" required>
 <button type="submit" class="form-submit">Analyze my store for free &rarr;</button>
@@ -220,7 +221,7 @@ var url=this.querySelector('[name="url"]').value;
 var email=this.querySelector('[name="email"]').value;
 btn.textContent="Request sent! \u2713";
 btn.classList.add("sent");
-fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email}),headers:{"Content-Type":"application/json"}})
+fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email,lang:"en"}),headers:{"Content-Type":"application/json"}})
 .then(function(r){if(r.ok){setTimeout(function(){btn.textContent="Analyze my store for free \u2192";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)}else{btn.textContent="Error, please try again";btn.classList.remove("sent")}})
 .catch(function(){btn.textContent="Connection error";btn.classList.remove("sent");setTimeout(function(){btn.textContent="Analyze my store for free \u2192"},3000)});
 });
