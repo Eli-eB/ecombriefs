@@ -239,6 +239,24 @@ footer a:hover{color:rgba(255,255,255,0.6)}
 </footer>
 
 <script>
+(function(){
+var params=new URLSearchParams(window.location.search);
+var utmSource=params.get("utm_source")||"direct";
+if(utmSource!=="direct"){sessionStorage.setItem("utm_source",utmSource)}
+else if(sessionStorage.getItem("utm_source")){utmSource=sessionStorage.getItem("utm_source")}
+if(document.referrer&&utmSource==="direct"){
+var ref=new URL(document.referrer).hostname;
+if(ref.indexOf("google")!==-1)utmSource="google";
+else if(ref.indexOf("bing")!==-1)utmSource="bing";
+else if(ref.indexOf("twitter")!==-1||ref.indexOf("t.co")!==-1)utmSource="twitter";
+else if(ref.indexOf("linkedin")!==-1)utmSource="linkedin";
+else if(ref.indexOf("theresanaiforthat")!==-1)utmSource="taaft";
+else if(ref.indexOf("dang.ai")!==-1)utmSource="dang";
+else if(ref.indexOf("saashub")!==-1)utmSource="saashub";
+else if(ref.indexOf("futuretools")!==-1)utmSource="futuretools";
+else if(ref.indexOf("futurepedia")!==-1)utmSource="futurepedia";
+else if(ref&&ref.indexOf("ecombriefs")===-1)utmSource="referral:"+ref;
+}
 document.getElementById("audit-form").addEventListener("submit",function(e){
 e.preventDefault();
 var btn=this.querySelector(".form-submit");
@@ -246,11 +264,12 @@ var url=this.querySelector('[name="url"]').value;
 var email=this.querySelector('[name="email"]').value;
 btn.textContent="\u00a1Solicitud enviada! \u2713";
 btn.classList.add("sent");
-fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email,lang:"es"}),headers:{"Content-Type":"application/json"}})
+fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email,lang:"es",source:utmSource}),headers:{"Content-Type":"application/json"}})
 .then(function(r){if(r.ok){setTimeout(function(){btn.textContent="Analizar mi tienda gratis \u2192";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)}else{btn.textContent="Error, int\u00e9ntalo de nuevo";btn.classList.remove("sent")}})
 .catch(function(){btn.textContent="Error de conexi\u00f3n";btn.classList.remove("sent");setTimeout(function(){btn.textContent="Analizar mi tienda gratis \u2192"},3000)});
 });
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth"})});});
+})();
 </script>
 </body>
 </html>
