@@ -220,7 +220,7 @@ footer a:hover{color:rgba(255,255,255,0.6)}
 <div class="rci rc1">🚀</div>
 <h4>Premium Implementation Plan</h4>
 <p>Get a detailed PDF report with the exact step-by-step to fix every issue from your audit, code examples, and content strategies starting at $49.</p>
-<a href="/implementacion.html" class="nav-cta" style="margin-top: 1rem; display: inline-block;">Get Premium Plan</a>
+<a href="/implementation.html" class="nav-cta" style="margin-top: 1rem; display: inline-block;">Get Premium Plan</a>
 </div>
 <div class="report-card">
 <div class="rci rc2">📈</div>
@@ -265,7 +265,7 @@ var email=this.querySelector('[name="email"]').value;
 btn.textContent="Request sent! \u2713";
 btn.classList.add("sent");
 fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email,lang:"en",source:utmSource}),headers:{"Content-Type":"application/json"}})
-.then(function(r){if(r.ok){setTimeout(function(){btn.textContent="Analyze my store for free \u2192";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)}else{btn.textContent="Error, please try again";btn.classList.remove("sent")}})
+.then(function(r){if(r.ok){window.location.href="/thanks.html"}else{btn.textContent="Error, please try again";btn.classList.remove("sent")}})
 .catch(function(){btn.textContent="Connection error";btn.classList.remove("sent");setTimeout(function(){btn.textContent="Analyze my store for free \u2192"},3000)});
 });
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth"})});});

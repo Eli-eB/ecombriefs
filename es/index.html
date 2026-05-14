@@ -266,7 +266,7 @@ var email=this.querySelector('[name="email"]').value;
 btn.textContent="\u00a1Solicitud enviada! \u2713";
 btn.classList.add("sent");
 fetch(this.action,{method:"POST",body:JSON.stringify({url:url,email:email,lang:"es",source:utmSource}),headers:{"Content-Type":"application/json"}})
-.then(function(r){if(r.ok){setTimeout(function(){btn.textContent="Analizar mi tienda gratis \u2192";btn.classList.remove("sent");document.getElementById("audit-form").reset()},3000)}else{btn.textContent="Error, int\u00e9ntalo de nuevo";btn.classList.remove("sent")}})
+.then(function(r){if(r.ok){window.location.href="/es/gracias.html"}else{btn.textContent="Error, int\u00e9ntalo de nuevo";btn.classList.remove("sent")}})
 .catch(function(){btn.textContent="Error de conexi\u00f3n";btn.classList.remove("sent");setTimeout(function(){btn.textContent="Analizar mi tienda gratis \u2192"},3000)});
 });
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth"})});});

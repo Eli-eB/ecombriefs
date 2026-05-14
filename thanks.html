@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Received | EcomBriefs.io</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B2B4B;--navy-deep:#0F1A2E;--blue:#2B3990;--blue-bright:#3B6EE6;--orange:#E8920D;--orange-light:#F5A623;--orange-glow:#FFC857;--cream:#FAFAF7;--gray-100:#F4F4F1;--gray-200:#E8E8E4;--gray-400:#9C9C96;--gray-600:#5C5C58;--white:#FFFFFF;--green:#27AE60}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--navy);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,26,46,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:28px;width:auto}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.lang-switch a{color:rgba(255,255,255,0.5);font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:4px;text-decoration:none;transition:all .2s;text-transform:uppercase}
+.lang-switch a.active{color:var(--white);background:rgba(255,255,255,0.1)}
+.main-content{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 2rem 4rem;text-align:center}
+.thanks-card{max-width:600px;background:var(--white);border-radius:16px;padding:3rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);border:1px solid var(--gray-200)}
+.check-icon{width:72px;height:72px;background:rgba(39,174,96,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem}
+.thanks-card h1{font-family:"Fraunces",serif;font-weight:800;font-size:1.8rem;color:var(--navy);margin-bottom:.75rem;letter-spacing:-.02em}
+.thanks-card .subtitle{color:var(--gray-600);font-size:1.05rem;line-height:1.6;margin-bottom:2rem}
+.info-box{background:var(--gray-100);border-radius:12px;padding:1.5rem;text-align:left;margin-bottom:2rem}
+.info-box h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em}
+.info-box ul{list-style:none;padding:0}
+.info-box li{padding:.5rem 0;color:var(--gray-600);font-size:.95rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.info-box li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--orange);border-radius:50%;margin-top:8px;flex-shrink:0}
+.cta-section{background:linear-gradient(135deg,var(--navy-deep),var(--blue));border-radius:12px;padding:2rem;margin-top:.5rem}
+.cta-section h3{color:var(--white);font-family:"Fraunces",serif;font-weight:700;font-size:1.2rem;margin-bottom:.5rem}
+.cta-section p{color:rgba(255,255,255,0.7);font-size:.9rem;margin-bottom:1.25rem;line-height:1.5}
+.cta-btn{display:inline-block;background:var(--orange);color:var(--navy-deep);font-family:"DM Sans",sans-serif;font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s}
+.cta-btn:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,146,13,0.35)}
+footer{background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.06);padding:2rem;text-align:center;color:rgba(255,255,255,0.25);font-size:.8rem}
+footer a{color:rgba(255,255,255,0.35);text-decoration:none;transition:color .2s}
+footer a:hover{color:rgba(255,255,255,0.6)}
+.footer-links{margin-bottom:.75rem}
+.footer-links a{margin:0 .75rem}
+@media(max-width:640px){.thanks-card{padding:2rem 1.5rem}.thanks-card h1{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="nav-logo"><img src="https://ecombriefs.io/images/logo-ecombriefs.png" alt="EcomBriefs.io"></a>
+<div class="nav-right">
+<div class="lang-switch"><a href="/thanks.html" class="active">EN</a><a href="/es/gracias.html">ES</a></div>
+</div>
+</nav>
+
+<main class="main-content">
+<div class="thanks-card">
+<div class="check-icon">&#10003;</div>
+<h1>Request received!</h1>
+<p class="subtitle">Your AI + SEO audit is being generated. You'll receive the full PDF report at your email within <strong>15 minutes</strong>.</p>
+
+<div class="info-box">
+<h3>While you wait &mdash; the 3 most common issues we find:</h3>
+<ul>
+<li>robots.txt blocking GPTBot, preventing AI engines from analyzing your store</li>
+<li>Incomplete product schema (missing price, reviews, availability in structured data)</li>
+<li>Product descriptions too short or duplicated, hurting SEO and AI visibility</li>
+</ul>
+</div>
+
+<div class="cta-section">
+<h3>Want us to fix these for you?</h3>
+<p>No meetings, no code. We implement the top 3 critical fixes in 5 days, all by email.</p>
+<a href="/implementation.html" class="cta-btn">See implementation plans &rarr;</a>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="footer-links"><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a></div>
+<p>&copy; 2026 EcomBriefs.io &mdash; AI Audit for E-commerce. All rights reserved.</p>
+</footer>
+</body>
+</html>
