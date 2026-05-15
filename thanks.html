@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request Received | EcomBriefs.io</title>
+<title>Your Audit Is On The Way | EcomBriefs.io</title>
 <meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
 <style>
@@ -19,19 +19,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,26,46,0.9
 .lang-switch a.active{color:var(--white);background:rgba(255,255,255,0.1)}
 .main-content{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 2rem 4rem;text-align:center}
 .thanks-card{max-width:600px;background:var(--white);border-radius:16px;padding:3rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);border:1px solid var(--gray-200)}
-.check-icon{width:72px;height:72px;background:rgba(39,174,96,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem}
+.check-icon{width:72px;height:72px;background:rgba(39,174,96,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem;color:var(--green)}
 .thanks-card h1{font-family:"Fraunces",serif;font-weight:800;font-size:1.8rem;color:var(--navy);margin-bottom:.75rem;letter-spacing:-.02em}
 .thanks-card .subtitle{color:var(--gray-600);font-size:1.05rem;line-height:1.6;margin-bottom:2rem}
 .info-box{background:var(--gray-100);border-radius:12px;padding:1.5rem;text-align:left;margin-bottom:2rem}
-.info-box h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em}
+.info-box h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
 .info-box ul{list-style:none;padding:0}
-.info-box li{padding:.5rem 0;color:var(--gray-600);font-size:.95rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
-.info-box li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--orange);border-radius:50%;margin-top:8px;flex-shrink:0}
+.info-box li{padding:.4rem 0;color:var(--gray-600);font-size:.93rem;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
+.info-box li .icon{font-size:1.1rem;flex-shrink:0;width:24px;text-align:center}
+.info-box li strong{color:var(--navy)}
+.info-box .note{margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--gray-200);color:var(--navy);font-size:.88rem;font-weight:600;font-style:italic}
 .cta-section{background:linear-gradient(135deg,var(--navy-deep),var(--blue));border-radius:12px;padding:2rem;margin-top:.5rem}
 .cta-section h3{color:var(--white);font-family:"Fraunces",serif;font-weight:700;font-size:1.2rem;margin-bottom:.5rem}
-.cta-section p{color:rgba(255,255,255,0.7);font-size:.9rem;margin-bottom:1.25rem;line-height:1.5}
+.cta-section p{color:rgba(255,255,255,0.7);font-size:.9rem;margin-bottom:.5rem;line-height:1.5}
+.cta-section .guarantees{color:rgba(255,255,255,0.55);font-size:.82rem;margin-bottom:1.25rem;line-height:1.6}
 .cta-btn{display:inline-block;background:var(--orange);color:var(--navy-deep);font-family:"DM Sans",sans-serif;font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s}
 .cta-btn:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,146,13,0.35)}
+.spam-note{margin-top:1.5rem;padding:1rem;background:rgba(232,146,13,0.08);border:1px solid rgba(232,146,13,0.2);border-radius:10px;text-align:left;font-size:.85rem;color:var(--gray-600);line-height:1.5}
+.spam-note strong{color:var(--navy)}
 footer{background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.06);padding:2rem;text-align:center;color:rgba(255,255,255,0.25);font-size:.8rem}
 footer a{color:rgba(255,255,255,0.35);text-decoration:none;transition:color .2s}
 footer a:hover{color:rgba(255,255,255,0.6)}
@@ -51,18 +56,30 @@ footer a:hover{color:rgba(255,255,255,0.6)}
 <main class="main-content">
 <div class="thanks-card">
 <div class="check-icon">&#10003;</div>
-<h1>Request received!</h1>
-<p class="subtitle">Your AI + SEO audit is being generated. You'll receive the full PDF report at your email within <strong>15 minutes</strong>.</p>
+<h1>Your audit is on the way</h1>
+<p class="subtitle">Your full report will arrive at your email in <strong>under 15 minutes</strong>.</p>
 
 <div class="info-box">
-<h3>While you wait &mdash; get ready:</h3>
-<p style="color:var(--gray-600);font-size:.95rem;line-height:1.6;margin:0">We recommend opening your Shopify admin and having these handy: access to <strong>theme.liquid</strong>, your current <strong>robots.txt</strong>, and a coffee. The report brings concrete, actionable steps.</p>
+<h3>While you wait</h3>
+<ul>
+<li><span class="icon">&#128295;</span><span>Access to your <strong>store admin panel</strong> (Shopify, WooCommerce, or your platform)</span></li>
+<li><span class="icon">&#128194;</span><span>Access to <strong>theme editor</strong> (in Shopify: Online Store &rarr; Themes &rarr; Edit code)</span></li>
+<li><span class="icon">&#128196;</span><span>Your current <strong>robots.txt</strong> file (find it at yourdomain.com/robots.txt)</span></li>
+<li><span class="icon">&#9749;</span><span>A <strong>coffee</strong> &mdash; you'll want to read the report calmly</span></li>
+</ul>
+<p class="note">The report contains concrete actions. Not generic advice.</p>
 </div>
 
 <div class="cta-section">
-<h3>Want us to fix these for you?</h3>
-<p>No meetings, no code. We implement the top 3 critical fixes in 5 days, all by email.</p>
+<h3>Prefer to delegate?</h3>
+<p>If you don't want to touch code or dig into your store admin, we'll do it for you in 48 hours &mdash; from &euro;299.</p>
+<p class="guarantees">No meetings &middot; No calls &middot; Everything via email<br>100% refund guarantee if your score doesn't improve</p>
 <a href="/implementation.html" class="cta-btn">See implementation plans &rarr;</a>
+</div>
+
+<div class="spam-note">
+<strong>Important:</strong> Add <strong>audits@ecombriefs.io</strong> to your contacts so the report doesn't land in spam.<br>
+Questions? Reply to the report email when it arrives.
 </div>
 </div>
 </main>
