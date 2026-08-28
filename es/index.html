@@ -11,158 +11,150 @@
 <link rel="alternate" hreflang="x-default" href="https://ecombriefs.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0F1B33;
-  --navy:#12306B;
-  --navy-deep:#0A1D45;
-  --amber:#B45A05;
-  --amber-bright:#E08A2E;
-  --paper:#FAF8F5;
-  --paper-2:#F2EEE7;
-  --grey:#55607A;
-  --line:#D9D3C8;
-  --display:"Space Grotesk",system-ui,sans-serif;
-  --body:"Source Sans 3",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{width:min(1080px,92vw);margin-inline:auto}
-a{color:var(--navy)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--amber-bright);outline-offset:3px;border-radius:2px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:.75rem 1rem;z-index:99}
-.skip:focus{left:0}
-header{border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
-.logo{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:var(--navy);text-decoration:none}
-.logo span{color:var(--amber)}
-.lang{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--grey)}
-.lang:hover{color:var(--navy)}
-.hero{padding:4.5rem 0 3.5rem}
-.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 1rem}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.08;letter-spacing:-.03em;color:var(--navy);margin:0 0 1.1rem;max-width:19ch}
-.lede{font-size:1.2rem;color:var(--grey);max-width:56ch;margin:0 0 2rem}
-.lede strong{color:var(--ink);font-weight:600}
-.cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid var(--navy)}
-.cta:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
-.cta-note{font-family:var(--mono);font-size:.82rem;color:var(--grey);margin:.85rem 0 0}
-.evidence{margin-top:3.2rem;border:1px solid var(--line);background:#fff}
-.evidence-head{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:baseline;padding:.85rem 1.2rem;background:var(--paper-2);border-bottom:1px solid var(--line)}
-.evidence-head h2{font-family:var(--mono);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:0}
-.evidence-head p{font-family:var(--mono);font-size:.78rem;color:var(--grey);margin:0}
-.rows{display:grid}
-.row{padding:1.1rem 1.2rem;border-bottom:1px solid var(--line);display:grid;grid-template-columns:130px 1fr;gap:.4rem 1.2rem;align-items:start}
-.row:last-child{border-bottom:0}
-.k{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);padding-top:.15rem}
-.v{font-family:var(--mono);font-size:.86rem;word-break:break-word;color:var(--ink)}
-.v.plain{font-family:var(--body);font-size:1rem}
-.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--navy);color:#fff;padding:.2rem .5rem}
-pre{margin:0;font-family:var(--mono);font-size:.82rem;background:var(--paper-2);padding:.7rem .8rem;overflow-x:auto;border-left:3px solid var(--amber-bright)}
-@media (max-width:640px){.row{grid-template-columns:1fr}}
-section{padding:3.5rem 0;border-top:1px solid var(--line)}
-h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;color:var(--navy);margin:0 0 .4rem}
-.sec-lede{color:var(--grey);max-width:60ch;margin:0 0 2rem}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.8rem}
-h3{font-family:var(--display);font-weight:500;font-size:1.1rem;color:var(--ink);margin:0 0 .4rem}
-.cols p{margin:0;color:var(--grey);font-size:1rem}
-ul.clean{list-style:none;padding:0;margin:0}
-ul.clean li{padding:.55rem 0 .55rem 1.6rem;position:relative;border-bottom:1px solid var(--line);color:var(--grey)}
-ul.clean li:last-child{border-bottom:0}
-ul.clean li::before{content:"";position:absolute;left:0;top:1.15rem;width:.55rem;height:.55rem;background:var(--amber-bright)}
-ul.clean li b{color:var(--ink);font-weight:600}
-.no li::before{background:var(--grey);height:2px;top:1.4rem;width:.8rem}
-.price-box{border:2px solid var(--navy);padding:2rem;background:#fff;max-width:640px}
-.price-line{display:flex;flex-wrap:wrap;gap:.4rem 2rem;align-items:baseline;margin:0 0 1.2rem}
-.price{font-family:var(--display);font-weight:700;font-size:2.6rem;letter-spacing:-.03em;color:var(--navy)}
-.price-meta{font-family:var(--mono);font-size:.85rem;color:var(--grey)}
-footer{border-top:1px solid var(--line);padding:2.5rem 0 3.5rem;color:var(--grey);font-size:.92rem}
-footer p{margin:.4rem 0;max-width:70ch}
-.legal{font-family:var(--mono);font-size:.8rem;line-height:1.7}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido principal</a>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="/es/">Ecom<span>Briefs</span></a>
-    <a class="lang" href="/" hreflang="en">EN</a>
+    <a class="logo" href="/es/" aria-label="Inicio de EcomBriefs"><span class="logo-mark" aria-hidden="true"></span>Ecom<span>Briefs</span></a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#alcance">Alcance</a>
+      <a href="#entregable">Entregable</a>
+      <a href="#proceso">Proceso</a>
+      <a class="lang" href="/" hreflang="en">EN</a>
+      <a class="nav-cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir muestra</a>
+    </nav>
   </div>
 </header>
 <main id="main">
-<div class="wrap hero">
-  <p class="eyebrow">Diagnóstico técnico de accesibilidad · Ecommerce</p>
-  <h1>Las barreras de tu tienda, con la prueba delante</h1>
-  <p class="lede">Revisamos las páginas públicas de tu tienda online y documentamos <strong>solo lo que podemos confirmar</strong>. Cada barrera llega con su URL, su selector CSS y el fragmento de HTML exacto, para que tu equipo o tu agencia vaya directo al elemento sin volver a investigar.</p>
-  <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir muestra gratuita de 3 hallazgos</a>
-  <p class="cta-note">Sin compromiso · Respondemos con hallazgos reales de tu tienda</p>
-  <div class="evidence">
-    <div class="evidence-head">
-      <h2>Así es un hallazgo</h2>
-      <p>Ejemplo real de una tienda analizada</p>
-    </div>
-    <div class="rows">
-      <div class="row"><span class="k">Barrera</span><span class="v plain"><span class="tag">Crítica</span> &nbsp;Botón sin nombre accesible</span></div>
-      <div class="row"><span class="k">Qué ocurre</span><span class="v plain">El control no expone un nombre accesible que permita identificar su función. En este caso, corresponde al botón de cierre del recordatorio de carrito.</span></div>
-      <div class="row"><span class="k">Página</span><span class="v">/es/products/&lt;producto&gt;</span></div>
-      <div class="row"><span class="k">Selector</span><span class="v">#floating-cart-reminder-close</span></div>
-      <div class="row"><span class="k">HTML</span><span class="v"><pre>&lt;button id="floating-cart-reminder-close"
-        class="absolute top-2 right-2 p-1"&gt;</pre></span></div>
-      <div class="row"><span class="k">Regla</span><span class="v">button-name · WCAG 4.1.2</span></div>
-    </div>
-  </div>
-</div>
-<section>
-  <div class="wrap">
-    <h2 class="sec">Qué revisamos</h2>
-    <p class="sec-lede">Recorremos tu tienda con un navegador real, como lo haría una persona, no leyendo el código en frío.</p>
-    <div class="cols">
-      <div><h3>Las páginas del recorrido de compra</h3><p>Portada, colección y ficha de producto. Añadimos carrito y formulario cuando la ruta es pública y responde bien.</p></div>
-      <div><h3>Barreras técnicas confirmables</h3><p>Imágenes sin texto alternativo, botones y enlaces sin nombre accesible, campos de formulario sin etiqueta, ARIA mal aplicado.</p></div>
-      <div><h3>Con el navegador cargado del todo</h3><p>Analizamos la página ya renderizada, con su JavaScript ejecutado y sus estilos aplicados. Lo que ve el usuario, no el HTML crudo.</p></div>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Diagnóstico técnico de accesibilidad · Ecommerce</p>
+        <h1>Las barreras de tu tienda, con la prueba delante</h1>
+        <p class="lede">Revisamos las páginas públicas de tu tienda online y documentamos <strong>solo lo que podemos confirmar</strong>. Cada barrera llega con la URL, el selector CSS y el fragmento de HTML exacto que tu equipo necesita para localizarla.</p>
+        <div class="actions">
+          <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir 3 hallazgos gratis <span aria-hidden="true">→</span></a>
+          <a class="cta secondary" href="#entregable">Ver el entregable</a>
+        </div>
+        <p class="cta-note">Sin compromiso · Sin scores inventados · Evidencia de tu propia tienda</p>
+      </div>
+      <div class="evidence" aria-label="Ejemplo de un hallazgo de accesibilidad documentado">
+        <span class="evidence-badge">ANONIMIZADO</span>
+        <div class="evidence-head">
+          <h2>Así es un hallazgo</h2>
+          <p>Ejemplo anonimizado de un hallazgo real</p>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="k">Barrera</span><span class="v plain"><span class="tag">Crítica</span> &nbsp;Botón sin nombre accesible</span></div>
+          <div class="row"><span class="k">Qué ocurre</span><span class="v plain">Quien navega con lector de pantalla encuentra un «botón» sin saber qué hace. En este caso es el control para cerrar el recordatorio de carrito: puede resultar difícil identificarlo y cerrar el aviso.</span></div>
+          <div class="row"><span class="k">Página</span><span class="v">/es/products/&lt;producto&gt;</span></div>
+          <div class="row"><span class="k">Selector</span><span class="v">#floating-cart-reminder-close</span></div>
+          <div class="row"><span class="k">HTML</span><span class="v"><pre>&lt;button id="floating-cart-reminder-close"
+  class="absolute top-2 right-2 p-1"&gt;</pre></span></div>
+          <div class="row"><span class="k">Regla</span><span class="v">button-name · WCAG 4.1.2</span></div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-<section>
-  <div class="wrap">
-    <h2 class="sec">Qué recibes</h2>
-    <p class="sec-lede">Un documento que tu desarrollador abre y convierte en tareas. No un volcado.</p>
-    <div class="cols">
-      <div><ul class="clean"><li><b>Cada barrera con su evidencia:</b> URL, selector, HTML, regla e impacto.</li><li><b>Agrupadas por causa raíz,</b> no repetidas cien veces.</li><li><b>Separando lo que se corrige sin tocar el diseño</b> de lo que pide una decisión de marca.</li></ul></div>
-      <div><ul class="clean no"><li><b>Fuera:</b> lo que la herramienta no puede confirmar, en su apartado aparte.</li><li><b>Fuera:</b> puntuaciones inventadas y notas sobre 100.</li><li><b>Fuera:</b> promesas de aumento de ventas o de cumplimiento legal.</li></ul></div>
+
+  <div class="trust-strip" aria-label="Resumen del servicio">
+    <div class="wrap trust-grid">
+      <div class="trust-item"><span class="trust-value">3 páginas base</span><span class="trust-label">Portada · colección · producto</span></div>
+      <div class="trust-item"><span class="trust-value">3 días laborables</span><span class="trust-label">Plazo de entrega cerrado</span></div>
+      <div class="trust-item"><span class="trust-value">290 €</span><span class="trust-label">Un único precio</span></div>
+      <div class="trust-item"><span class="trust-value">Evidencia exacta</span><span class="trust-label">URL · selector · HTML</span></div>
     </div>
   </div>
-</section>
-<section>
-  <div class="wrap">
-    <h2 class="sec">Cómo funciona</h2>
-    <p class="sec-lede">Tres pasos, sin reuniones si no las quieres.</p>
-    <div class="cols">
-      <div><h3>1 · Muestra gratuita</h3><p>Nos escribes con la URL de tu tienda. Te enviamos tres barreras reales con su evidencia, sin coste ni compromiso.</p></div>
-      <div><h3>2 · Diagnóstico completo</h3><p>Si te sirve, revisamos las páginas cubiertas del recorrido y te entregamos las barreras confirmadas con su anexo de instancias.</p></div>
-      <div><h3>3 · Lo arregla quien tú quieras</h3><p>El informe está pensado para que tu equipo interno o tu agencia trabaje directamente sobre él. No vendemos la corrección.</p></div>
+
+  <section id="alcance" class="section-white">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2 class="sec">Un alcance estrecho, bien examinado</h2>
+        <p class="sec-lede">Usamos un navegador real y un proceso repetible. El objetivo no es fabricar la lista más larga, sino entregar hallazgos que tu equipo pueda reproducir y convertir en tareas.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card"><span class="card-no">01 · RECORRIDO</span><h3>Las páginas base de compra</h3><p>Portada, colección y ficha de producto. Añadimos carrito y formulario cuando la ruta pública responde limpiamente.</p></article>
+        <article class="card"><span class="card-no">02 · REGLAS</span><h3>Barreras técnicas confirmables</h3><p>Nombres accesibles ausentes, alternativas textuales, etiquetas de formulario, estructura y uso incorrecto de ARIA.</p></article>
+        <article class="card"><span class="card-no">03 · RENDER</span><h3>La página después de cargar</h3><p>JavaScript ejecutado y estilos aplicados. Inspeccionamos la interfaz renderizada, no una descarga fría de HTML.</p></article>
+      </div>
     </div>
-  </div>
-</section>
-<section>
-  <div class="wrap">
-    <h2 class="sec">Precio</h2>
-    <p class="sec-lede">Uno solo, cerrado y sin sorpresas.</p>
-    <div class="price-box">
-      <p class="price-line"><span class="price">290 €</span><span class="price-meta">Diagnóstico completo · Entrega en 3 días laborables</span></p>
-      <p style="margin:0 0 1.5rem;color:var(--grey)">Antes de eso, la muestra de tres hallazgos es gratuita. Decides con la evidencia delante, no con una promesa.</p>
-      <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir muestra gratuita</a>
+  </section>
+
+  <section id="entregable" class="section-mist">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2 class="sec">Un diagnóstico, no un volcado</h2>
+        <p class="sec-lede">El documento está pensado para pasar de la evidencia a una tarea de implementación sin obligar a tu desarrollador a repetir la investigación.</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3 class="panel-title">Sí incluye</h3>
+          <ul class="clean">
+            <li><b>Evidencia para cada barrera:</b> URL, selector CSS, HTML, regla e impacto.</li>
+            <li><b>Hallazgos agrupados por causa raíz,</b> no repetidos como una lista interminable.</li>
+            <li><b>Páginas e instancias afectadas,</b> para visualizar el alcance de una corrección.</li>
+            <li><b>Confirmados e indeterminados separados,</b> para no vender incertidumbre como un hecho.</li>
+          </ul>
+        </div>
+        <div class="panel no">
+          <h3 class="panel-title">No incluye</h3>
+          <ul class="clean">
+            <li><b>Ningún score inventado</b> ni nota arbitraria sobre 100.</li>
+            <li><b>Ninguna certificación legal</b> ni promesa de conformidad.</li>
+            <li><b>Ninguna promesa de más ventas</b> a partir de un hallazgo técnico.</li>
+            <li><b>Ningún bloqueo de proveedor:</b> lo corrige tu equipo o tu agencia.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="proceso" class="section-dark">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2 class="sec">Primero la evidencia. Después, la decisión.</h2>
+        <p class="sec-lede">La muestra gratuita te permite juzgar la calidad del trabajo antes de comprar nada.</p>
+      </div>
+      <div class="process">
+        <article class="step"><span class="step-num">PASO 01</span><h3>Envías la URL de tu tienda</h3><p>Primero comprobamos que exista suficiente recorrido público para revisar.</p></article>
+        <article class="step"><span class="step-num">PASO 02</span><h3>Recibes 3 hallazgos reales</h3><p>Cada uno llega con la evidencia necesaria para localizarlo y reproducirlo.</p></article>
+        <article class="step"><span class="step-num">PASO 03</span><h3>Decides con la prueba delante</h3><p>Si la muestra te resulta útil, el diagnóstico completo tiene precio y plazo cerrados.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap founder-price">
+      <aside class="founder">
+        <div>
+          <div class="founder-top">
+            <div class="monogram" aria-hidden="true">EP</div>
+            <div><div class="founder-label">Quién está detrás</div><div class="founder-name">Eli P. Malagrida</div></div>
+          </div>
+          <p>Construí EcomBriefs para convertir detecciones técnicas en evidencia que marcas, desarrolladores y agencias puedan comprobar. La automatización ayuda a recopilar y ordenar; la evidencia decide qué se reporta.</p>
+        </div>
+        <p class="proof-note">Servicio independiente · Asíncrono por defecto · Tu equipo conserva el control de la implementación</p>
+      </aside>
+      <div class="price-box">
+        <p class="price-label">Diagnóstico técnico completo</p>
+        <p class="price-line"><span class="price">290 €</span><span class="price-meta">Entrega en 3 días laborables · Precio cerrado</span></p>
+        <p>Antes de eso, la muestra de tres hallazgos es gratuita. Decides con evidencia, no con una promesa.</p>
+        <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir mi muestra gratuita <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 </main>
 <footer>
-  <div class="wrap">
-    <p><strong>EcomBriefs</strong> · <a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a> · <a href="/es/accesibilidad-web-ecommerce.html">Guía Ley 11/2023</a> · <a href="/es/terms.html">Términos</a> · <a href="/es/privacy.html">Privacidad</a></p>
-    <p class="legal">Escaneo técnico automatizado basado en axe-core, con referencias WCAG. No constituye certificación de conformidad ni asesoramiento jurídico. Una revisión automatizada identifica una parte de las barreras: las pruebas con teclado, lector de pantalla y contenido requieren revisión adicional. El alcance se limita a las páginas analizadas y a la fecha del análisis.</p>
+  <div class="wrap footer-grid">
+    <div>
+      <p><strong>EcomBriefs</strong></p>
+      <p><a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a></p>
+      <p><a href="/es/accesibilidad-web-ecommerce.html">Guía Ley 11/2023</a> · <a href="/es/terms.html">Términos</a> · <a href="/es/privacy.html">Privacidad</a></p>
+    </div>
+    <p class="legal">Escaneo técnico automatizado basado en axe-core, con referencias WCAG. No constituye certificación de conformidad, veredicto legal ni asesoramiento jurídico. Una revisión automatizada identifica una parte de las barreras: las pruebas con teclado, lector de pantalla y contenido requieren revisión manual adicional cuando corresponde. El alcance se limita a las páginas analizadas y a la fecha del análisis.</p>
   </div>
 </footer>
 </body>

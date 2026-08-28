@@ -3,253 +3,151 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ley 11/2023 y accesibilidad web en ecommerce: guía técnica 2026 | EcomBriefs</title>
-<meta name="description" content="Qué obliga la Ley 11/2023 (European Accessibility Act) a tu tienda online desde junio de 2025: a quién afecta, qué exige WCAG 2.1 AA y qué sanciones existen.">
+<title>Ley 11/2023 y accesibilidad en ecommerce: puntos a comprobar | EcomBriefs</title>
+<meta name="description" content="Guía informativa sobre el ámbito, las microempresas, los requisitos funcionales y el régimen transitorio de la Ley 11/2023 en comercio electrónico. No es asesoramiento legal.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ecombriefs.io/es/accesibilidad-web-ecommerce.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ley 11/2023 y accesibilidad en ecommerce: puntos a comprobar">
+<meta property="og:description" content="Resumen informativo basado en fuentes oficiales sobre accesibilidad y comercio electrónico en España.">
+<meta property="og:url" content="https://ecombriefs.io/es/accesibilidad-web-ecommerce.html">
+<meta property="og:site_name" content="EcomBriefs">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1B33;--navy:#12306B;--navy-deep:#0A1D45;--amber:#B45A05;--amber-bright:#E08A2E;--paper:#FAF8F5;--paper-2:#F2EEE7;--grey:#55607A;--line:#D9D3C8;--red:#8A1F11;--display:"Space Grotesk",system-ui,sans-serif;--body:"Source Sans 3",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}.wrap{width:min(1080px,92vw);margin-inline:auto}a{color:var(--navy)}a:focus-visible{outline:3px solid var(--amber-bright);outline-offset:3px;border-radius:2px}.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:.75rem 1rem;z-index:99}.skip:focus{left:0}header{border-bottom:1px solid var(--line)}.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}.logo{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:var(--navy);text-decoration:none}.logo span{color:var(--amber)}.lang{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--grey)}.lang:hover{color:var(--navy)}.hero{padding:3.8rem 0 2.8rem}.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 1rem}h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.1;letter-spacing:-.03em;color:var(--navy);margin:0 0 1.1rem;max-width:25ch}.lede{font-size:1.18rem;color:var(--grey);max-width:68ch;margin:0 0 1.2rem}.lede strong{color:var(--ink);font-weight:600}.meta-line{font-family:var(--mono);font-size:.78rem;color:var(--grey);margin:0}.notice{border-left:4px solid var(--red);background:#FFF1F2;padding:1rem 1.25rem;margin:2rem 0 0}.notice p{margin:.25rem 0}.notice strong{font-family:var(--display)}.cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid var(--navy)}.cta:hover{background:var(--navy-deep);border-color:var(--navy-deep)}.toc{margin-top:2.4rem;border:1px solid var(--line);background:#fff;padding:1.2rem 1.4rem}.toc p{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:0 0 .8rem}.toc ol{margin:0;padding-left:1.15rem;color:var(--grey);font-size:.98rem}.toc li{margin:.35rem 0}.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}.toc a:hover{color:var(--navy);border-color:var(--navy)}section{padding:3.2rem 0;border-top:1px solid var(--line);scroll-margin-top:1rem}h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,2.8vw,2rem);letter-spacing:-.02em;color:var(--navy);margin:0 0 .5rem}.sec-lede{color:var(--grey);max-width:68ch;margin:0 0 2rem}.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}.card{border:1px solid var(--line);background:#fff;padding:1.35rem}.card h3{margin-top:0}.card p:last-child{margin-bottom:0}h3{font-family:var(--display);font-weight:500;font-size:1.08rem;color:var(--ink);margin:1.6rem 0 .45rem}.definition{border:1px solid var(--line);background:#fff;padding:1.2rem 1.35rem;margin:1.5rem 0}.definition p{margin:0}.callout{border-left:3px solid var(--amber-bright);background:var(--paper-2);padding:1.1rem 1.3rem;margin:1.6rem 0}.callout p{margin:.25rem 0;color:var(--ink)}.quote{border-left:3px solid var(--navy);padding:.2rem 0 .2rem 1.2rem;margin:1.8rem 0;color:var(--grey)}.source{font-weight:600;text-underline-offset:3px}.checklist{counter-reset:item;list-style:none;padding:0;margin:1.8rem 0}.checklist li{counter-increment:item;position:relative;padding:0 0 1.35rem 3.2rem}.checklist li::before{content:counter(item);position:absolute;left:0;top:.1rem;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--mono);font-size:.8rem}.checklist strong{display:block;font-family:var(--display)}.faq{border-top:1px solid var(--line);padding:1.4rem 0}.faq:first-of-type{border-top:0}.faq h3{margin:0 0 .5rem}.faq p{margin:0;color:var(--grey)}.sources{border:1px solid var(--line);background:#fff;padding:1.4rem}.sources ul{margin:.5rem 0 0;padding-left:1.25rem}.sources li{margin:.55rem 0;overflow-wrap:anywhere}.price-box{border:2px solid var(--navy);padding:2rem;background:#fff}.price-box p{margin:0 0 1.5rem;color:var(--grey);max-width:65ch}footer{border-top:1px solid var(--line);padding:2.5rem 0 3.5rem;color:var(--grey);font-size:.92rem}footer p{margin:.4rem 0;max-width:75ch}.legal{font-family:var(--mono);font-size:.8rem;line-height:1.7}@media(max-width:640px){.hero{padding:2.8rem 0 2.2rem}.cols2{grid-template-columns:1fr}.price-box{padding:1.4rem}}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Ley 11/2023 y accesibilidad web en ecommerce: guía técnica 2026",
-  "description": "Qué obliga la Ley 11/2023 (European Accessibility Act) a tu tienda online desde junio de 2025: a quién afecta, qué exige WCAG 2.1 AA y qué sanciones existen.",
+  "headline": "Ley 11/2023 y accesibilidad en ecommerce: puntos a comprobar",
+  "description": "Guía informativa basada en fuentes oficiales sobre el ámbito, los requisitos y los límites de la Ley 11/2023 para servicios de comercio electrónico.",
+  "datePublished": "2026-08-27",
+  "dateModified": "2026-08-28",
   "inLanguage": "es",
-  "url": "https://ecombriefs.io/es/accesibilidad-web-ecommerce.html",
-  "publisher": {"@type": "Organization", "name": "EcomBriefs", "url": "https://ecombriefs.io/"}
+  "author": {"@type":"Organization","name":"EcomBriefs","url":"https://ecombriefs.io/"},
+  "publisher": {"@type":"Organization","name":"EcomBriefs","url":"https://ecombriefs.io/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://ecombriefs.io/es/accesibilidad-web-ecommerce.html"}
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type": "Question", "name": "¿El checkout de mi tienda tiene prórroga hasta 2030?",
-     "acceptedAnswer": {"@type": "Answer", "text": "No. El periodo transitorio hasta 2030 aplica a productos físicos ya en uso y a contratos de servicio previos a junio de 2025, no a un ecommerce activo. Un checkout online debía cumplir desde el 28 de junio de 2025."}},
-    {"@type": "Question", "name": "¿Un widget o overlay de accesibilidad me hace cumplir la ley?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Un overlay no sustituye una revisión técnica real. Corrige algunos síntomas visibles pero no resuelve la mayoría de barreras estructurales del HTML, y no equivale a una auditoría ni a una declaración de accesibilidad fundamentada."}},
-    {"@type": "Question", "name": "¿Estoy exenta si mi tienda es pequeña?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Solo si eres una microempresa de servicios: menos de 10 empleados y 2 millones de euros o menos de volumen de negocio o balance anual, a la vez. Si fabricas o distribuyes producto físico, la exención de microempresa no aplica igual."}},
-    {"@type": "Question", "name": "¿Qué estándar técnico tengo que cumplir?",
-     "acceptedAnswer": {"@type": "Answer", "text": "WCAG 2.1 nivel AA, con la norma armonizada EN 301 549 como referencia técnica en la Unión Europea."}}
-  ]
-}
-</script>
-<style>
-:root{
-  --ink:#0F1B33;
-  --navy:#12306B;
-  --navy-deep:#0A1D45;
-  --amber:#B45A05;
-  --amber-bright:#E08A2E;
-  --paper:#FAF8F5;
-  --paper-2:#F2EEE7;
-  --grey:#55607A;
-  --line:#D9D3C8;
-  --display:"Space Grotesk",system-ui,sans-serif;
-  --body:"Source Sans 3",system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{width:min(1080px,92vw);margin-inline:auto}
-a{color:var(--navy)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--amber-bright);outline-offset:3px;border-radius:2px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:.75rem 1rem;z-index:99}
-.skip:focus{left:0}
-header{border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
-.logo{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:var(--navy);text-decoration:none}
-.logo span{color:var(--amber)}
-.lang{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--grey)}
-.lang:hover{color:var(--navy)}
-.hero{padding:3.6rem 0 2.6rem}
-.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 1rem}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.1;letter-spacing:-.03em;color:var(--navy);margin:0 0 1.1rem;max-width:22ch}
-.lede{font-size:1.18rem;color:var(--grey);max-width:62ch;margin:0 0 1.6rem}
-.lede strong{color:var(--ink);font-weight:600}
-.meta-line{font-family:var(--mono);font-size:.78rem;color:var(--grey);margin:0 0 2rem}
-.cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid var(--navy)}
-.cta:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
-.cta-note{font-family:var(--mono);font-size:.82rem;color:var(--grey);margin:.85rem 0 0}
-.toc{margin-top:2.4rem;border:1px solid var(--line);background:#fff;padding:1.1rem 1.3rem}
-.toc p{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:0 0 .8rem}
-.toc ol{margin:0;padding-left:1.15rem;color:var(--grey);font-size:.98rem}
-.toc li{margin:.35rem 0}
-.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-.toc a:hover{color:var(--navy);border-color:var(--navy)}
-section{padding:3.2rem 0;border-top:1px solid var(--line)}
-h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,2.8vw,1.9rem);letter-spacing:-.02em;color:var(--navy);margin:0 0 .4rem}
-.sec-lede{color:var(--grey);max-width:62ch;margin:0 0 2rem}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.8rem}
-.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.2rem}
-h3{font-family:var(--display);font-weight:500;font-size:1.08rem;color:var(--ink);margin:0 0 .4rem}
-.cols p,.cols2 p{margin:0;color:var(--grey);font-size:1rem}
-ul.clean{list-style:none;padding:0;margin:0}
-ul.clean li{padding:.55rem 0 .55rem 1.6rem;position:relative;border-bottom:1px solid var(--line);color:var(--grey)}
-ul.clean li:last-child{border-bottom:0}
-ul.clean li::before{content:"";position:absolute;left:0;top:1.15rem;width:.55rem;height:.55rem;background:var(--amber-bright)}
-ul.clean li b{color:var(--ink);font-weight:600}
-.no li::before{background:var(--grey);height:2px;top:1.4rem;width:.8rem}
-.evidence{border:1px solid var(--line);background:#fff}
-.evidence-head{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:baseline;padding:.85rem 1.2rem;background:var(--paper-2);border-bottom:1px solid var(--line)}
-.evidence-head h2{font-family:var(--mono);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:0}
-.evidence-head p{font-family:var(--mono);font-size:.78rem;color:var(--grey);margin:0}
-.rows{display:grid}
-.row{padding:1.1rem 1.2rem;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:.4rem 1.2rem;align-items:start}
-.row:last-child{border-bottom:0}
-.k{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);padding-top:.15rem}
-.v{font-family:var(--mono);font-size:.86rem;word-break:break-word;color:var(--ink)}
-.v.plain{font-family:var(--body);font-size:1rem;color:var(--ink)}
-.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#fff;padding:.2rem .5rem}
-.tag.leve{background:var(--grey)}
-.tag.grave{background:var(--amber)}
-.tag.muygrave{background:#8A1F11}
-.tag.caso{background:var(--navy)}
-@media (max-width:640px){.row{grid-template-columns:1fr}}
-.callout{border-left:3px solid var(--amber-bright);background:var(--paper-2);padding:1.1rem 1.3rem;margin:1.6rem 0 0}
-.callout p{margin:0;color:var(--ink)}
-.faq{border-top:1px solid var(--line);padding:1.4rem 0}
-.faq:first-child{border-top:0;padding-top:0}
-.faq h3{margin:0 0 .5rem}
-.faq p{margin:0;color:var(--grey)}
-.price-box{border:2px solid var(--navy);padding:2rem;background:#fff}
-.price-box p{margin:0 0 1.5rem;color:var(--grey);max-width:60ch}
-footer{border-top:1px solid var(--line);padding:2.5rem 0 3.5rem;color:var(--grey);font-size:.92rem}
-footer p{margin:.4rem 0;max-width:70ch}
-.legal{font-family:var(--mono);font-size:.8rem;line-height:1.7}
-</style>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido principal</a>
-<header>
-  <div class="wrap bar">
-    <a class="logo" href="/es/">Ecom<span>Briefs</span></a>
-    <a class="lang" href="/es/">← Inicio</a>
-  </div>
-</header>
+<header><div class="wrap bar"><a class="logo" href="/es/">Ecom<span>Briefs</span></a><a class="lang" href="/es/">← Inicio</a></div></header>
 <main id="main">
 <div class="wrap hero">
-  <p class="eyebrow">Guía técnica · Ley 11/2023 / European Accessibility Act</p>
-  <h1>Qué obliga la Ley 11/2023 a tu tienda online — y qué no</h1>
-  <p class="lede">La ley que traspone la <strong>European Accessibility Act</strong> a España aplica al comercio electrónico desde el <strong>28 de junio de 2025</strong>. Esta guía resume, con las fuentes por delante, a quién obliga, qué exige técnicamente y qué pasa si no se cumple — sin promesas ni dramatismo, solo lo que dice la norma.</p>
-  <p class="meta-line">Actualizado agosto 2026 · Información general, no asesoramiento jurídico</p>
-  <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir muestra gratuita de 3 hallazgos</a>
-  <p class="cta-note">Vemos primero la parte técnica: 3 barreras reales de tu tienda, con URL, selector y HTML</p>
-
-  <div class="toc">
-    <p>En esta guía</p>
-    <ol>
-      <li><a href="#quien">A quién obliga la ley</a></li>
-      <li><a href="#tecnico">Qué exige técnicamente</a></li>
-      <li><a href="#sanciones">Qué pasa si no se cumple</a></li>
-      <li><a href="#faq">Preguntas frecuentes</a></li>
-    </ol>
-  </div>
+  <p class="eyebrow">Guía informativa · España</p>
+  <h1>Ley 11/2023 y accesibilidad en comercio electrónico: puntos a comprobar</h1>
+  <p class="lede">La Ley 11/2023 incluye los <strong>servicios de comercio electrónico prestados a consumidores</strong> dentro de su ámbito. Su aplicación concreta, sin embargo, depende del tipo de empresa y servicio, de las excepciones legales y, en algunos casos, de reglas transitorias.</p>
+  <p class="meta-line">Última revisión editorial: 28 de agosto de 2026</p>
+  <div class="notice"><p><strong>Información general, no asesoramiento legal.</strong></p><p>Esta página resume fuentes oficiales para ayudar a formular las preguntas correctas. No determina si una empresa concreta está obligada, no interpreta excepciones para casos individuales y no certifica conformidad legal.</p></div>
+  <nav class="toc" aria-label="Contenido de la guía"><p>En esta guía</p><ol>
+    <li><a href="#ambito">Qué establece expresamente la norma</a></li>
+    <li><a href="#microempresas">La exención para microempresas</a></li>
+    <li><a href="#requisitos">Requisitos para ecommerce</a></li>
+    <li><a href="#estandares">EN 301 549 y WCAG</a></li>
+    <li><a href="#transicion">Reglas transitorias</a></li>
+    <li><a href="#sanciones">Régimen sancionador</a></li>
+    <li><a href="#revision">Qué revisar técnicamente</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+  </ol></nav>
 </div>
 
-<section id="quien">
-  <div class="wrap">
-    <h2 class="sec">A quién obliga la ley</h2>
-    <p class="sec-lede">La Ley 11/2023 traspone la Directiva (UE) 2019/882. La exención es la excepción, no la norma general: aplica a productos y servicios digitales dirigidos al público, incluido el comercio electrónico.</p>
-    <div class="cols2">
-      <div>
-        <h3>Está obligada si</h3>
-        <ul class="clean">
-          <li><b>Vende online al público</b> desde España o dirigido a personas en la UE.</li>
-          <li><b>Supera el umbral de microempresa</b> (10 empleados o 2M€ de facturación/balance).</li>
-          <li><b>Fabrica o distribuye producto físico</b>, aunque sea una empresa pequeña.</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Exenta solo si</h3>
-        <ul class="clean no">
-          <li>Es <b>microempresa de servicios</b>: menos de 10 empleados <b>y</b> ≤2M€ de volumen de negocio o balance, a la vez.</li>
-          <li>No fabrica ni distribuye producto físico bajo su marca.</li>
-          <li>La exención cubre parte de los requisitos, no todos.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">
-      <p>La mayoría de marcas DTC medianas (2-10M€ de facturación) están por encima del umbral de exención y, además, distribuyen producto físico. La exención de microempresa no suele aplicarles.</p>
-    </div>
+<section id="ambito"><div class="wrap">
+  <h2 class="sec">1. Qué establece expresamente la norma</h2>
+  <p class="sec-lede">El artículo 2.2.f de la <a class="source" href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-11022" target="_blank" rel="noopener noreferrer">Ley 11/2023, de 8 de mayo</a>, incluye los servicios de comercio electrónico prestados a consumidores entre los servicios cubiertos por su título I.</p>
+  <div class="cols2">
+    <article class="card"><h3>Ámbito</h3><p>La inclusión del comercio electrónico es expresa. Eso no significa que todas las empresas ni todos los elementos de una tienda reciban exactamente el mismo tratamiento.</p></article>
+    <article class="card"><h3>Fecha de aplicación</h3><p>El título I es aplicable desde el 28 de junio de 2025, con las exclusiones, exenciones y medidas transitorias previstas en la propia ley.</p></article>
+    <article class="card"><h3>Requisitos funcionales</h3><p>El artículo 3 remite al anexo I y lo hace sin perjuicio de las excepciones del artículo 16.</p></article>
+    <article class="card"><h3>Información del servicio</h3><p>El artículo 13 prevé información pública sobre cómo el servicio cumple los requisitos aplicables y procedimientos para mantenerla actualizada.</p></article>
   </div>
-</section>
+</div></section>
 
-<section id="tecnico">
-  <div class="wrap">
-    <h2 class="sec">Qué exige técnicamente</h2>
-    <p class="sec-lede">La ley no inventa un estándar propio: remite a normas técnicas ya existentes y ampliamente documentadas.</p>
-    <div class="cols">
-      <div><h3>WCAG 2.1, nivel AA</h3><p>El estándar internacional de accesibilidad web. Cubre contraste, texto alternativo, navegación por teclado, formularios y estructura semántica, entre otros criterios.</p></div>
-      <div><h3>EN 301 549</h3><p>La norma armonizada europea que referencia WCAG 2.1 AA como criterio técnico para productos y servicios digitales en la UE.</p></div>
-      <div><h3>Sin prórroga para el ecommerce activo</h3><p>El periodo transitorio hasta 2030 es para productos físicos ya en uso y contratos previos, no para una tienda online operativa hoy.</p></div>
-    </div>
-  </div>
-</section>
+<section id="microempresas"><div class="wrap">
+  <h2 class="sec">2. La exención para microempresas que prestan servicios</h2>
+  <p class="sec-lede">El artículo 3.3 exime a las microempresas que presten servicios de los requisitos de accesibilidad del título I. La definición legal exige combinar dos condiciones.</p>
+  <div class="definition"><p><strong>Microempresa, según la Ley 11/2023:</strong> empresa que emplea a menos de 10 personas <strong>y</strong> cuyo volumen de negocios anual no supera los 2 millones de euros <strong>o</strong> cuyo balance anual total no supera los 2 millones de euros.</p></div>
+  <p>La conjunción es importante: debe cumplirse el umbral de plantilla y, además, uno de los dos umbrales financieros. No basta con afirmar de forma general que una tienda pequeña está exenta sin comprobar la definición y el papel que desempeña en el servicio.</p>
+  <p>Fuera de esa exención, la aplicación concreta puede depender de hechos que esta guía no puede determinar: quién presta el servicio al consumidor, qué partes están bajo su control, si existe una exclusión del artículo 2 o si se invoca una excepción del artículo 16.</p>
+  <div class="callout"><p><strong>Artículo 16:</strong> contempla, con carácter excepcional, una modificación sustancial o una carga desproporcionada. Exige evaluación y justificación, y obliga a aplicar los requisitos en la medida en que no supongan esa carga. No es una exclusión automática.</p></div>
+</div></section>
 
-<section id="sanciones">
-  <div class="wrap">
-    <h2 class="sec">Qué pasa si no se cumple</h2>
-    <p class="sec-lede">El régimen sancionador remite al RDL 1/2013 (Texto Refundido de la Ley General de derechos de las personas con discapacidad). Se gradúa por gravedad, y ya existe un caso confirmado por vía judicial.</p>
-    <div class="evidence">
-      <div class="evidence-head">
-        <h2>Régimen sancionador</h2>
-        <p>RDL 1/2013, art. 83 · vía sancionadora de referencia</p>
-      </div>
-      <div class="rows">
-        <div class="row"><span class="k">Leve</span><span class="v plain"><span class="tag leve">Hasta 30.000 €</span></span></div>
-        <div class="row"><span class="k">Grave</span><span class="v plain"><span class="tag grave">Hasta 90.000 €</span></span></div>
-        <div class="row"><span class="k">Muy grave</span><span class="v plain"><span class="tag muygrave">Hasta 1.000.000 €</span></span></div>
-        <div class="row"><span class="k">Caso real</span><span class="v plain"><span class="tag caso">Vueling</span> &nbsp;90.000 € confirmados por la Audiencia Nacional en marzo de 2024, por infracción grave de accesibilidad.</span></div>
-      </div>
-    </div>
-    <div class="callout">
-      <p>No hay aún resolución sancionadora pública específica bajo la Ley 11/2023 contra un ecommerce privado: el aparato de vigilancia (UTAC y autoridades autonómicas) está recién operativo en 2026. El riesgo es real y creciente, no una ola de multas ya en marcha.</p>
-    </div>
+<section id="requisitos"><div class="wrap">
+  <h2 class="sec">3. Qué requisitos aparecen para los servicios de comercio electrónico</h2>
+  <p class="sec-lede">El anexo I combina requisitos generales para servicios con requisitos adicionales para ecommerce.</p>
+  <p>Entre otros puntos, indica que los sitios web y aplicaciones deben hacerse accesibles de forma coherente y adecuada, y que la información electrónica necesaria para prestar el servicio debe ser perceptible, manejable, comprensible y sólida.</p>
+  <div class="cols2">
+    <article class="card"><h3>Información de accesibilidad</h3><p>Facilitar la información relativa a la accesibilidad de los productos y servicios en venta cuando el agente económico responsable la proporcione.</p></article>
+    <article class="card"><h3>Identificación, seguridad y pago</h3><p>Garantizar la accesibilidad de estas funciones cuando formen parte del servicio, y facilitar métodos de identificación, firmas electrónicas y servicios de pago perceptibles, funcionales, comprensibles y resistentes.</p></article>
   </div>
-</section>
+  <p>La norma no se limita a una página aislada. Para estudiar una tienda online, una revisión técnica suele necesitar una muestra representativa del recorrido público: portada, navegación o colección, producto y, cuando sea posible sin efectuar una compra, partes relevantes de carrito, cuenta, formularios o inicio del checkout.</p>
+</div></section>
 
-<section id="faq">
-  <div class="wrap">
-    <h2 class="sec">Preguntas frecuentes</h2>
-    <div class="faq">
-      <h3>¿El checkout de mi tienda tiene prórroga hasta 2030?</h3>
-      <p>No. El periodo transitorio hasta 2030 aplica a productos físicos ya en uso y a contratos de servicio previos a junio de 2025, no a un ecommerce activo. Un checkout online debía cumplir desde el 28 de junio de 2025.</p>
-    </div>
-    <div class="faq">
-      <h3>¿Un widget o overlay de accesibilidad me hace cumplir la ley?</h3>
-      <p>Un overlay no sustituye una revisión técnica real. Corrige algunos síntomas visibles pero no resuelve la mayoría de barreras estructurales del HTML, y no equivale a una auditoría ni a una declaración de accesibilidad fundamentada.</p>
-    </div>
-    <div class="faq">
-      <h3>¿Estoy exenta si mi tienda es pequeña?</h3>
-      <p>Solo si eres microempresa de servicios: menos de 10 empleados y 2 millones de euros o menos de volumen de negocio o balance, a la vez. Si fabricas o distribuyes producto físico, la exención de microempresa no aplica igual.</p>
-    </div>
-    <div class="faq">
-      <h3>¿Qué estándar técnico tengo que cumplir?</h3>
-      <p>WCAG 2.1 nivel AA, con la norma armonizada EN 301 549 como referencia técnica en la Unión Europea.</p>
-    </div>
-  </div>
-</section>
+<section id="estandares"><div class="wrap">
+  <h2 class="sec">4. Cómo encajan EN 301 549 y WCAG</h2>
+  <p class="sec-lede">La Ley 11/2023 establece requisitos funcionales en su anexo I. Su artículo 17 dispone una presunción de conformidad para las normas armonizadas o partes de ellas cuyas referencias se hayan publicado oficialmente, en la medida en que resulten aplicables.</p>
+  <p><a class="source" href="https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/accessibility-standardisation_en" target="_blank" rel="noopener noreferrer">EN 301 549</a> es una referencia técnica europea de accesibilidad para productos y servicios TIC. La <a class="source" href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">W3C</a> explica que esta norma incorpora ampliamente WCAG 2.1 y que también contiene requisitos adicionales.</p>
+  <div class="quote"><p><strong>La formulación prudente:</strong> EN 301 549 y WCAG son referencias técnicas útiles para evaluar y mejorar una web. No debe resumirse la ley como una equivalencia automática del tipo “Ley 11/2023 = WCAG 2.1 AA”. La norma aplicable, su versión y la referencia oficial importan.</p></div>
+  <p>Una nueva versión de WCAG o de EN 301 549 tampoco modifica por sí sola una obligación jurídica. La <a class="source" href="https://digital-strategy.ec.europa.eu/en/policies/latest-changes-accessibility-standard" target="_blank" rel="noopener noreferrer">Comisión Europea</a> distingue entre la evolución técnica de los estándares y su efecto legal tras la referencia oficial correspondiente.</p>
+</div></section>
 
-<section>
-  <div class="wrap">
-    <h2 class="sec">Antes de una auditoría legal, mira la técnica</h2>
-    <div class="price-box">
-      <p>No hacemos certificación de conformidad ni asesoramiento jurídico. Revisamos tu tienda con evidencia verificable — URL, selector CSS y HTML de cada barrera confirmada — para que sepas qué corregir antes de que te lo pregunte alguien más.</p>
-      <a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir muestra gratuita de 3 hallazgos</a>
-    </div>
+<section id="transicion"><div class="wrap">
+  <h2 class="sec">5. Qué dicen las reglas transitorias</h2>
+  <p class="sec-lede">La disposición transitoria única contiene medidas específicas; no formula una prórroga general para cualquier tienda publicada antes de junio de 2025.</p>
+  <div class="cols2">
+    <article class="card"><h3>Productos utilizados para prestar servicios</h3><p>Hasta el 28 de junio de 2030, los prestadores pueden seguir prestando servicios mediante productos que ya utilizaban legalmente para prestar servicios similares antes del 28 de junio de 2025.</p></article>
+    <article class="card"><h3>Contratos de servicios anteriores</h3><p>Los contratos celebrados antes del 28 de junio de 2025 pueden continuar sin cambios hasta su expiración, con un máximo de cinco años desde esa fecha.</p></article>
   </div>
-</section>
+  <p>Determinar si una regla transitoria cubre un contrato, producto o componente concreto requiere analizar los hechos y el contrato. No es seguro afirmar, en abstracto, que “todo el checkout tiene prórroga” ni que “ningún checkout activo puede tenerla”.</p>
+</div></section>
+
+<section id="sanciones"><div class="wrap">
+  <h2 class="sec">6. Cómo trata la ley los incumplimientos</h2>
+  <p class="sec-lede">El artículo 30 de la Ley 11/2023 no ofrece una tabla única y directa de multas para ecommerce.</p>
+  <p>Indica que los incumplimientos se sancionarán conforme a la legislación sectorial correspondiente y que, en lo no previsto, se aplicará de forma supletoria el título III del Real Decreto Legislativo 1/2013. Por eso, presentar importes cerrados sin identificar antes el régimen aplicable puede inducir a error. La calificación, la autoridad competente, las circunstancias y las posibles medidas dependen del caso.</p>
+  <div class="callout"><p><strong>Sobre Vueling:</strong> la Audiencia Nacional confirmó en 2024 una multa de 90.000 euros por accesibilidad web. Sin embargo, la resolución sancionadora era de octubre de 2020 y se basó en el artículo 95.3.e del Real Decreto Legislativo 1/2013. Es un antecedente real de accesibilidad web, pero <strong>no</strong> una sanción impuesta bajo la Ley 11/2023 ni un ejemplo directo de su aplicación a una tienda online. Fuente: <a class="source" href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-Audiencia-Nacional-confirma-la-multa-de-90-000-euros-a-Vueling-por-incumplir-en-su-web-las-condiciones-de-accesibilidad-para-personas-con-discapacidad" target="_blank" rel="noopener noreferrer">Poder Judicial</a>.</p></div>
+</div></section>
+
+<section id="revision"><div class="wrap">
+  <h2 class="sec">7. Qué conviene revisar técnicamente</h2>
+  <p class="sec-lede">Una revisión técnica no sustituye el análisis jurídico, pero puede aportar evidencia concreta sobre el funcionamiento real de la tienda.</p>
+  <ol class="checklist">
+    <li><strong>Definir el alcance.</strong> Seleccionar páginas y pasos representativos del recorrido público, registrando también lo que no pudo verificarse.</li>
+    <li><strong>Combinar comprobaciones.</strong> Usar automatización para localizar candidatos y validación manual o en navegador real para confirmar los hallazgos relevantes.</li>
+    <li><strong>Conservar evidencia reproducible.</strong> Para cada hallazgo, registrar URL, selector, regla técnica y fragmento exacto de HTML, además de su efecto potencial para usuarios.</li>
+    <li><strong>Priorizar por recorrido y repetición.</strong> Distinguir un componente compartido de incidencias puntuales y empezar por navegación, identificación, formularios, producto y compra.</li>
+    <li><strong>Separar diagnóstico de certificación.</strong> Corregir barreras técnicas mejora la accesibilidad, pero un informe parcial o automatizado no debe presentarse como garantía de conformidad legal.</li>
+  </ol>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2 class="sec">Preguntas frecuentes</h2>
+  <div class="faq"><h3>¿La Ley 11/2023 afecta a todos los ecommerce?</h3><p>La ley incluye los servicios de comercio electrónico prestados a consumidores, pero también contempla una exención para microempresas prestadoras de servicios, exclusiones de contenido, excepciones justificadas y medidas transitorias. La respuesta para una empresa concreta requiere revisar su situación.</p></div>
+  <div class="faq"><h3>¿Una tienda anterior al 28 de junio de 2025 está exenta hasta 2030?</h3><p>No existe una exención general formulada así. La disposición transitoria se refiere a determinados productos utilizados para prestar servicios y a contratos de servicios anteriores a esa fecha. Su aplicación a una arquitectura, contrato o componente concreto necesita análisis jurídico.</p></div>
+  <div class="faq"><h3>¿La ley exige literalmente WCAG 2.1 AA?</h3><p>La ley formula requisitos funcionales en su anexo I y regula la presunción de conformidad mediante normas armonizadas o especificaciones técnicas referenciadas. WCAG 2.1 y EN 301 549 son referencias técnicas importantes, pero no deben presentarse como una equivalencia literal y automática con toda la obligación legal.</p></div>
+  <div class="faq"><h3>¿Instalar un widget demuestra conformidad?</h3><p>No por sí solo. La presencia de un widget no demuestra que el servicio y su recorrido real satisfagan los requisitos aplicables. Hay que comprobar cómo funcionan el contenido, la navegación, los formularios, la identificación, la seguridad y el pago con distintas formas de interacción y tecnologías de apoyo.</p></div>
+  <div class="faq"><h3>¿Un informe de EcomBriefs certifica cumplimiento legal?</h3><p>No. EcomBriefs ofrece un diagnóstico técnico de una muestra del recorrido público, con evidencia reproducible para que un equipo pueda priorizar correcciones. No es una certificación, una auditoría jurídica ni una garantía de cumplimiento.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="sec">Fuentes oficiales consultadas</h2>
+  <div class="sources"><ul>
+    <li><a class="source" href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-11022" target="_blank" rel="noopener noreferrer">BOE: Ley 11/2023, texto consolidado</a>.</li>
+    <li><a class="source" href="https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32019L0882" target="_blank" rel="noopener noreferrer">EUR-Lex: Directiva (UE) 2019/882</a>.</li>
+    <li><a class="source" href="https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/european-accessibility-act-eaa_en" target="_blank" rel="noopener noreferrer">Comisión Europea: European Accessibility Act</a>.</li>
+    <li><a class="source" href="https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/accessibility-standardisation_en" target="_blank" rel="noopener noreferrer">Comisión Europea: normalización de accesibilidad</a>.</li>
+    <li><a class="source" href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">W3C WAI: WCAG 2 Overview</a>.</li>
+    <li><a class="source" href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-Audiencia-Nacional-confirma-la-multa-de-90-000-euros-a-Vueling-por-incumplir-en-su-web-las-condiciones-de-accesibilidad-para-personas-con-discapacidad" target="_blank" rel="noopener noreferrer">Poder Judicial: caso Vueling</a>.</li>
+  </ul></div>
+</div></section>
+
+<section><div class="wrap"><h2 class="sec">Primero, evidencia técnica concreta</h2><div class="price-box"><p>EcomBriefs revisa una muestra del recorrido público y entrega hallazgos confirmados con URL, selector CSS y HTML exacto. El resultado sirve para priorizar trabajo técnico; no sustituye una evaluación legal ni certifica conformidad.</p><a class="cta" href="mailto:hola@ecombriefs.ai?subject=Muestra%20gratuita%20de%203%20hallazgos">Pedir una muestra de 3 hallazgos</a></div></div></section>
 </main>
-<footer>
-  <div class="wrap">
-    <p><strong>EcomBriefs</strong> · <a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a> · <a href="/es/terms.html">Términos</a> · <a href="/es/privacy.html">Privacidad</a></p>
-    <p class="legal">Contenido informativo general sobre la Ley 11/2023 y la European Accessibility Act, elaborado a partir de fuentes públicas. No constituye asesoramiento jurídico ni sustituye la consulta con un profesional del derecho. Verifica siempre la normativa vigente y su aplicación a tu caso concreto.</p>
-  </div>
-</footer>
+<footer><div class="wrap"><p><strong>EcomBriefs</strong> · <a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a> · <a href="/es/terms.html">Términos</a> · <a href="/es/privacy.html">Privacidad</a></p><p class="legal">Contenido informativo general elaborado a partir de fuentes oficiales. No constituye asesoramiento jurídico, certificación de conformidad ni sustituye la consulta con un profesional cualificado.</p></div></footer>
 </body>
 </html>
