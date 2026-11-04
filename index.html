@@ -397,12 +397,13 @@
   @media (max-width: 860px) { .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 0; } }
   .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; min-width: 0; }
   @media (max-width: 480px) { .form-card { padding: 1.25rem; } }
-  .demo-banner {
+  .form-info {
     padding: .8rem 1rem; border-radius: var(--radius-sm);
-    background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border);
+    background: var(--accent-soft); color: var(--accent-dark); border: 1px solid #BFD6C8;
     font-weight: 600; font-size: .95rem;
     margin-bottom: 1.25rem;
   }
+  .copy-help { color: var(--muted); font-size: .95rem; }
   .field { display: grid; gap: .35rem; margin-bottom: 1.15rem; }
   .field label, .field legend { font-weight: 600; font-size: .975rem; }
   .field .hint { color: var(--muted); font-size: .9rem; }
@@ -682,30 +683,29 @@
       </div>
 
       <div class="form-card">
-        <p class="demo-banner" id="form-demo-notice">Demostración del formulario. No se enviará ningún mensaje.</p>
+        <p class="form-info" id="form-info">Se abrirá tu programa de correo con la consulta preparada. Revísala y pulsa enviar.</p>
 
-        <!-- CANAL COMERCIAL PENDIENTE: este formulario no envía datos.
-             Antes de publicar, conecta el canal real en CONFIG.contacto
-             (script al final de este archivo) y consulta README.md. -->
-        <form id="contact-form" novalidate aria-describedby="form-demo-notice">
+        <!-- CANAL COMERCIAL: sin servidor. Al enviar, el formulario abre un mailto
+             a CONFIG.contacto.destino (script al final de este archivo). Ver README.md. -->
+        <form id="contact-form" novalidate aria-describedby="form-info">
           <p class="form-status" id="form-status" role="alert"></p>
 
           <div class="field">
             <label for="f-nombre">Nombre <span class="req">(obligatorio)</span></label>
-            <input type="text" id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="f-nombre-error">
+            <input type="text" id="f-nombre" name="nombre" autocomplete="name" maxlength="80" required aria-describedby="f-nombre-error">
             <p class="error" id="f-nombre-error"></p>
           </div>
 
           <div class="field">
             <label for="f-email">Email de trabajo <span class="req">(obligatorio)</span></label>
-            <input type="email" id="f-email" name="email" autocomplete="email" required aria-describedby="f-email-error">
+            <input type="email" id="f-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="f-email-error">
             <p class="error" id="f-email-error"></p>
           </div>
 
           <div class="field">
             <label for="f-url">URL de la tienda <span class="req">(obligatorio)</span></label>
             <span class="hint" id="f-url-hint">Por ejemplo: mitienda.com</span>
-            <input type="text" id="f-url" name="url" inputmode="url" autocomplete="url" spellcheck="false" required aria-describedby="f-url-hint f-url-error">
+            <input type="text" id="f-url" name="url" inputmode="url" autocomplete="url" spellcheck="false" maxlength="150" required aria-describedby="f-url-hint f-url-error">
             <p class="error" id="f-url-error"></p>
           </div>
 
@@ -737,8 +737,8 @@
 
           <div class="field">
             <label for="f-tarea">Qué tarea os gustaría reducir <span class="req">(obligatorio)</span></label>
-            <span class="hint" id="f-tarea-hint">Por ejemplo: buscar el pedido en Shopify y copiar el seguimiento en la respuesta.</span>
-            <textarea id="f-tarea" name="tarea" rows="4" required aria-describedby="f-tarea-hint f-tarea-error"></textarea>
+            <span class="hint" id="f-tarea-hint">Por ejemplo: buscar el pedido en Shopify y copiar el seguimiento en la respuesta. Máximo 700 caracteres.</span>
+            <textarea id="f-tarea" name="tarea" rows="4" maxlength="700" required aria-describedby="f-tarea-hint f-tarea-error"></textarea>
             <p class="error" id="f-tarea-error"></p>
           </div>
 
@@ -754,19 +754,19 @@
           </fieldset>
 
           <div class="form-actions">
-            <button type="submit" class="btn">Preparar consulta</button>
+            <button type="submit" class="btn">Enviar por email</button>
           </div>
         </form>
 
         <section class="summary" id="summary" aria-labelledby="summary-title" hidden>
           <h3 id="summary-title" tabindex="-1">Resumen de tu consulta</h3>
-          <p class="demo-banner">Demostración del formulario. No se enviará ningún mensaje.</p>
-          <p>Revisa el texto. Puedes copiarlo para conservarlo.</p>
+          <p class="form-info">Se abrirá tu programa de correo con la consulta preparada. Revísala y pulsa enviar.</p>
           <pre class="summary-text" id="summary-text"></pre>
           <div class="form-actions">
-            <button type="button" class="btn btn-secondary" id="copy-btn">Copiar consulta</button>
-            <p class="copy-status" id="copy-status" aria-live="polite"></p>
+            <button type="button" class="btn btn-secondary" id="copy-btn" aria-describedby="copy-help">Copiar consulta</button>
+            <p class="copy-help" id="copy-help">Si no se abre tu correo, copia la consulta y envíala a <span data-contact-email>hola@ecombriefs.ai</span></p>
           </div>
+          <p class="copy-status" id="copy-status" aria-live="polite"></p>
         </section>
       </div>
     </div>
@@ -793,21 +793,25 @@
   /* =========================================================
      CONFIGURACIÓN
      - marca: nombre visible en toda la página.
-     - contacto.destino: canal comercial real. Mientras sea null,
-       el formulario solo prepara un resumen local y no envía nada.
-       ANTES DE PUBLICAR: definir aquí el canal real e implementar
-       el envío en prepararConsulta(). Ver README.md.
+     - contacto.destino: dirección que recibe las consultas. El
+       formulario no usa servidor: al pulsar «Enviar por email» abre
+       el programa de correo del visitante (mailto) con la consulta
+       preparada. No sabemos si la persona llega a enviarla.
+     - contacto.maxCuerpo: límite de caracteres del cuerpo del email,
+       para que el enlace mailto no falle en algunos clientes.
      ========================================================= */
   var CONFIG = {
     marca: 'EcomBriefs',
     contacto: {
-      destino: null
+      destino: 'hola@ecombriefs.ai',
+      maxCuerpo: 1500
     }
   };
 
   /* ---------- Marca ---------- */
   document.querySelectorAll('[data-brand]').forEach(function (node) { node.textContent = CONFIG.marca; });
   document.title = document.title.replace('EcomBriefs', CONFIG.marca);
+  document.querySelectorAll('[data-contact-email]').forEach(function (node) { node.textContent = CONFIG.contacto.destino; });
 
   /* ---------- Datos ficticios de la demostración ---------- */
   var SCENARIOS = {
@@ -997,7 +1001,7 @@
     });
   });
 
-  /* ---------- Formulario (demostración, sin envío ni almacenamiento) ---------- */
+  /* ---------- Formulario: mailto, sin servidor ni almacenamiento ---------- */
   var form = document.getElementById('contact-form');
   var formStatus = document.getElementById('form-status');
   var summary = document.getElementById('summary');
@@ -1071,8 +1075,8 @@
     var invalid = FIELDS.filter(function (f) { return !validate(f); });
     if (invalid.length) {
       formStatus.textContent = invalid.length === 1
-        ? 'Revisa 1 campo marcado antes de preparar la consulta.'
-        : 'Revisa los ' + invalid.length + ' campos marcados antes de preparar la consulta.';
+        ? 'Revisa 1 campo marcado antes de enviar la consulta.'
+        : 'Revisa los ' + invalid.length + ' campos marcados antes de enviar la consulta.';
       var first = invalid[0];
       (first.name === 'interes' ? form.querySelector('input[name="interes"]') : document.getElementById(first.id)).focus();
       summary.hidden = true;
@@ -1083,19 +1087,42 @@
   });
 
   function prepararConsulta() {
-    var lines = ['Consulta para ' + CONFIG.marca, ''];
+    var head = ['Consulta para ' + CONFIG.marca, ''];
     FIELDS.forEach(function (f) {
-      if (f.name !== 'tarea') lines.push(f.label + ': ' + valueOf(f.name));
+      if (f.name !== 'tarea') head.push(f.label + ': ' + valueOf(f.name));
     });
-    lines.push('', 'Qué tarea os gustaría reducir:', valueOf('tarea'));
-    summaryText.textContent = lines.join('\n');
+    head.push('', 'Qué tarea os gustaría reducir:');
+    // Saltos de línea CRLF, como se envían en el mailto, para medir la longitud real.
+    var headText = crlf(head.join('\n') + '\n');
+    var tarea = crlf(valueOf('tarea'));
+    // El cuerpo final queda siempre por debajo de CONFIG.contacto.maxCuerpo caracteres.
+    var room = CONFIG.contacto.maxCuerpo - 1 - headText.length;
+    if (tarea.length > room) {
+      tarea = tarea.slice(0, Math.max(0, room - 1));
+      if (tarea.slice(-1) === '\r') tarea = tarea.slice(0, -1);
+      tarea += '…';
+    }
+    var body = headText + tarea;
+
+    summaryText.textContent = body;
     copyStatus.textContent = '';
     summary.hidden = false;
     summaryTitle.focus();
 
-    // PUNTO DE CONEXIÓN DEL CANAL COMERCIAL:
-    // cuando CONFIG.contacto.destino esté definido, aquí se enviaría la consulta.
-    // En esta versión local no se hace ninguna solicitud externa ni se guarda nada.
+    abrirCorreo('Consulta ' + CONFIG.marca + ' – ' + valueOf('url'), body);
+  }
+
+  // Abre el programa de correo del visitante. No hay confirmación posible:
+  // no podemos saber si la persona envía el email, así que no se muestra ninguna.
+  function crlf(text) { return text.replace(/\r?\n/g, '\r\n'); }
+
+  function abrirCorreo(asunto, cuerpo) {
+    var url = 'mailto:' + CONFIG.contacto.destino +
+      '?subject=' + encodeURIComponent(asunto) +
+      '&body=' + encodeURIComponent(crlf(cuerpo));
+    var link = document.createElement('a');
+    link.href = url;
+    link.click();
   }
 
   copyBtn.addEventListener('click', function () {
