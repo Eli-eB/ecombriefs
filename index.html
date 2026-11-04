@@ -113,7 +113,7 @@
   .header-bar {
     display: flex; align-items: center; justify-content: space-between;
     gap: 1rem;
-    min-height: 72px;
+    min-height: 76px;
     flex-wrap: wrap;
   }
   .brand {
@@ -153,25 +153,30 @@
   }
 
   /* Hero */
-  .hero { padding: 5.5rem 0 3.5rem; }
+  .hero { padding: 4rem 0 1.75rem; }
   .hero-inner { max-width: 1000px; }
   .eyebrow {
     display: inline-block;
     color: var(--accent);
     font-weight: 600; font-size: .95rem;
-    margin-bottom: 1.1rem;
+    margin-bottom: .9rem;
   }
+  /* ~48 px a 900 px de ancho, ~56 px a 1100 px, 60 px desde ~1200 px. */
   .hero h1 {
-    font-size: clamp(2.2rem, 1.2rem + 4.4vw, 3.75rem);
+    font-size: clamp(2.2rem, .75rem + 4vw, 3.75rem);
     font-weight: 750;
     letter-spacing: -0.025em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
   }
-  .hero h1 span { display: block; }
-  .hero-text { font-size: clamp(1.0625rem, 1rem + .3vw, 1.2rem); color: var(--muted); max-width: 680px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
-  .microcopy { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
-  @media (max-width: 720px) { .hero { padding: 3.5rem 0 2.5rem; } }
+  .hero h1 span { text-wrap: balance; }
+  /* Cada frase en su línea solo cuando hay ancho; en móvil el texto fluye. */
+  @media (min-width: 721px) { .hero h1 span { display: block; } }
+  .hero-text { font-size: clamp(1.125rem, 1rem + .35vw, 1.25rem); line-height: 1.55; color: var(--muted); max-width: 700px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+  .hero-actions .btn { min-height: 54px; padding: .8rem 1.5rem; font-size: 1.0625rem; }
+  .microcopy { color: var(--muted); font-size: .95rem; margin-top: .9rem; }
+  @media (max-width: 720px) { .hero { padding: 2.5rem 0 2rem; } }
 
   /* Secciones */
   .section { padding: 5rem 0; }
@@ -182,16 +187,18 @@
   .section-alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
   /* Demo */
-  .demo-section { padding-top: 1rem; }
+  .demo-section { padding-top: 1.25rem; }
+  .demo-section .section-head { max-width: 900px; margin-bottom: 1.25rem; }
+  .demo-section .section-head h2 { margin-bottom: .6rem; }
   .demo-shell {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: calc(var(--radius) + 6px);
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem 1.5rem;
   }
   .demo-toolbar {
-    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
-    gap: 1rem; margin-bottom: 1.5rem;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 1rem; margin-bottom: 1.25rem;
   }
   .demo-label {
     display: inline-flex; align-items: center; gap: .45rem;
@@ -201,7 +208,9 @@
     font-size: .875rem; font-weight: 600;
   }
   .scenario-group { display: flex; flex-wrap: wrap; gap: .5rem; }
-  .scenario-group-label { width: 100%; font-size: .9rem; color: var(--muted); margin-bottom: .1rem; }
+  .scenario-group { align-items: center; }
+  .scenario-group-label { font-size: .9rem; color: var(--muted); margin-right: .25rem; }
+  @media (max-width: 560px) { .scenario-group-label { width: 100%; } }
   .scenario-btn {
     font: inherit; font-size: .975rem; font-weight: 600;
     min-height: 44px; padding: .5rem 1rem;
