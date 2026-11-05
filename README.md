@@ -13,7 +13,7 @@ HTML estático sin paso de compilación, alojado en Cloudflare Pages.
 
 ## Portada
 
-- `index.html` contiene la landing completa, con estilos y script dentro del propio archivo. No usa librerías ni scripts de terceros; la única petición externa es el envío del formulario a Web3Forms.
+- `index.html` contiene la landing completa y su script. Los estilos están en `assets/css/site.css`, compartidos con las páginas legales. No usa librerías ni scripts de terceros; la única petición externa es el envío del formulario a Web3Forms.
 - `es/index.html` redirige a la portada.
 - La demostración de email usa datos ficticios locales. No conecta Shopify, correo, transportistas ni modelos de IA.
 
@@ -37,6 +37,16 @@ Al final de `index.html` está el objeto `CONFIG`:
 - `CONFIG.contacto.destino`: `hola@ecombriefs.ai`, la dirección que se muestra como alternativa si el envío falla.
 - `CONFIG.contacto.timeoutMs`: tiempo máximo de espera del envío (15 s).
 
+## Identidad visual
+
+- Dirección: «información ordenada, atención bajo control». Guía interna con logo, colores, tipografía y componentes en `marca/index.html` (con `noindex`, sin enlace desde la web pública).
+- Estilos: `assets/css/site.css`. Colores, radios, espacios, tamaños y sombras están en variables CSS en `:root`.
+- Tipografía: Manrope variable (SIL OFL), alojada en `assets/fonts/`. No se carga nada de Google Fonts, así que la política de cookies no cambia.
+- Logo: `assets/brand/` (SVG con texto convertido a trazados, PNG y PDF). Versión editable y script generador en `assets/brand/fuente/`.
+- Favicon: `favicon.svg`, `favicon.ico` y `apple-touch-icon.png` en la raíz.
+- Imagen para compartir: `assets/og/ecombriefs-og.png` (1200 × 630).
+- Los archivos de `images/` son el logo anterior; ya no se usan en la web y se conservan como referencia.
+
 ## Formulario de contacto
 
 Se envía con Web3Forms, sin servidor propio:
@@ -54,7 +64,7 @@ No se guarda nada en el navegador (ni `localStorage` ni cookies).
 
 ## Páginas legales
 
-- `aviso-legal.html`, `privacidad.html` y `cookies.html`, con el mismo estilo que la portada. El texto de privacidad básico está junto al formulario de `index.html`.
+- `aviso-legal.html`, `privacidad.html` y `cookies.html`, con la misma hoja de estilos que la portada (`assets/css/site.css`). El texto de privacidad básico está junto al formulario de `index.html`.
 - Si en el futuro hay que dejar un dato pendiente, se marca como `[ENTRE_CORCHETES]` resaltado en amarillo (`<mark class="pendiente">`). Ahora no queda ninguno.
 - La política de privacidad identifica a Cloudflare, Inc. como proveedor de alojamiento. Si cambia el alojamiento, hay que actualizarla, igual que el texto junto al formulario.
 - `privacy.html`, `terms.html`, `es/privacy.html` y `es/terms.html` redirigen a la página nueva correspondiente.
