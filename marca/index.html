@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guía de marca (interna) | EcomBriefs</title>
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  /* Solo para esta guía interna */
+  .g-section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+  .g-section:first-of-type { border-top: 0; }
+  .g-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .g-tile { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .g-tile .stage { min-height: 170px; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .g-tile .stage img { max-width: 100%; height: auto; }
+  .g-tile .cap { padding: .8rem 1rem; font-size: var(--fs-ui); border-top: 1px solid var(--border); display: grid; gap: .15rem; }
+  .g-tile .cap a { font-weight: 600; }
+  .g-tile .cap span { color: var(--muted); font-size: .875rem; }
+  .stage.dark { background: var(--dark-bg); }
+  .stage.green { background: var(--green); }
+  .stage.light { background: var(--bg); }
+  .g-sizes { display: flex; flex-wrap: wrap; align-items: end; gap: 2rem; }
+  .g-sizes figure { margin: 0; display: grid; gap: .5rem; justify-items: center; font-size: .875rem; color: var(--muted); }
+  .g-sizes img { image-rendering: auto; }
+  .tab-mock { display: inline-flex; align-items: center; gap: .5rem; background: #DEE3E0; border-radius: 10px 10px 0 0; padding: .55rem .9rem; font-size: .8125rem; color: var(--ink); }
+  .tab-mock.dark { background: #2B2F2E; color: #E8ECEA; }
+  .swatches { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .swatch { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .swatch .chip { height: 88px; display: flex; align-items: end; padding: .6rem .8rem; font-weight: 700; font-size: .875rem; }
+  .swatch .meta { padding: .75rem .9rem; font-size: .875rem; display: grid; gap: .2rem; }
+  .swatch .meta code { font-size: .8125rem; color: var(--ink); }
+  .swatch .meta span { color: var(--muted); }
+  .type-row { display: grid; grid-template-columns: 180px 1fr; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+  .type-row:last-child { border-bottom: 0; }
+  .type-row .spec { font-size: .8125rem; color: var(--muted); }
+  @media (max-width: 640px) { .type-row { grid-template-columns: 1fr; gap: .4rem; } }
+  .clear-demo { position: relative; display: inline-block; padding: 26px; background:
+      repeating-linear-gradient(45deg, rgba(22,95,76,.08) 0 6px, transparent 6px 12px); border: 1px dashed var(--green); border-radius: 4px; }
+  .clear-demo img { display: block; background: var(--bg); }
+  .rules { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .rules ul { margin: .5rem 0 0; padding-left: 1.1rem; }
+  .rules li { margin-bottom: .35rem; }
+  .comp-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1.25rem; }
+  .sig { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #172D27; border-top: 1px solid var(--border); padding-top: 14px; }
+  .sig img { display: block; width: 160px; height: auto; margin-bottom: 8px; }
+  .sig a { color: #165F4C; }
+  .proposal { aspect-ratio: 210 / 297; max-width: 300px; background: #fff; border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .proposal .brand-logo { height: 20px; align-self: flex-start; }
+  .proposal h3 { font-size: 1.35rem; letter-spacing: -0.02em; }
+  .proposal .line { height: 6px; border-radius: 3px; background: var(--border); margin-top: 8px; }
+  .proposal .bar { height: 6px; background: var(--green); margin: 0 -24px -28px; }
+  .pending-note { font-size: .875rem; color: var(--amber); background: var(--amber-soft); border: 1px solid var(--amber-border); border-radius: var(--radius-sm); padding: .75rem .9rem; }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido principal</a>
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 215.83 36" aria-hidden="true" focusable="false"><path class="sym" d="M0 2.5A2.5 2.5 0 0 1 2.5 0L31.5 0A2.5 2.5 0 0 1 34 2.5L34 5.5A2.5 2.5 0 0 1 31.5 8L9.25 8A1.25 1.25 0 0 0 8 9.25L8 26.75A1.25 1.25 0 0 0 9.25 28L27.5 28A2.5 2.5 0 0 1 30 30.5L30 33.5A2.5 2.5 0 0 1 27.5 36L2.5 36A2.5 2.5 0 0 1 0 33.5Z"/><path class="sym" d="M14 16.5A2.5 2.5 0 0 1 16.5 14L25.5 14A2.5 2.5 0 0 1 28 16.5L28 19.5A2.5 2.5 0 0 1 25.5 22L16.5 22A2.5 2.5 0 0 1 14 19.5Z"/><path class="word" d="M49.19 29.25V6.75H63.72V10.28H52.95V15.83H61.84V19.36H52.95V25.72H63.72V29.25ZM74.42 29.72Q71.82 29.72 69.97 28.55Q68.12 27.39 67.14 25.38Q66.16 23.36 66.16 20.81Q66.16 18.23 67.18 16.21Q68.19 14.2 70.05 13.05Q71.91 11.91 74.47 11.91Q77.35 11.91 79.34 13.35Q81.34 14.79 81.93 17.29L78.18 18.32Q77.75 16.95 76.73 16.19Q75.72 15.43 74.42 15.43Q72.95 15.43 72 16.13Q71.05 16.83 70.6 18.05Q70.15 19.27 70.14 20.81Q70.15 23.22 71.23 24.71Q72.3 26.19 74.42 26.19Q75.93 26.19 76.79 25.5Q77.66 24.81 78.1 23.52L81.93 24.37Q81.16 26.95 79.21 28.33Q77.25 29.72 74.42 29.72ZM91.69 29.72Q89.15 29.72 87.27 28.58Q85.38 27.44 84.34 25.43Q83.3 23.42 83.3 20.81Q83.3 18.16 84.36 16.16Q85.42 14.15 87.31 13.03Q89.2 11.91 91.69 11.91Q94.23 11.91 96.13 13.05Q98.02 14.18 99.07 16.19Q100.11 18.2 100.11 20.81Q100.11 23.44 99.06 25.45Q98.01 27.46 96.11 28.59Q94.22 29.72 91.69 29.72ZM91.69 26.19Q93.93 26.19 95.03 24.69Q96.13 23.18 96.13 20.81Q96.13 18.36 95.02 16.89Q93.9 15.43 91.69 15.43Q90.18 15.43 89.2 16.11Q88.23 16.8 87.75 18.01Q87.28 19.21 87.28 20.81Q87.28 23.27 88.4 24.73Q89.52 26.19 91.69 26.19ZM123.44 29.25 123.44 19.01Q123.44 17.26 122.58 16.28Q121.72 15.31 120.26 15.31Q119.35 15.31 118.63 15.73Q117.91 16.15 117.49 16.95Q117.07 17.74 117.07 18.86L115.39 17.88Q115.38 16.12 116.18 14.78Q116.99 13.45 118.36 12.7Q119.73 11.96 121.42 11.96Q124.22 11.96 125.71 13.63Q127.2 15.31 127.2 18.05L127.2 29.25ZM103.15 29.25V12.38H106.47V17.61H106.93V29.25ZM113.31 29.25 113.31 19.04Q113.31 17.28 112.45 16.3Q111.59 15.31 110.11 15.31Q108.68 15.31 107.81 16.29Q106.93 17.28 106.93 18.86L105.26 17.74Q105.26 16.09 106.07 14.78Q106.88 13.48 108.26 12.72Q109.64 11.96 111.36 11.96Q113.26 11.96 114.52 12.76Q115.79 13.57 116.43 14.95Q117.07 16.33 117.07 18.07L117.06 29.25ZM130.89 29.25V6.75H139.81Q142.09 6.75 143.55 7.67Q145.02 8.58 145.73 10Q146.44 11.42 146.44 12.93Q146.44 14.8 145.56 16.1Q144.68 17.39 143.16 17.84L143.15 17.06Q145.28 17.55 146.39 19.07Q147.49 20.6 147.49 22.56Q147.49 24.56 146.73 26.06Q145.96 27.57 144.45 28.41Q142.94 29.25 140.72 29.25ZM134.7 25.7H140.25Q141.24 25.7 142.01 25.3Q142.79 24.9 143.24 24.18Q143.68 23.45 143.68 22.45Q143.68 21.54 143.29 20.82Q142.9 20.1 142.16 19.68Q141.41 19.26 140.35 19.26H134.7ZM134.7 15.73H139.76Q140.57 15.73 141.21 15.42Q141.86 15.11 142.24 14.51Q142.61 13.9 142.61 12.99Q142.61 11.82 141.86 11.05Q141.1 10.27 139.76 10.27H134.7ZM150.23 29.25V12.38H153.56V16.48L153.16 15.95Q153.47 15.11 154 14.41Q154.52 13.71 155.25 13.26Q155.87 12.84 156.63 12.6Q157.39 12.37 158.18 12.31Q158.98 12.26 159.74 12.38V15.89Q158.98 15.67 158.01 15.75Q157.04 15.84 156.24 16.29Q155.47 16.72 154.98 17.37Q154.49 18.03 154.26 18.86Q154.02 19.7 154.02 20.68V29.25ZM162.64 9.82V6.36H166.4V9.82ZM162.64 29.25V12.38H166.4V29.25ZM178.39 29.72Q175.83 29.72 173.89 28.61Q171.96 27.5 170.87 25.53Q169.78 23.56 169.78 20.99Q169.78 18.23 170.85 16.19Q171.91 14.15 173.8 13.03Q175.69 11.91 178.18 11.91Q180.79 11.91 182.63 13.13Q184.47 14.35 185.36 16.59Q186.26 18.82 186.03 21.86H182.3V20.49Q182.28 17.73 181.33 16.47Q180.38 15.2 178.33 15.2Q176.02 15.2 174.89 16.63Q173.77 18.06 173.77 20.81Q173.77 23.38 174.89 24.79Q176.02 26.19 178.18 26.19Q179.57 26.19 180.57 25.57Q181.58 24.95 182.13 23.79L185.85 24.91Q184.88 27.19 182.86 28.46Q180.83 29.72 178.39 29.72ZM172.58 21.86V19.02H184.19V21.86ZM190.63 29.25V12.11Q190.63 11.47 190.67 10.7Q190.71 9.93 190.94 9.16Q191.16 8.39 191.73 7.76Q192.45 6.97 193.29 6.66Q194.12 6.35 194.93 6.32Q195.74 6.28 196.36 6.28H198.47V9.34H196.52Q195.44 9.34 194.92 9.88Q194.39 10.42 194.39 11.3V29.25ZM187.91 15.33V12.38H198.47V15.33ZM207.11 29.71Q203.98 29.71 202.03 28.31Q200.08 26.91 199.66 24.35L203.5 23.77Q203.79 25.02 204.81 25.73Q205.83 26.45 207.38 26.45Q208.73 26.45 209.47 25.91Q210.22 25.38 210.22 24.43Q210.22 23.86 209.94 23.51Q209.67 23.16 208.75 22.83Q207.83 22.5 205.92 21.99Q203.8 21.44 202.55 20.79Q201.3 20.14 200.75 19.25Q200.21 18.36 200.21 17.09Q200.21 15.52 201.03 14.35Q201.85 13.18 203.35 12.54Q204.84 11.91 206.85 11.91Q208.81 11.91 210.34 12.52Q211.86 13.13 212.8 14.25Q213.74 15.37 213.95 16.89L210.1 17.58Q209.96 16.5 209.13 15.88Q208.29 15.25 206.91 15.17Q205.58 15.1 204.77 15.58Q203.95 16.05 203.95 16.9Q203.95 17.4 204.28 17.74Q204.61 18.08 205.6 18.42Q206.59 18.76 208.56 19.26Q210.59 19.78 211.79 20.45Q213 21.11 213.54 22.03Q214.07 22.95 214.07 24.26Q214.07 26.8 212.22 28.26Q210.37 29.71 207.11 29.71Z"/></svg><span class="visually-hidden">EcomBriefs, ir a la portada</span></a>
+    <p class="tag-optional">Guía interna de marca · no enlazada desde la web</p>
+  </div>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Identidad visual · v1 · noviembre 2026</p>
+      <h1 style="font-size: clamp(2rem, 1rem + 3vw, 3rem)"><span>Información ordenada,</span> <span>atención bajo control.</span></h1>
+      <p class="hero-text">Referencia rápida para usar el logo, los colores, la tipografía y los componentes de EcomBriefs en la web, propuestas comerciales y la firma de email.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <!-- LOGO -->
+    <section class="g-section" aria-labelledby="g-logo">
+      <div class="section-head"><h2 id="g-logo">Logo</h2>
+        <p>Símbolo: una «E» geométrica y abierta. Un eje vertical da unidad a tres líneas de longitudes distintas; la central se separa del eje para sugerir información organizada en bloques. El nombre se escribe siempre «EcomBriefs», en Manrope 700 convertida a trazados.</p></div>
+      <div class="g-grid">
+        <div class="g-tile"><div class="stage light"><img src="../assets/brand/ecombriefs-logo.svg" alt="Logo de EcomBriefs sobre fondo claro" width="260"></div>
+          <div class="cap"><a href="../assets/brand/ecombriefs-logo.svg">ecombriefs-logo.svg</a><span>Principal · fondos claros</span></div></div>
+        <div class="g-tile"><div class="stage dark"><img src="../assets/brand/ecombriefs-logo-fondo-oscuro.svg" alt="Logo de EcomBriefs sobre fondo oscuro" width="260"></div>
+          <div class="cap"><a href="../assets/brand/ecombriefs-logo-fondo-oscuro.svg">ecombriefs-logo-fondo-oscuro.svg</a><span>Fondos oscuros (#10241F o más oscuros)</span></div></div>
+        <div class="g-tile"><div class="stage" style="background:#fff"><img src="../assets/brand/ecombriefs-logo-mono-oscuro.svg" alt="Logo de EcomBriefs en un solo color oscuro" width="260"></div>
+          <div class="cap"><a href="../assets/brand/ecombriefs-logo-mono-oscuro.svg">ecombriefs-logo-mono-oscuro.svg</a><span>Un color · impresión, sellos, documentos en blanco y negro</span></div></div>
+        <div class="g-tile"><div class="stage green"><img src="../assets/brand/ecombriefs-logo-mono-blanco.svg" alt="Logo de EcomBriefs en blanco sobre verde" width="260"></div>
+          <div class="cap"><a href="../assets/brand/ecombriefs-logo-mono-blanco.svg">ecombriefs-logo-mono-blanco.svg</a><span>Un color · sobre verde de marca o fotografía oscura</span></div></div>
+        <div class="g-tile"><div class="stage light"><img src="../assets/brand/ecombriefs-simbolo.svg" alt="Símbolo de EcomBriefs" width="96"></div>
+          <div class="cap"><a href="../assets/brand/ecombriefs-simbolo.svg">ecombriefs-simbolo.svg</a><span>Símbolo solo · avatar, sello, espacios cuadrados</span></div></div>
+        <div class="g-tile"><div class="stage light"><img src="../favicon.svg" alt="Favicon de EcomBriefs" width="96" height="96"></div>
+          <div class="cap"><a href="../favicon.svg">favicon.svg</a><span>Símbolo simplificado en contenedor, ajustado a la rejilla de 16 px</span></div></div>
+      </div>
+    </section>
+
+    <!-- TAMAÑOS -->
+    <section class="g-section" aria-labelledby="g-sizes">
+      <div class="section-head"><h2 id="g-sizes">Tamaños pequeños y favicon</h2>
+        <p>Comprobado a 16, 24 y 32 px. A 16 px se usa siempre el favicon: líneas de 2 px y aperturas de 2 px alineadas a píxel entero. Tamaño mínimo del logo horizontal: 96 px de ancho en pantalla, 25 mm impreso.</p></div>
+      <div class="g-sizes">
+        <figure><img src="../favicon.svg" width="16" height="16" alt=""><figcaption>Favicon 16</figcaption></figure>
+        <figure><img src="../favicon.svg" width="24" height="24" alt=""><figcaption>Favicon 24</figcaption></figure>
+        <figure><img src="../favicon.svg" width="32" height="32" alt=""><figcaption>Favicon 32</figcaption></figure>
+        <figure><img src="../assets/brand/ecombriefs-simbolo.svg" height="16" alt=""><figcaption>Símbolo 16</figcaption></figure>
+        <figure><img src="../assets/brand/ecombriefs-simbolo.svg" height="24" alt=""><figcaption>Símbolo 24</figcaption></figure>
+        <figure><img src="../assets/brand/ecombriefs-simbolo.svg" height="32" alt=""><figcaption>Símbolo 32</figcaption></figure>
+        <figure><img src="../assets/brand/ecombriefs-logo.svg" height="16" alt=""><figcaption>Logo 16 de alto</figcaption></figure>
+        <figure><img src="../assets/brand/ecombriefs-logo.svg" height="24" alt=""><figcaption>Logo 24 de alto</figcaption></figure>
+      </div>
+      <div class="comp-row" style="margin-top:1.75rem">
+        <span class="tab-mock"><img src="../favicon.svg" width="16" height="16" alt="">EcomBriefs · Automatización…</span>
+        <span class="tab-mock dark"><img src="../favicon.svg" width="16" height="16" alt="">EcomBriefs · Automatización…</span>
+      </div>
+    </section>
+
+    <!-- ESPACIO -->
+    <section class="g-section" aria-labelledby="g-clear">
+      <div class="section-head"><h2 id="g-clear">Espacio de protección y proporciones</h2>
+        <p>Deja alrededor del logo, como mínimo, el ancho del eje vertical del símbolo (≈ ¼ de su altura). La distancia entre símbolo y nombre es fija: no la cambies ni recoloques las piezas.</p></div>
+      <div class="clear-demo"><img src="../assets/brand/ecombriefs-logo.svg" alt="Logo con su espacio de protección marcado" width="300"></div>
+      <p class="card-foot">Rejilla del símbolo: 36 de alto · líneas de 8 · aperturas de 6 · esquinas de 2,5 (exteriores) y 1,25 (interiores).</p>
+    </section>
+
+    <!-- COLOR -->
+    <section class="g-section" aria-labelledby="g-color">
+      <div class="section-head"><h2 id="g-color">Colores</h2>
+        <p>Base verde y clara. Contraste calculado con la fórmula WCAG 2.x sobre las combinaciones que se usan en la web.</p></div>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#165F4C;color:#fff">Verde principal</div><div class="meta"><code>#165F4C · var(--green)</code><span>Marca, botones, enlaces</span></div></div>
+<div class="swatch"><div class="chip" style="background:#0F4A3B;color:#fff">Verde oscuro</div><div class="meta"><code>#0F4A3B · var(--green-dark)</code><span>Hover de botones y enlaces</span></div></div>
+<div class="swatch"><div class="chip" style="background:#172D27;color:#fff">Texto principal</div><div class="meta"><code>#172D27 · var(--ink)</code><span>Titulares y texto</span></div></div>
+<div class="swatch"><div class="chip" style="background:#52645B;color:#fff">Texto secundario</div><div class="meta"><code>#52645B · var(--muted)</code><span>Descripciones, notas</span></div></div>
+<div class="swatch"><div class="chip" style="background:#F7F8F4;color:#172D27;border-bottom:1px solid var(--border)">Fondo cálido</div><div class="meta"><code>#F7F8F4 · var(--bg)</code><span>Fondo general</span></div></div>
+<div class="swatch"><div class="chip" style="background:#FFFFFF;color:#172D27;border-bottom:1px solid var(--border)">Superficie</div><div class="meta"><code>#FFFFFF · var(--surface)</code><span>Tarjetas</span></div></div>
+<div class="swatch"><div class="chip" style="background:#E8F0EB;color:#0F4A3B">Verde suave</div><div class="meta"><code>#E8F0EB · var(--green-soft)</code><span>Superficies verdes, demo</span></div></div>
+<div class="swatch"><div class="chip" style="background:#D7E0D9;color:#172D27">Borde suave</div><div class="meta"><code>#D7E0D9 · var(--border)</code><span>Bordes decorativos (no para controles)</span></div></div>
+<div class="swatch"><div class="chip" style="background:#7A8C83;color:#10241F">Borde de campos</div><div class="meta"><code>#7A8C83 · var(--field-border)</code><span>Campos y controles (3,56:1 sobre blanco)</span></div></div>
+<div class="swatch"><div class="chip" style="background:#936014;color:#fff">Ámbar</div><div class="meta"><code>#936014 · var(--amber)</code><span>Texto ámbar · «Revisión necesaria»</span></div></div>
+<div class="swatch"><div class="chip" style="background:#FFF5DF;color:#936014">Ámbar claro</div><div class="meta"><code>#FFF5DF · var(--amber-soft)</code><span>«Pendiente de revisión», avisos</span></div></div>
+<div class="swatch"><div class="chip" style="background:#10241F;color:#fff">Fondo oscuro</div><div class="meta"><code>#10241F · var(--dark-bg)</code><span>Pie, logo en negativo</span></div></div>
+<div class="swatch"><div class="chip" style="background:#8FD3B6;color:#10241F">Verde sobre oscuro</div><div class="meta"><code>#8FD3B6 · var(--green-on-dark)</code><span>Símbolo y foco sobre oscuro</span></div></div>
+      </div>
+      <div class="card" style="margin-top:1.5rem">
+        <h3 class="card-title">Combinaciones de texto comprobadas</h3>
+        <dl class="data-list"><div class="data-row"><dt>Texto principal / fondo <span style="color:#172D27;background:#F7F8F4;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>13.66:1</dd></div><div class="data-row"><dt>Texto principal / tarjeta <span style="color:#172D27;background:#FFFFFF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>14.57:1</dd></div><div class="data-row"><dt>Secundario / fondo <span style="color:#52645B;background:#F7F8F4;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>5.91:1</dd></div><div class="data-row"><dt>Secundario / tarjeta <span style="color:#52645B;background:#FFFFFF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>6.30:1</dd></div><div class="data-row"><dt>Secundario / verde suave <span style="color:#52645B;background:#E8F0EB;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>5.43:1</dd></div><div class="data-row"><dt>Enlace verde / fondo <span style="color:#165F4C;background:#F7F8F4;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>7.09:1</dd></div><div class="data-row"><dt>Enlace verde / tarjeta <span style="color:#165F4C;background:#FFFFFF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>7.57:1</dd></div><div class="data-row"><dt>Blanco / botón verde <span style="color:#FFFFFF;background:#165F4C;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>7.57:1</dd></div><div class="data-row"><dt>Blanco / botón hover <span style="color:#FFFFFF;background:#0F4A3B;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>10.18:1</dd></div><div class="data-row"><dt>Verde oscuro / verde suave <span style="color:#0F4A3B;background:#E8F0EB;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>8.77:1</dd></div><div class="data-row"><dt>Ámbar / ámbar claro (Pendiente) <span style="color:#936014;background:#FFF5DF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>4.94:1</dd></div><div class="data-row"><dt>Blanco / ámbar (Revisión necesaria) <span style="color:#FFFFFF;background:#936014;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>5.35:1</dd></div><div class="data-row"><dt>Error / tarjeta <span style="color:#A3271B;background:#FFFFFF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>7.33:1</dd></div><div class="data-row"><dt>Texto pie / fondo oscuro <span style="color:#BFCEC6;background:#10241F;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>9.94:1</dd></div><div class="data-row"><dt>Blanco / fondo oscuro <span style="color:#FFFFFF;background:#10241F;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>16.23:1</dd></div><div class="data-row"><dt>Verde claro / fondo oscuro <span style="color:#8FD3B6;background:#10241F;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>9.40:1</dd></div><div class="data-row"><dt>Borde de campo / tarjeta (no texto, ≥ 3:1) <span style="color:#7A8C83;background:#FFFFFF;padding:0 .35em;border-radius:4px;border:1px solid var(--border)">Aa</span></dt><dd>3.56:1</dd></div></dl>
+      </div>
+      <p class="card-foot">El color nunca comunica un estado por sí solo: los estados llevan siempre texto e icono.</p>
+    </section>
+
+    <!-- TIPOGRAFÍA -->
+    <section class="g-section" aria-labelledby="g-type">
+      <div class="section-head"><h2 id="g-type">Tipografía</h2>
+        <p>Una sola familia: <strong>Manrope</strong> (licencia SIL OFL), variable 200–800, alojada en <code>assets/fonts/</code>. Sin peticiones a servicios externos. Sustituye a la pila de fuentes del sistema que usaba la web, que no aportaba personalidad.</p></div>
+      <div class="type-row"><span class="spec">Titular principal<br>780 · clamp 36–58 px · −0,032 em</span><span style="font-size:var(--fs-display);font-weight:780;letter-spacing:-.032em;line-height:1.06">Menos tiempo buscando pedidos.</span></div>
+      <div class="type-row"><span class="spec">Título de sección<br>750 · clamp 28–38 px · −0,025 em</span><span style="font-size:var(--fs-h2);font-weight:750;letter-spacing:-.025em;line-height:1.15">Implantación y mantenimiento</span></div>
+      <div class="type-row"><span class="spec">Subtítulo / tarjeta<br>750 · 19 px</span><span style="font-size:var(--fs-h3);font-weight:750">Configuramos y probamos</span></div>
+      <div class="type-row"><span class="spec">Texto de lectura<br>450 · 17 px · 1,6</span><span>Conectamos Shopify con tu canal de atención para recuperar los datos del pedido y preparar una respuesta.</span></div>
+      <div class="type-row"><span class="spec">Etiqueta de interfaz<br>600 · 15 px</span><span style="font-size:var(--fs-ui);font-weight:600">Canal de atención</span></div>
+      <div class="type-row"><span class="spec">Rótulo<br>700 · 13 px · mayúsculas · +0,07 em</span><span class="card-title" style="margin:0">Borrador para revisar</span></div>
+      <div class="type-row"><span class="spec">Botón<br>600 · 16 px</span><span><span class="btn">Consultar la implantación</span></span></div>
+      <div class="type-row"><span class="spec">Notas y condiciones<br>450 · 15 px · 1,55 · secundario</span><span class="price-note" style="border:0;padding:0">Las licencias y el consumo de herramientas se presupuestan aparte. Importes antes de impuestos.</span></div>
+    </section>
+
+    <!-- COMPONENTES -->
+    <section class="g-section" aria-labelledby="g-comp">
+      <div class="section-head"><h2 id="g-comp">Componentes principales</h2>
+        <p>Iconos: una sola familia de trazo (2 px sobre 20 px, extremos redondeados). Radios: 6 · 10 · 14 · 20 px y pastilla. Sombras discretas.</p></div>
+      <div class="comp-row"><a class="btn" href="#g-comp">Botón principal</a><a class="btn btn-secondary" href="#g-comp">Botón secundario</a><a class="btn btn-small" href="#g-comp">Botón pequeño</a></div>
+      <div class="comp-row"><span class="status status-pending">Estado: Pendiente de revisión</span><span class="status status-attention">Estado: Revisión necesaria</span><span class="tag-optional">Opcional</span><span class="demo-label">Demostración · Datos ficticios</span><span class="eyebrow" style="margin:0">Rótulo con líneas</span></div>
+      <div class="g-grid">
+        <article class="card"><h3 class="card-title">Información del pedido</h3>
+          <dl class="data-list"><div class="data-row"><dt>Pedido</dt><dd>#1048</dd></div><div class="data-row"><dt>Estado</dt><dd>En tránsito</dd></div></dl>
+          <p class="notice">Aviso: ejemplo de aviso con icono y texto.</p></article>
+        <div class="card"><div class="field"><label for="g-f1">Campo de formulario <span class="req">(obligatorio)</span></label><span class="hint">Texto de ayuda</span><input type="text" id="g-f1"></div>
+          <div class="field" style="margin:0"><label for="g-f2">Campo con error</label><input type="text" id="g-f2" aria-invalid="true" aria-describedby="g-f2-e" value="mal"><p class="error" id="g-f2-e">Revisa el email: debe tener un formato como nombre@empresa.com.</p></div></div>
+        <ol class="steps" style="grid-template-columns:1fr"><li class="step"><h3>Paso de proceso</h3><p>Número en bloque redondeado y línea de conexión en escritorio.</p></li></ol>
+      </div>
+    </section>
+
+    <!-- USOS -->
+    <section class="g-section" aria-labelledby="g-uses">
+      <div class="section-head"><h2 id="g-uses">Ejemplos de uso</h2></div>
+      <div class="g-grid">
+        <div class="card"><h3 class="card-title">Firma de email</h3>
+          <div class="sig"><img src="../assets/brand/png/ecombriefs-firma-email-400.png" alt="EcomBriefs" width="160" height="27">
+            Eli P. Malagrida<br><a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a> · <a href="https://ecombriefs.io">ecombriefs.io</a></div>
+          <p class="card-foot">Usa <code>png/ecombriefs-firma-email-400.png</code> mostrado a 160 px de ancho (nitidez en pantallas retina). Gmail no muestra SVG.</p></div>
+        <div class="card"><h3 class="card-title">Portada de propuesta comercial</h3>
+          <div class="proposal"><svg class="brand-logo" viewBox="0 0 215.83 36" aria-hidden="true" focusable="false"><path class="sym" d="M0 2.5A2.5 2.5 0 0 1 2.5 0L31.5 0A2.5 2.5 0 0 1 34 2.5L34 5.5A2.5 2.5 0 0 1 31.5 8L9.25 8A1.25 1.25 0 0 0 8 9.25L8 26.75A1.25 1.25 0 0 0 9.25 28L27.5 28A2.5 2.5 0 0 1 30 30.5L30 33.5A2.5 2.5 0 0 1 27.5 36L2.5 36A2.5 2.5 0 0 1 0 33.5Z"/><path class="sym" d="M14 16.5A2.5 2.5 0 0 1 16.5 14L25.5 14A2.5 2.5 0 0 1 28 16.5L28 19.5A2.5 2.5 0 0 1 25.5 22L16.5 22A2.5 2.5 0 0 1 14 19.5Z"/><path class="word" d="M49.19 29.25V6.75H63.72V10.28H52.95V15.83H61.84V19.36H52.95V25.72H63.72V29.25ZM74.42 29.72Q71.82 29.72 69.97 28.55Q68.12 27.39 67.14 25.38Q66.16 23.36 66.16 20.81Q66.16 18.23 67.18 16.21Q68.19 14.2 70.05 13.05Q71.91 11.91 74.47 11.91Q77.35 11.91 79.34 13.35Q81.34 14.79 81.93 17.29L78.18 18.32Q77.75 16.95 76.73 16.19Q75.72 15.43 74.42 15.43Q72.95 15.43 72 16.13Q71.05 16.83 70.6 18.05Q70.15 19.27 70.14 20.81Q70.15 23.22 71.23 24.71Q72.3 26.19 74.42 26.19Q75.93 26.19 76.79 25.5Q77.66 24.81 78.1 23.52L81.93 24.37Q81.16 26.95 79.21 28.33Q77.25 29.72 74.42 29.72ZM91.69 29.72Q89.15 29.72 87.27 28.58Q85.38 27.44 84.34 25.43Q83.3 23.42 83.3 20.81Q83.3 18.16 84.36 16.16Q85.42 14.15 87.31 13.03Q89.2 11.91 91.69 11.91Q94.23 11.91 96.13 13.05Q98.02 14.18 99.07 16.19Q100.11 18.2 100.11 20.81Q100.11 23.44 99.06 25.45Q98.01 27.46 96.11 28.59Q94.22 29.72 91.69 29.72ZM91.69 26.19Q93.93 26.19 95.03 24.69Q96.13 23.18 96.13 20.81Q96.13 18.36 95.02 16.89Q93.9 15.43 91.69 15.43Q90.18 15.43 89.2 16.11Q88.23 16.8 87.75 18.01Q87.28 19.21 87.28 20.81Q87.28 23.27 88.4 24.73Q89.52 26.19 91.69 26.19ZM123.44 29.25 123.44 19.01Q123.44 17.26 122.58 16.28Q121.72 15.31 120.26 15.31Q119.35 15.31 118.63 15.73Q117.91 16.15 117.49 16.95Q117.07 17.74 117.07 18.86L115.39 17.88Q115.38 16.12 116.18 14.78Q116.99 13.45 118.36 12.7Q119.73 11.96 121.42 11.96Q124.22 11.96 125.71 13.63Q127.2 15.31 127.2 18.05L127.2 29.25ZM103.15 29.25V12.38H106.47V17.61H106.93V29.25ZM113.31 29.25 113.31 19.04Q113.31 17.28 112.45 16.3Q111.59 15.31 110.11 15.31Q108.68 15.31 107.81 16.29Q106.93 17.28 106.93 18.86L105.26 17.74Q105.26 16.09 106.07 14.78Q106.88 13.48 108.26 12.72Q109.64 11.96 111.36 11.96Q113.26 11.96 114.52 12.76Q115.79 13.57 116.43 14.95Q117.07 16.33 117.07 18.07L117.06 29.25ZM130.89 29.25V6.75H139.81Q142.09 6.75 143.55 7.67Q145.02 8.58 145.73 10Q146.44 11.42 146.44 12.93Q146.44 14.8 145.56 16.1Q144.68 17.39 143.16 17.84L143.15 17.06Q145.28 17.55 146.39 19.07Q147.49 20.6 147.49 22.56Q147.49 24.56 146.73 26.06Q145.96 27.57 144.45 28.41Q142.94 29.25 140.72 29.25ZM134.7 25.7H140.25Q141.24 25.7 142.01 25.3Q142.79 24.9 143.24 24.18Q143.68 23.45 143.68 22.45Q143.68 21.54 143.29 20.82Q142.9 20.1 142.16 19.68Q141.41 19.26 140.35 19.26H134.7ZM134.7 15.73H139.76Q140.57 15.73 141.21 15.42Q141.86 15.11 142.24 14.51Q142.61 13.9 142.61 12.99Q142.61 11.82 141.86 11.05Q141.1 10.27 139.76 10.27H134.7ZM150.23 29.25V12.38H153.56V16.48L153.16 15.95Q153.47 15.11 154 14.41Q154.52 13.71 155.25 13.26Q155.87 12.84 156.63 12.6Q157.39 12.37 158.18 12.31Q158.98 12.26 159.74 12.38V15.89Q158.98 15.67 158.01 15.75Q157.04 15.84 156.24 16.29Q155.47 16.72 154.98 17.37Q154.49 18.03 154.26 18.86Q154.02 19.7 154.02 20.68V29.25ZM162.64 9.82V6.36H166.4V9.82ZM162.64 29.25V12.38H166.4V29.25ZM178.39 29.72Q175.83 29.72 173.89 28.61Q171.96 27.5 170.87 25.53Q169.78 23.56 169.78 20.99Q169.78 18.23 170.85 16.19Q171.91 14.15 173.8 13.03Q175.69 11.91 178.18 11.91Q180.79 11.91 182.63 13.13Q184.47 14.35 185.36 16.59Q186.26 18.82 186.03 21.86H182.3V20.49Q182.28 17.73 181.33 16.47Q180.38 15.2 178.33 15.2Q176.02 15.2 174.89 16.63Q173.77 18.06 173.77 20.81Q173.77 23.38 174.89 24.79Q176.02 26.19 178.18 26.19Q179.57 26.19 180.57 25.57Q181.58 24.95 182.13 23.79L185.85 24.91Q184.88 27.19 182.86 28.46Q180.83 29.72 178.39 29.72ZM172.58 21.86V19.02H184.19V21.86ZM190.63 29.25V12.11Q190.63 11.47 190.67 10.7Q190.71 9.93 190.94 9.16Q191.16 8.39 191.73 7.76Q192.45 6.97 193.29 6.66Q194.12 6.35 194.93 6.32Q195.74 6.28 196.36 6.28H198.47V9.34H196.52Q195.44 9.34 194.92 9.88Q194.39 10.42 194.39 11.3V29.25ZM187.91 15.33V12.38H198.47V15.33ZM207.11 29.71Q203.98 29.71 202.03 28.31Q200.08 26.91 199.66 24.35L203.5 23.77Q203.79 25.02 204.81 25.73Q205.83 26.45 207.38 26.45Q208.73 26.45 209.47 25.91Q210.22 25.38 210.22 24.43Q210.22 23.86 209.94 23.51Q209.67 23.16 208.75 22.83Q207.83 22.5 205.92 21.99Q203.8 21.44 202.55 20.79Q201.3 20.14 200.75 19.25Q200.21 18.36 200.21 17.09Q200.21 15.52 201.03 14.35Q201.85 13.18 203.35 12.54Q204.84 11.91 206.85 11.91Q208.81 11.91 210.34 12.52Q211.86 13.13 212.8 14.25Q213.74 15.37 213.95 16.89L210.1 17.58Q209.96 16.5 209.13 15.88Q208.29 15.25 206.91 15.17Q205.58 15.1 204.77 15.58Q203.95 16.05 203.95 16.9Q203.95 17.4 204.28 17.74Q204.61 18.08 205.6 18.42Q206.59 18.76 208.56 19.26Q210.59 19.78 211.79 20.45Q213 21.11 213.54 22.03Q214.07 22.95 214.07 24.26Q214.07 26.8 212.22 28.26Q210.37 29.71 207.11 29.71Z"/></svg><div><h3>Propuesta de implantación</h3><div class="line" style="width:80%"></div><div class="line" style="width:55%"></div></div><div class="bar"></div></div>
+          <p class="card-foot">En documentos usa <code>ecombriefs-logo.pdf</code> o el SVG principal.</p></div>
+        <div class="card"><h3 class="card-title">Imagen para compartir (1200 × 630)</h3>
+          <img src="../assets/og/ecombriefs-og.png" alt="Imagen para redes con el logo y el titular de la portada" width="1200" height="630" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border)"></div>
+      </div>
+      <div class="rules" style="margin-top:1.5rem">
+        <div class="card"><h3 class="card-title">Sí</h3><ul><li>Logo principal sobre #F7F8F4 o blanco.</li><li>Versión para fondo oscuro sobre #10241F.</li><li>Un color cuando solo haya una tinta.</li><li>Favicon para tamaños de 16 a 48 px.</li></ul></div>
+        <div class="card"><h3 class="card-title">No</h3><ul><li>Deformar, girar o cambiar la separación entre piezas.</li><li>Añadir eslóganes, sombras, degradados o contornos al logo.</li><li>Escribir «Ecombriefs», «ECOMBRIEFS» o «Ecom Briefs».</li><li>Usar el verde principal sobre fondos oscuros (contraste insuficiente).</li></ul></div>
+      </div>
+    </section>
+
+    <section class="g-section" aria-labelledby="g-files">
+      <div class="section-head"><h2 id="g-files">Archivos</h2></div>
+      <ul class="includes"><li><a href="../assets/brand/ecombriefs-logo-fondo-oscuro.svg">assets/brand/ecombriefs-logo-fondo-oscuro.svg</a></li><li><a href="../assets/brand/ecombriefs-logo-mono-blanco.svg">assets/brand/ecombriefs-logo-mono-blanco.svg</a></li><li><a href="../assets/brand/ecombriefs-logo-mono-oscuro.svg">assets/brand/ecombriefs-logo-mono-oscuro.svg</a></li><li><a href="../assets/brand/ecombriefs-logo.pdf">assets/brand/ecombriefs-logo.pdf</a></li><li><a href="../assets/brand/ecombriefs-logo.svg">assets/brand/ecombriefs-logo.svg</a></li><li><a href="../assets/brand/ecombriefs-simbolo-fondo-oscuro.svg">assets/brand/ecombriefs-simbolo-fondo-oscuro.svg</a></li><li><a href="../assets/brand/ecombriefs-simbolo-mono-blanco.svg">assets/brand/ecombriefs-simbolo-mono-blanco.svg</a></li><li><a href="../assets/brand/ecombriefs-simbolo-mono-oscuro.svg">assets/brand/ecombriefs-simbolo-mono-oscuro.svg</a></li><li><a href="../assets/brand/ecombriefs-simbolo.svg">assets/brand/ecombriefs-simbolo.svg</a></li><li><a href="../assets/brand/png/ecombriefs-firma-email-400.png">assets/brand/png/ecombriefs-firma-email-400.png</a></li><li><a href="../assets/brand/png/ecombriefs-logo-480.png">assets/brand/png/ecombriefs-logo-480.png</a></li><li><a href="../assets/brand/png/ecombriefs-logo-960.png">assets/brand/png/ecombriefs-logo-960.png</a></li><li><a href="../assets/brand/png/ecombriefs-logo-fondo-oscuro-960.png">assets/brand/png/ecombriefs-logo-fondo-oscuro-960.png</a></li><li><a href="../assets/brand/png/ecombriefs-simbolo-512.png">assets/brand/png/ecombriefs-simbolo-512.png</a></li><li><a href="../assets/brand/png/favicon-16.png">assets/brand/png/favicon-16.png</a></li><li><a href="../assets/brand/png/favicon-192.png">assets/brand/png/favicon-192.png</a></li><li><a href="../assets/brand/png/favicon-32.png">assets/brand/png/favicon-32.png</a></li><li><a href="../assets/brand/png/favicon-48.png">assets/brand/png/favicon-48.png</a></li><li><a href="../assets/brand/png/favicon-512.png">assets/brand/png/favicon-512.png</a></li><li><a href="../assets/brand/fuente/ecombriefs-logo-editable.svg">assets/brand/fuente/ecombriefs-logo-editable.svg</a></li><li><a href="../assets/brand/fuente/generar-logo.py">assets/brand/fuente/generar-logo.py</a></li><li><a href="../favicon.svg">favicon.svg</a></li><li><a href="../favicon.ico">favicon.ico</a></li><li><a href="../apple-touch-icon.png">apple-touch-icon.png</a></li><li><a href="../assets/og/ecombriefs-og.png">assets/og/ecombriefs-og.png</a></li><li><a href="../assets/fonts/manrope-latin-wght-normal.woff2">assets/fonts/manrope-latin-wght-normal.woff2</a></li><li><a href="../assets/css/site.css">assets/css/site.css</a></li></ul>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand-block"><svg class="footer-logo" viewBox="0 0 215.83 36" aria-hidden="true" focusable="false"><path class="sym" d="M0 2.5A2.5 2.5 0 0 1 2.5 0L31.5 0A2.5 2.5 0 0 1 34 2.5L34 5.5A2.5 2.5 0 0 1 31.5 8L9.25 8A1.25 1.25 0 0 0 8 9.25L8 26.75A1.25 1.25 0 0 0 9.25 28L27.5 28A2.5 2.5 0 0 1 30 30.5L30 33.5A2.5 2.5 0 0 1 27.5 36L2.5 36A2.5 2.5 0 0 1 0 33.5Z"/><path class="sym" d="M14 16.5A2.5 2.5 0 0 1 16.5 14L25.5 14A2.5 2.5 0 0 1 28 16.5L28 19.5A2.5 2.5 0 0 1 25.5 22L16.5 22A2.5 2.5 0 0 1 14 19.5Z"/><path class="word" d="M49.19 29.25V6.75H63.72V10.28H52.95V15.83H61.84V19.36H52.95V25.72H63.72V29.25ZM74.42 29.72Q71.82 29.72 69.97 28.55Q68.12 27.39 67.14 25.38Q66.16 23.36 66.16 20.81Q66.16 18.23 67.18 16.21Q68.19 14.2 70.05 13.05Q71.91 11.91 74.47 11.91Q77.35 11.91 79.34 13.35Q81.34 14.79 81.93 17.29L78.18 18.32Q77.75 16.95 76.73 16.19Q75.72 15.43 74.42 15.43Q72.95 15.43 72 16.13Q71.05 16.83 70.6 18.05Q70.15 19.27 70.14 20.81Q70.15 23.22 71.23 24.71Q72.3 26.19 74.42 26.19Q75.93 26.19 76.79 25.5Q77.66 24.81 78.1 23.52L81.93 24.37Q81.16 26.95 79.21 28.33Q77.25 29.72 74.42 29.72ZM91.69 29.72Q89.15 29.72 87.27 28.58Q85.38 27.44 84.34 25.43Q83.3 23.42 83.3 20.81Q83.3 18.16 84.36 16.16Q85.42 14.15 87.31 13.03Q89.2 11.91 91.69 11.91Q94.23 11.91 96.13 13.05Q98.02 14.18 99.07 16.19Q100.11 18.2 100.11 20.81Q100.11 23.44 99.06 25.45Q98.01 27.46 96.11 28.59Q94.22 29.72 91.69 29.72ZM91.69 26.19Q93.93 26.19 95.03 24.69Q96.13 23.18 96.13 20.81Q96.13 18.36 95.02 16.89Q93.9 15.43 91.69 15.43Q90.18 15.43 89.2 16.11Q88.23 16.8 87.75 18.01Q87.28 19.21 87.28 20.81Q87.28 23.27 88.4 24.73Q89.52 26.19 91.69 26.19ZM123.44 29.25 123.44 19.01Q123.44 17.26 122.58 16.28Q121.72 15.31 120.26 15.31Q119.35 15.31 118.63 15.73Q117.91 16.15 117.49 16.95Q117.07 17.74 117.07 18.86L115.39 17.88Q115.38 16.12 116.18 14.78Q116.99 13.45 118.36 12.7Q119.73 11.96 121.42 11.96Q124.22 11.96 125.71 13.63Q127.2 15.31 127.2 18.05L127.2 29.25ZM103.15 29.25V12.38H106.47V17.61H106.93V29.25ZM113.31 29.25 113.31 19.04Q113.31 17.28 112.45 16.3Q111.59 15.31 110.11 15.31Q108.68 15.31 107.81 16.29Q106.93 17.28 106.93 18.86L105.26 17.74Q105.26 16.09 106.07 14.78Q106.88 13.48 108.26 12.72Q109.64 11.96 111.36 11.96Q113.26 11.96 114.52 12.76Q115.79 13.57 116.43 14.95Q117.07 16.33 117.07 18.07L117.06 29.25ZM130.89 29.25V6.75H139.81Q142.09 6.75 143.55 7.67Q145.02 8.58 145.73 10Q146.44 11.42 146.44 12.93Q146.44 14.8 145.56 16.1Q144.68 17.39 143.16 17.84L143.15 17.06Q145.28 17.55 146.39 19.07Q147.49 20.6 147.49 22.56Q147.49 24.56 146.73 26.06Q145.96 27.57 144.45 28.41Q142.94 29.25 140.72 29.25ZM134.7 25.7H140.25Q141.24 25.7 142.01 25.3Q142.79 24.9 143.24 24.18Q143.68 23.45 143.68 22.45Q143.68 21.54 143.29 20.82Q142.9 20.1 142.16 19.68Q141.41 19.26 140.35 19.26H134.7ZM134.7 15.73H139.76Q140.57 15.73 141.21 15.42Q141.86 15.11 142.24 14.51Q142.61 13.9 142.61 12.99Q142.61 11.82 141.86 11.05Q141.1 10.27 139.76 10.27H134.7ZM150.23 29.25V12.38H153.56V16.48L153.16 15.95Q153.47 15.11 154 14.41Q154.52 13.71 155.25 13.26Q155.87 12.84 156.63 12.6Q157.39 12.37 158.18 12.31Q158.98 12.26 159.74 12.38V15.89Q158.98 15.67 158.01 15.75Q157.04 15.84 156.24 16.29Q155.47 16.72 154.98 17.37Q154.49 18.03 154.26 18.86Q154.02 19.7 154.02 20.68V29.25ZM162.64 9.82V6.36H166.4V9.82ZM162.64 29.25V12.38H166.4V29.25ZM178.39 29.72Q175.83 29.72 173.89 28.61Q171.96 27.5 170.87 25.53Q169.78 23.56 169.78 20.99Q169.78 18.23 170.85 16.19Q171.91 14.15 173.8 13.03Q175.69 11.91 178.18 11.91Q180.79 11.91 182.63 13.13Q184.47 14.35 185.36 16.59Q186.26 18.82 186.03 21.86H182.3V20.49Q182.28 17.73 181.33 16.47Q180.38 15.2 178.33 15.2Q176.02 15.2 174.89 16.63Q173.77 18.06 173.77 20.81Q173.77 23.38 174.89 24.79Q176.02 26.19 178.18 26.19Q179.57 26.19 180.57 25.57Q181.58 24.95 182.13 23.79L185.85 24.91Q184.88 27.19 182.86 28.46Q180.83 29.72 178.39 29.72ZM172.58 21.86V19.02H184.19V21.86ZM190.63 29.25V12.11Q190.63 11.47 190.67 10.7Q190.71 9.93 190.94 9.16Q191.16 8.39 191.73 7.76Q192.45 6.97 193.29 6.66Q194.12 6.35 194.93 6.32Q195.74 6.28 196.36 6.28H198.47V9.34H196.52Q195.44 9.34 194.92 9.88Q194.39 10.42 194.39 11.3V29.25ZM187.91 15.33V12.38H198.47V15.33ZM207.11 29.71Q203.98 29.71 202.03 28.31Q200.08 26.91 199.66 24.35L203.5 23.77Q203.79 25.02 204.81 25.73Q205.83 26.45 207.38 26.45Q208.73 26.45 209.47 25.91Q210.22 25.38 210.22 24.43Q210.22 23.86 209.94 23.51Q209.67 23.16 208.75 22.83Q207.83 22.5 205.92 21.99Q203.8 21.44 202.55 20.79Q201.3 20.14 200.75 19.25Q200.21 18.36 200.21 17.09Q200.21 15.52 201.03 14.35Q201.85 13.18 203.35 12.54Q204.84 11.91 206.85 11.91Q208.81 11.91 210.34 12.52Q211.86 13.13 212.8 14.25Q213.74 15.37 213.95 16.89L210.1 17.58Q209.96 16.5 209.13 15.88Q208.29 15.25 206.91 15.17Q205.58 15.1 204.77 15.58Q203.95 16.05 203.95 16.9Q203.95 17.4 204.28 17.74Q204.61 18.08 205.6 18.42Q206.59 18.76 208.56 19.26Q210.59 19.78 211.79 20.45Q213 21.11 213.54 22.03Q214.07 22.95 214.07 24.26Q214.07 26.8 212.22 28.26Q210.37 29.71 207.11 29.71Z"/></svg><p>Guía interna de marca</p></div></div></footer>
+</body>
+</html>
