@@ -763,7 +763,10 @@
           <p class="form-info">Se abrirá tu programa de correo con la consulta preparada. Revísala y pulsa enviar.</p>
           <pre class="summary-text" id="summary-text"></pre>
           <div class="form-actions">
+            <a class="btn" id="mail-link" href="mailto:hola@ecombriefs.ai">Abrir mi correo</a>
             <button type="button" class="btn btn-secondary" id="copy-btn" aria-describedby="copy-help">Copiar consulta</button>
+          </div>
+          <div class="form-actions">
             <p class="copy-help" id="copy-help">Si no se abre tu correo, copia la consulta y envíala a <span data-contact-email>hola@ecombriefs.ai</span></p>
           </div>
           <p class="copy-status" id="copy-status" aria-live="polite"></p>
@@ -1120,7 +1123,9 @@
     var url = 'mailto:' + CONFIG.contacto.destino +
       '?subject=' + encodeURIComponent(asunto) +
       '&body=' + encodeURIComponent(crlf(cuerpo));
-    var link = document.createElement('a');
+    // El mismo enlace queda visible («Abrir mi correo») por si el navegador
+    // no abre el programa de correo de forma automática.
+    var link = document.getElementById('mail-link');
     link.href = url;
     link.click();
   }
