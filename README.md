@@ -2,7 +2,14 @@
 
 Web de EcomBriefs: implantación y mantenimiento de automatizaciones de atención a pedidos para tiendas Shopify.
 
-HTML estático sin paso de compilación, publicado con GitHub Pages.
+HTML estático sin paso de compilación, alojado en Cloudflare Pages.
+
+## Alojamiento: Cloudflare Pages
+
+- Proyecto conectado a este repositorio, rama de producción `main`.
+- Configuración de compilación: sin framework, sin comando de compilación y con la raíz del repositorio como directorio de salida.
+- El dominio `ecombriefs.io` se configura en el panel de Cloudflare Pages (dominios personalizados). El archivo `CNAME` de GitHub Pages ya no se usa y se ha eliminado.
+- Si se activan funciones de Cloudflare como Web Analytics, la protección contra bots o Turnstile, hay que revisar antes la política de cookies y la de privacidad: algunas pueden instalar cookies o tratar datos adicionales.
 
 ## Portada
 
@@ -38,7 +45,7 @@ Se envía con Web3Forms, sin servidor propio:
 2. Al pulsar «Enviar consulta», hace un `fetch` (POST, JSON) a Web3Forms con:
    - Asunto: `Consulta EcomBriefs – <URL de la tienda>`.
    - Nombre, email (Web3Forms lo usa como dirección de respuesta), URL de la tienda, canal, volumen, tarea e interés.
-3. Solo si la respuesta es correcta (`HTTP 2xx` y `success: true`) muestra «Consulta enviada. Te responderemos por email.» y vacía el formulario.
+3. Solo si la respuesta es correcta (`HTTP 2xx` y `success: true`) muestra «Hemos recibido tu consulta. Te responderemos en el email que has indicado.» y vacía el formulario.
 4. Si falla (error de red, tiempo agotado o respuesta no válida), muestra un error, conserva los datos y enseña la consulta con «Copiar consulta» para enviarla a mano a `hola@ecombriefs.ai`.
 
 Antispam: hay un campo trampa oculto (`botcheck`). Las personas no lo ven ni llegan a él con el teclado; si viene marcado, el formulario no envía nada. Web3Forms también lo revisa en su lado.
@@ -48,12 +55,13 @@ No se guarda nada en el navegador (ni `localStorage` ni cookies).
 ## Páginas legales
 
 - `aviso-legal.html`, `privacidad.html` y `cookies.html`, con el mismo estilo que la portada. El texto de privacidad básico está junto al formulario de `index.html`.
-- Los campos pendientes aparecen como `[ENTRE_CORCHETES]` resaltados en amarillo (`<mark class="pendiente">`). No publicar mientras quede alguno.
+- Si en el futuro hay que dejar un dato pendiente, se marca como `[ENTRE_CORCHETES]` resaltado en amarillo (`<mark class="pendiente">`). Ahora no queda ninguno.
+- La política de privacidad identifica a Cloudflare, Inc. como proveedor de alojamiento. Si cambia el alojamiento, hay que actualizarla, igual que el texto junto al formulario.
 - `privacy.html`, `terms.html`, `es/privacy.html` y `es/terms.html` redirigen a la página nueva correspondiente.
 - La política de cookies usa la alternativa «sin cookies». Si se añade analítica, CAPTCHA, fuentes o scripts externos, hay que revisarla antes.
 
 ### Antes de publicar
 
-- Completar los campos resaltados de las páginas legales y del texto del formulario.
-- Comprobar en la cuenta de Web3Forms el buzón de destino, el plazo real de conservación y, si se desea, restringir la clave al dominio `ecombriefs.io`.
-- Confirmar que el alojamiento elegido admite una web comercial (ver las limitaciones de GitHub Pages).
+- Una vez publicada en Cloudflare, comprobar en el navegador que la web sigue sin cookies ni almacenamiento local.
+- Comprobar en la cuenta de Web3Forms el buzón de destino y, si se desea, restringir la clave al dominio `ecombriefs.io`.
+- Desactivar GitHub Pages en el repositorio cuando Cloudflare Pages sirva el dominio, para no tener dos copias publicadas.
