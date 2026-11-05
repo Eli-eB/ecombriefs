@@ -670,3 +670,15 @@ mark.pendiente { background: #FFE45C; color: var(--ink); padding: 0 .2em; border
   .footer-inner nav ul { flex-direction: column; gap: .5rem; }
   .footer-inner nav li + li::before { content: none; }
 }
+
+/* Vídeo de la prueba real (sección Ejemplo) */
+.demo-video { margin: 2rem 0 0; }
+.demo-video video {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--dark-bg);
+  box-shadow: var(--shadow);
+}
+.demo-video figcaption { margin-top: .9rem; color: var(--muted); font-size: .95rem; max-width: 760px; }
+.demo-video figcaption strong { color: var(--ink); }
