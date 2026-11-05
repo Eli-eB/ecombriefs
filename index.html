@@ -397,12 +397,19 @@
   @media (max-width: 860px) { .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 0; } }
   .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; min-width: 0; }
   @media (max-width: 480px) { .form-card { padding: 1.25rem; } }
-  .form-info {
-    padding: .8rem 1rem; border-radius: var(--radius-sm);
+  .form-success {
+    padding: .9rem 1rem; border-radius: var(--radius-sm);
     background: var(--accent-soft); color: var(--accent-dark); border: 1px solid #BFD6C8;
-    font-weight: 600; font-size: .95rem;
+    font-weight: 650;
     margin-bottom: 1.25rem;
   }
+  .form-success::before { content: "✓ "; }
+  .form-success:focus { outline: none; }
+  .form-success:focus-visible { outline: 3px solid var(--accent); }
+  .form-status:focus { outline: none; }
+  /* Campo trampa: fuera de la vista y del orden de tabulación. */
+  .hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .btn:disabled { opacity: .7; cursor: progress; }
   .copy-help { color: var(--muted); font-size: .95rem; }
   .field { display: grid; gap: .35rem; margin-bottom: 1.15rem; }
   .field label, .field legend { font-weight: 600; font-size: .975rem; }
@@ -683,12 +690,18 @@
       </div>
 
       <div class="form-card">
-        <p class="form-info" id="form-info">Se abrirá tu programa de correo con la consulta preparada. Revísala y pulsa enviar.</p>
+        <p class="form-success" id="form-success" role="status" tabindex="-1" hidden></p>
 
-        <!-- CANAL COMERCIAL: sin servidor. Al enviar, el formulario abre un mailto
-             a CONFIG.contacto.destino (script al final de este archivo). Ver README.md. -->
-        <form id="contact-form" novalidate aria-describedby="form-info">
-          <p class="form-status" id="form-status" role="alert"></p>
+        <!-- CANAL COMERCIAL: el formulario se envía con fetch a Web3Forms
+             (CONFIG.contacto en el script al final de este archivo). Ver README.md. -->
+        <form id="contact-form" novalidate>
+          <p class="form-status" id="form-status" role="alert" tabindex="-1"></p>
+
+          <!-- Campo trampa antispam: oculto para las personas; si se rellena, no se envía. -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="f-botcheck">No rellenes este campo</label>
+            <input type="checkbox" id="f-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label for="f-nombre">Nombre <span class="req">(obligatorio)</span></label>
@@ -754,20 +767,17 @@
           </fieldset>
 
           <div class="form-actions">
-            <button type="submit" class="btn">Enviar por email</button>
+            <button type="submit" class="btn" id="submit-btn">Enviar consulta</button>
           </div>
         </form>
 
+        <!-- Solo se muestra si el envío falla: alternativa para enviar la consulta a mano. -->
         <section class="summary" id="summary" aria-labelledby="summary-title" hidden>
-          <h3 id="summary-title" tabindex="-1">Resumen de tu consulta</h3>
-          <p class="form-info">Se abrirá tu programa de correo con la consulta preparada. Revísala y pulsa enviar.</p>
+          <h3 id="summary-title">Tu consulta</h3>
           <pre class="summary-text" id="summary-text"></pre>
           <div class="form-actions">
-            <a class="btn" id="mail-link" href="mailto:hola@ecombriefs.ai">Abrir mi correo</a>
             <button type="button" class="btn btn-secondary" id="copy-btn" aria-describedby="copy-help">Copiar consulta</button>
-          </div>
-          <div class="form-actions">
-            <p class="copy-help" id="copy-help">Si no se abre tu correo, copia la consulta y envíala a <span data-contact-email>hola@ecombriefs.ai</span></p>
+            <p class="copy-help" id="copy-help">Copia la consulta y envíala a <span data-contact-email>hola@ecombriefs.ai</span></p>
           </div>
           <p class="copy-status" id="copy-status" aria-live="polite"></p>
         </section>
@@ -796,18 +806,20 @@
   /* =========================================================
      CONFIGURACIÓN
      - marca: nombre visible en toda la página.
-     - contacto.destino: dirección que recibe las consultas. El
-       formulario no usa servidor: al pulsar «Enviar por email» abre
-       el programa de correo del visitante (mailto) con la consulta
-       preparada. No sabemos si la persona llega a enviarla.
-     - contacto.maxCuerpo: límite de caracteres del cuerpo del email,
-       para que el enlace mailto no falle en algunos clientes.
+     - contacto.destino: dirección alternativa que se muestra si el
+       envío falla (la persona puede copiar la consulta y mandarla).
+     - contacto.endpoint / contacto.web3formsKey: el formulario se envía
+       con fetch a Web3Forms, que reenvía la consulta al email asociado
+       a la clave. La clave de acceso de Web3Forms es pública por diseño
+       (va en el navegador); se gestiona en web3forms.com.
      ========================================================= */
   var CONFIG = {
     marca: 'EcomBriefs',
     contacto: {
       destino: 'hola@ecombriefs.ai',
-      maxCuerpo: 1500
+      endpoint: 'https://api.web3forms.com/submit',
+      web3formsKey: '7543f088-68dc-4218-8572-200f62c0a314',
+      timeoutMs: 15000
     }
   };
 
@@ -1004,12 +1016,15 @@
     });
   });
 
-  /* ---------- Formulario: mailto, sin servidor ni almacenamiento ---------- */
+  /* ---------- Formulario: envío con Web3Forms, sin almacenamiento local ---------- */
   var form = document.getElementById('contact-form');
   var formStatus = document.getElementById('form-status');
+  var formSuccess = document.getElementById('form-success');
+  var submitBtn = document.getElementById('submit-btn');
+  var botcheck = document.getElementById('f-botcheck');
   var summary = document.getElementById('summary');
   var summaryText = document.getElementById('summary-text');
-  var summaryTitle = document.getElementById('summary-title');
+  var sending = false;
   var copyBtn = document.getElementById('copy-btn');
   var copyStatus = document.getElementById('copy-status');
   var interestNote = document.getElementById('f-interes-note');
@@ -1074,7 +1089,9 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (sending) return;
     attempted = true;
+    formSuccess.hidden = true;
     var invalid = FIELDS.filter(function (f) { return !validate(f); });
     if (invalid.length) {
       formStatus.textContent = invalid.length === 1
@@ -1086,48 +1103,86 @@
       return;
     }
     formStatus.textContent = '';
-    prepararConsulta();
+    summary.hidden = true;
+
+    // Campo trampa: una persona no lo ve; si está marcado, es un bot y no se envía nada.
+    if (botcheck.checked) return;
+
+    enviarConsulta();
   });
 
-  function prepararConsulta() {
-    var head = ['Consulta para ' + CONFIG.marca, ''];
+  function resumen() {
+    var lines = ['Consulta para ' + CONFIG.marca, ''];
     FIELDS.forEach(function (f) {
-      if (f.name !== 'tarea') head.push(f.label + ': ' + valueOf(f.name));
+      if (f.name !== 'tarea') lines.push(f.label + ': ' + valueOf(f.name));
     });
-    head.push('', 'Qué tarea os gustaría reducir:');
-    // Saltos de línea CRLF, como se envían en el mailto, para medir la longitud real.
-    var headText = crlf(head.join('\n') + '\n');
-    var tarea = crlf(valueOf('tarea'));
-    // El cuerpo final queda siempre por debajo de CONFIG.contacto.maxCuerpo caracteres.
-    var room = CONFIG.contacto.maxCuerpo - 1 - headText.length;
-    if (tarea.length > room) {
-      tarea = tarea.slice(0, Math.max(0, room - 1));
-      if (tarea.slice(-1) === '\r') tarea = tarea.slice(0, -1);
-      tarea += '…';
-    }
-    var body = headText + tarea;
-
-    summaryText.textContent = body;
-    copyStatus.textContent = '';
-    summary.hidden = false;
-    summaryTitle.focus();
-
-    abrirCorreo('Consulta ' + CONFIG.marca + ' – ' + valueOf('url'), body);
+    lines.push('', 'Qué tarea os gustaría reducir:', valueOf('tarea'));
+    return lines.join('\n');
   }
 
-  // Abre el programa de correo del visitante. No hay confirmación posible:
-  // no podemos saber si la persona envía el email, así que no se muestra ninguna.
-  function crlf(text) { return text.replace(/\r?\n/g, '\r\n'); }
+  function setSending(on) {
+    sending = on;
+    submitBtn.disabled = on;
+    submitBtn.textContent = on ? 'Enviando…' : 'Enviar consulta';
+    form.setAttribute('aria-busy', on ? 'true' : 'false');
+  }
 
-  function abrirCorreo(asunto, cuerpo) {
-    var url = 'mailto:' + CONFIG.contacto.destino +
-      '?subject=' + encodeURIComponent(asunto) +
-      '&body=' + encodeURIComponent(crlf(cuerpo));
-    // El mismo enlace queda visible («Abrir mi correo») por si el navegador
-    // no abre el programa de correo de forma automática.
-    var link = document.getElementById('mail-link');
-    link.href = url;
-    link.click();
+  function enviarConsulta() {
+    var payload = {
+      access_key: CONFIG.contacto.web3formsKey,
+      subject: 'Consulta ' + CONFIG.marca + ' – ' + valueOf('url'),
+      from_name: CONFIG.marca + ' · web',
+      botcheck: false,
+      name: valueOf('nombre'),
+      email: valueOf('email'),
+      'URL de la tienda': valueOf('url'),
+      'Canal de atención': valueOf('canal'),
+      'Volumen de consultas al mes': valueOf('volumen'),
+      'Tarea que les gustaría reducir': valueOf('tarea'),
+      'Interés': valueOf('interes')
+    };
+    var text = resumen();
+
+    var controller = typeof AbortController === 'function' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, CONFIG.contacto.timeoutMs) : null;
+
+    setSending(true);
+    fetch(CONFIG.contacto.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          return res.ok && data && data.success === true;
+        });
+      })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        if (timer) clearTimeout(timer);
+        setSending(false);
+        if (ok) mostrarExito(); else mostrarError(text);
+      });
+  }
+
+  function mostrarExito() {
+    form.reset();
+    attempted = false;
+    interestNote.textContent = '';
+    FIELDS.forEach(function (f) { setError(f, ''); });
+    summary.hidden = true;
+    formSuccess.textContent = 'Consulta enviada. Te responderemos por email.';
+    formSuccess.hidden = false;
+    formSuccess.focus();
+  }
+
+  function mostrarError(text) {
+    formStatus.textContent = 'No hemos podido enviar la consulta. Inténtalo de nuevo o copia la consulta y envíala a ' + CONFIG.contacto.destino + '.';
+    summaryText.textContent = text;
+    copyStatus.textContent = '';
+    summary.hidden = false;
+    formStatus.focus();
   }
 
   copyBtn.addEventListener('click', function () {

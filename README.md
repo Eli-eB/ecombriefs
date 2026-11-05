@@ -6,7 +6,7 @@ HTML estático sin paso de compilación, publicado con GitHub Pages.
 
 ## Portada
 
-- `index.html` contiene la landing completa, con estilos y script dentro del propio archivo. No usa librerías ni scripts de terceros.
+- `index.html` contiene la landing completa, con estilos y script dentro del propio archivo. No usa librerías ni scripts de terceros; la única petición externa es el envío del formulario a Web3Forms.
 - `es/index.html` redirige a la portada.
 - La demostración de email usa datos ficticios locales. No conecta Shopify, correo, transportistas ni modelos de IA.
 
@@ -25,19 +25,28 @@ y visita http://localhost:8000/.
 Al final de `index.html` está el objeto `CONFIG`:
 
 - `CONFIG.marca`: nombre de la marca que se muestra en la página.
-- `CONFIG.contacto.destino`: dirección que recibe las consultas (`hola@ecombriefs.ai`).
-- `CONFIG.contacto.maxCuerpo`: límite de caracteres del cuerpo del email (1.500).
+- `CONFIG.contacto.endpoint`: `https://api.web3forms.com/submit`.
+- `CONFIG.contacto.web3formsKey`: clave de acceso de Web3Forms. Es pública por diseño (va en el navegador). El email que recibe las consultas se configura en la cuenta de Web3Forms asociada a esa clave, no en el código.
+- `CONFIG.contacto.destino`: `hola@ecombriefs.ai`, la dirección que se muestra como alternativa si el envío falla.
+- `CONFIG.contacto.timeoutMs`: tiempo máximo de espera del envío (15 s).
 
 ## Formulario de contacto
 
-Funciona sin servidor:
+Se envía con Web3Forms, sin servidor propio:
 
 1. Valida los campos en el navegador.
-2. Al pulsar «Enviar por email», muestra el resumen de la consulta y abre el programa de correo del visitante con un `mailto` a `CONFIG.contacto.destino`.
+2. Al pulsar «Enviar consulta», hace un `fetch` (POST, JSON) a Web3Forms con:
    - Asunto: `Consulta EcomBriefs – <URL de la tienda>`.
-   - Cuerpo: el resumen en texto plano, siempre por debajo de 1.500 caracteres (los campos tienen `maxlength` y la tarea se recorta si hiciera falta).
-3. «Copiar consulta» queda como alternativa si no se abre ningún programa de correo.
+   - Nombre, email (Web3Forms lo usa como dirección de respuesta), URL de la tienda, canal, volumen, tarea e interés.
+3. Solo si la respuesta es correcta (`HTTP 2xx` y `success: true`) muestra «Consulta enviada. Te responderemos por email.» y vacía el formulario.
+4. Si falla (error de red, tiempo agotado o respuesta no válida), muestra un error, conserva los datos y enseña la consulta con «Copiar consulta» para enviarla a mano a `hola@ecombriefs.ai`.
 
-No se muestra confirmación de envío: no podemos saber si la persona llega a enviar el email. No se guarda nada en el navegador ni se hace ninguna petición externa.
+Antispam: hay un campo trampa oculto (`botcheck`). Las personas no lo ven ni llegan a él con el teclado; si viene marcado, el formulario no envía nada. Web3Forms también lo revisa en su lado.
 
-Limitación: si el visitante no tiene un programa de correo configurado, el `mailto` no hará nada visible; por eso se muestra la alternativa de copiar. Para recibir consultas sin depender del correo del visitante haría falta un servicio de formularios o un endpoint propio.
+No se guarda nada en el navegador (ni `localStorage` ni cookies).
+
+### Antes de publicar
+
+- Comprobar en la cuenta de Web3Forms que la clave entrega en el buzón correcto y, si se desea, restringirla al dominio `ecombriefs.io`.
+- Hacer un envío de prueba real y confirmar que llega.
+- Revisar la política de privacidad: los datos del formulario se envían a Web3Forms, que los reenvía por email.
