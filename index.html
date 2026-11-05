@@ -465,6 +465,19 @@
   .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; align-items: center; }
   .footer-inner ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
   .footer-brand { color: var(--text); font-weight: 700; }
+
+  /* Campos pendientes de completar en los textos legales */
+  mark.pendiente { background: #FFE45C; color: var(--text); padding: 0 .2em; border-radius: 3px; }
+  /* Pie: enlaces legales separados por puntos */
+  .footer-inner nav li + li::before { content: "·"; margin-right: 1.25rem; color: var(--muted); }
+  .footer-inner nav ul { gap: .5rem 1.25rem; }
+  .footer-inner a[aria-current="page"] { color: var(--text); font-weight: 650; text-decoration: none; }
+
+  .privacy-info { font-size: .9rem; line-height: 1.55; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.1rem; margin: .25rem 0 1.25rem; overflow-wrap: anywhere; }
+  .privacy-info h3 { font-size: .95rem; color: var(--text); margin-bottom: .6rem; }
+  .privacy-info p + p { margin-top: .5rem; }
+  .privacy-info strong { color: var(--text); font-weight: 650; }
+  .submit-note { color: var(--muted); font-size: .9rem; }
 </style>
 </head>
 <body>
@@ -766,8 +779,20 @@
             <p class="error" id="f-interes-error"></p>
           </fieldset>
 
+          <div class="privacy-info" id="privacy-info">
+            <h3>Información básica sobre protección de datos</h3>
+            <p><strong>Responsable:</strong> <mark class="pendiente">[NOMBRE_Y_APELLIDOS_DEL_RESPONSABLE]</mark>, bajo el nombre comercial EcomBriefs.</p>
+            <p><strong>Finalidad:</strong> responder a tu consulta, valorar el encaje del servicio y preparar una propuesta si la solicitas.</p>
+            <p><strong>Base jurídica:</strong> medidas precontractuales cuando solicites un servicio para ti; interés legítimo en atender consultas y contactos profesionales cuando actúes en nombre de una organización o realices una consulta general.</p>
+            <p><strong>Destinatarios:</strong> GitHub como alojamiento previsto, Web3Creative (Web3Forms) para gestionar y enviar las solicitudes, Google Workspace para recibir y conservar los mensajes y sus subproveedores aplicables. Estos servicios implican tratamiento o posibles accesos fuera del Espacio Económico Europeo. Consulta proveedores y garantías en la <a href="privacidad.html">Política de privacidad</a>.</p>
+            <p><strong>Derechos:</strong> puedes solicitar acceso, rectificación, supresión y los demás derechos aplicables escribiendo a <a href="mailto:hola@ecombriefs.ai">hola@ecombriefs.ai</a>.</p>
+            <p><strong>Más información:</strong> <a href="privacidad.html">Política de privacidad</a>.</p>
+            <p>No incluyas datos de compradores, contraseñas ni información confidencial de terceros.</p>
+          </div>
+
           <div class="form-actions">
-            <button type="submit" class="btn" id="submit-btn">Enviar consulta</button>
+            <button type="submit" class="btn" id="submit-btn" aria-describedby="submit-note">Enviar consulta</button>
+            <p class="submit-note" id="submit-note">Enviar esta consulta no supone contratar ningún servicio.</p>
           </div>
         </form>
 
@@ -789,11 +814,12 @@
 <!-- 8. Pie de página -->
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <p><span class="footer-brand" data-brand>EcomBriefs</span> · Automatización de atención a pedidos para tiendas Shopify</p>
+    <p><span class="footer-brand" data-brand>EcomBriefs</span> · Automatización de atención para tiendas Shopify</p>
     <nav aria-label="Información legal">
       <ul>
-        <li><a href="es/privacy.html">Política de privacidad</a></li>
-        <li><a href="es/terms.html">Términos del servicio</a></li>
+        <li><a href="aviso-legal.html">Aviso legal</a></li>
+        <li><a href="privacidad.html">Política de privacidad</a></li>
+        <li><a href="cookies.html">Política de cookies</a></li>
       </ul>
     </nav>
   </div>
@@ -1172,13 +1198,13 @@
     interestNote.textContent = '';
     FIELDS.forEach(function (f) { setError(f, ''); });
     summary.hidden = true;
-    formSuccess.textContent = 'Consulta enviada. Te responderemos por email.';
+    formSuccess.textContent = 'Hemos recibido tu consulta. Te responderemos en el email que has indicado.';
     formSuccess.hidden = false;
     formSuccess.focus();
   }
 
   function mostrarError(text) {
-    formStatus.textContent = 'No hemos podido enviar la consulta. Inténtalo de nuevo o copia la consulta y envíala a ' + CONFIG.contacto.destino + '.';
+    formStatus.textContent = 'No hemos podido confirmar la recepción de tu consulta. Puedes intentarlo de nuevo o escribirnos a ' + CONFIG.contacto.destino + '.';
     summaryText.textContent = text;
     copyStatus.textContent = '';
     summary.hidden = false;

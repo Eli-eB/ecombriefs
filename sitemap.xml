@@ -6,12 +6,17 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ecombriefs.io/es/privacy.html</loc>
+    <loc>https://ecombriefs.io/aviso-legal.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>
   <url>
-    <loc>https://ecombriefs.io/es/terms.html</loc>
+    <loc>https://ecombriefs.io/privacidad.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  <url>
+    <loc>https://ecombriefs.io/cookies.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>

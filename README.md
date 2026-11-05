@@ -45,8 +45,15 @@ Antispam: hay un campo trampa oculto (`botcheck`). Las personas no lo ven ni lle
 
 No se guarda nada en el navegador (ni `localStorage` ni cookies).
 
+## Páginas legales
+
+- `aviso-legal.html`, `privacidad.html` y `cookies.html`, con el mismo estilo que la portada. El texto de privacidad básico está junto al formulario de `index.html`.
+- Los campos pendientes aparecen como `[ENTRE_CORCHETES]` resaltados en amarillo (`<mark class="pendiente">`). No publicar mientras quede alguno.
+- `privacy.html`, `terms.html`, `es/privacy.html` y `es/terms.html` redirigen a la página nueva correspondiente.
+- La política de cookies usa la alternativa «sin cookies». Si se añade analítica, CAPTCHA, fuentes o scripts externos, hay que revisarla antes.
+
 ### Antes de publicar
 
-- Comprobar en la cuenta de Web3Forms que la clave entrega en el buzón correcto y, si se desea, restringirla al dominio `ecombriefs.io`.
-- Hacer un envío de prueba real y confirmar que llega.
-- Revisar la política de privacidad: los datos del formulario se envían a Web3Forms, que los reenvía por email.
+- Completar los campos resaltados de las páginas legales y del texto del formulario.
+- Comprobar en la cuenta de Web3Forms el buzón de destino, el plazo real de conservación y, si se desea, restringir la clave al dominio `ecombriefs.io`.
+- Confirmar que el alojamiento elegido admite una web comercial (ver las limitaciones de GitHub Pages).
